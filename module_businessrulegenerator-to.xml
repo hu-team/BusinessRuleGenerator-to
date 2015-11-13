@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_businessrulegenerator-to" default="compile.module.businessrulegenerator-to">
+  <dirname property="module.businessrulegenerator-to.basedir" file="${ant.file.module_businessrulegenerator-to}"/>
+  
+  <property name="module.jdk.home.businessrulegenerator-to" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.businessrulegenerator-to" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.businessrulegenerator-to" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.businessrulegenerator-to" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="businessrulegenerator-to.output.dir" value="${module.businessrulegenerator-to.basedir}/out/production/BusinessRuleGenerator-to"/>
+  <property name="businessrulegenerator-to.testoutput.dir" value="${module.businessrulegenerator-to.basedir}/out/test/BusinessRuleGenerator-to"/>
+  
+  <path id="businessrulegenerator-to.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="businessrulegenerator-to.module.production.classpath">
+    <path refid="${module.jdk.classpath.businessrulegenerator-to}"/>
+  </path>
+  
+  <path id="businessrulegenerator-to.runtime.production.module.classpath">
+    <pathelement location="${businessrulegenerator-to.output.dir}"/>
+  </path>
+  
+  <path id="businessrulegenerator-to.module.classpath">
+    <path refid="${module.jdk.classpath.businessrulegenerator-to}"/>
+    <pathelement location="${businessrulegenerator-to.output.dir}"/>
+  </path>
+  
+  <path id="businessrulegenerator-to.runtime.module.classpath">
+    <pathelement location="${businessrulegenerator-to.testoutput.dir}"/>
+    <pathelement location="${businessrulegenerator-to.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.businessrulegenerator-to">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.businessrulegenerator-to">
+    <patternset refid="excluded.from.module.businessrulegenerator-to"/>
+  </patternset>
+  
+  <path id="businessrulegenerator-to.module.sourcepath">
+    <dirset dir="${module.businessrulegenerator-to.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.businessrulegenerator-to" depends="compile.module.businessrulegenerator-to.production,compile.module.businessrulegenerator-to.tests" description="Compile module BusinessRuleGenerator-to"/>
+  
+  <target name="compile.module.businessrulegenerator-to.production" depends="register.custom.compilers" description="Compile module BusinessRuleGenerator-to; production classes">
+    <mkdir dir="${businessrulegenerator-to.output.dir}"/>
+    <javac2 destdir="${businessrulegenerator-to.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.businessrulegenerator-to}/javac">
+      <compilerarg line="${compiler.args.businessrulegenerator-to}"/>
+      <bootclasspath refid="businessrulegenerator-to.module.bootclasspath"/>
+      <classpath refid="businessrulegenerator-to.module.production.classpath"/>
+      <src refid="businessrulegenerator-to.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.businessrulegenerator-to"/>
+    </javac2>
+    
+    <copy todir="${businessrulegenerator-to.output.dir}">
+      <fileset dir="${module.businessrulegenerator-to.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.businessrulegenerator-to.tests" depends="register.custom.compilers,compile.module.businessrulegenerator-to.production" description="compile module BusinessRuleGenerator-to; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.businessrulegenerator-to" description="cleanup module">
+    <delete dir="${businessrulegenerator-to.output.dir}"/>
+    <delete dir="${businessrulegenerator-to.testoutput.dir}"/>
+  </target>
+</project>
