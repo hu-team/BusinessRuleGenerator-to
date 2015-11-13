@@ -1,6 +1,8 @@
 ### IntelliJ IDEA
 .idea
 
+### Gradle
+.gradle
 
 ### Java
 *.class
