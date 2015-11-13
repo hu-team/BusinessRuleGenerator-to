@@ -3,6 +3,7 @@
 
 ### Gradle
 .gradle
+build
 
 ### Java
 *.class
@@ -14,3 +15,7 @@
 *.ear
 
 hs_err_pid*
+
+
+### Exceptios
+!lib/*
