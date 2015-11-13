@@ -1,3 +1,18 @@
 apply plugin: 'idea'
 apply plugin: 'java'
 
+apply plugin:'application'
+
+mainClassName = "com.brg.BusinessRuleGenerator"
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+        resources {
+            srcDir 'resources'
+        }
+    }
+}
+
