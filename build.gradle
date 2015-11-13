@@ -16,3 +16,14 @@ sourceSets {
     }
 }
 
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    runtime fileTree(dir: 'lib', include: '*.jar')
+
+
+}
