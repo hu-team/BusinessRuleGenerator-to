@@ -25,5 +25,9 @@ repositories {
 dependencies {
     runtime fileTree(dir: 'lib', include: '*.jar')
 
+    // Adding Libraries:
+    compile 'com.google.code.gson:gson:2.4'
 
+    // Test Libraries:
+    testCompile 'junit:junit:4.12'
 }
