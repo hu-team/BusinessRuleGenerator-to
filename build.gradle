@@ -1,3 +1,6 @@
+group 'com.brg'
+version '1.0'
+
 apply plugin: 'idea'
 apply plugin: 'java'
 
@@ -5,29 +8,46 @@ apply plugin:'application'
 
 mainClassName = "com.brg.BusinessRuleGenerator"
 
-sourceSets {
-    main {
-        java {
-            srcDir 'src'
-        }
-        resources {
-            srcDir 'resources'
-        }
-    }
-}
-
-
 repositories {
     mavenCentral()
 }
 
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
+        }
+    }
+}
 
 dependencies {
+    // File libraries
     runtime fileTree(dir: 'lib', include: '*.jar')
 
     // Adding Libraries:
     compile 'com.google.code.gson:gson:2.4'
+    compile 'commons-codec:commons-codec:1.10'
+    compile 'commons-io:commons-io:2.4'
+    compile 'org.apache.ddlutils:ddlutils:1.0'
 
     // Test Libraries:
     testCompile 'junit:junit:4.12'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+}
+
+tasks.withType(Jar) {
+    destinationDir = file("$rootDir/build/jar")
+}
+
+task execute(type:JavaExec) {
+    main = mainClassName
+    classpath = sourceSets.main.runtimeClasspath
 }
