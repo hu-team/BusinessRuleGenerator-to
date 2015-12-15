@@ -31,7 +31,9 @@ public class MainWindow extends Application implements Initializable {
             {"Generate rules", "generateTab.fxml"}
     };
 
+
     private HashMap<String, TabControllerImpl> tabControllers = new HashMap<String, TabControllerImpl>();
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -45,7 +47,7 @@ public class MainWindow extends Application implements Initializable {
         }
 
         primaryStage.setResizable(false);
-        primaryStage.setTitle("Business Rule Generator (v" + BusinessRuleGenerator.VERSION + " " + BusinessRuleGenerator.BUILD + ")");
+        primaryStage.setTitle("Business Rule Generator (Version: " + BusinessRuleGenerator.VERSION + ", Build: " + BusinessRuleGenerator.BUILD + ")");
 
         primaryStage.setScene(new Scene(root));
         primaryStage.sizeToScene();
