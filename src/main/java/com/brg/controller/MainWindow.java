@@ -26,6 +26,8 @@ public class MainWindow extends Application implements Initializable {
     @FXML TabPane tabPane;
 
 
+    private Stage stage;
+
     private String[][] tabNames = {
             {"Define rules", "defineTab.fxml"},
             {"Generate rules", "generateTab.fxml"}
@@ -39,6 +41,8 @@ public class MainWindow extends Application implements Initializable {
     public void start(Stage primaryStage) throws Exception {
         Parent root;
 
+        this.stage = primaryStage;
+
         try {
             root = FXMLLoader.load(getClass().getResource("/mainWindow.fxml"));
         } catch(Exception e ) {
@@ -49,7 +53,9 @@ public class MainWindow extends Application implements Initializable {
         primaryStage.setResizable(true);
         primaryStage.setTitle("Business Rule Generator (Version: " + BusinessRuleGenerator.VERSION + ", Build: " + BusinessRuleGenerator.BUILD + ")");
 
-        primaryStage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+
+        primaryStage.setScene(scene);
         primaryStage.sizeToScene();
         primaryStage.show();
 
@@ -100,6 +106,9 @@ public class MainWindow extends Application implements Initializable {
                         FXMLLoader loader = new FXMLLoader();
                         Parent root = loader.load(this.getClass().getResource("/tabs/" + fileName).openStream());
                         newValue.setContent(root);
+
+                        // Set stage
+                        // ((TabControllerImpl)loader.getController()).setStage(stage);
 
                         // Store the controller
                         tabControllers.put(newValue.getText(), loader.getController());
