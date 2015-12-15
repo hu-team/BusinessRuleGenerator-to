@@ -46,7 +46,7 @@ public class MainWindow extends Application implements Initializable {
             return;
         }
 
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
         primaryStage.setTitle("Business Rule Generator (Version: " + BusinessRuleGenerator.VERSION + ", Build: " + BusinessRuleGenerator.BUILD + ")");
 
         primaryStage.setScene(new Scene(root));
