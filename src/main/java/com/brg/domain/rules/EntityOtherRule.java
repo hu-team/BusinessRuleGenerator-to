@@ -1,7 +1,7 @@
-package com.brg.model.rules;
+package com.brg.domain.rules;
 
-import com.brg.model.BusinessRule;
-import com.brg.model.RuleValueBundle;
+import com.brg.domain.BusinessRule;
+import com.brg.domain.RuleValueBundle;
 
 /**
  * Developed by Arjan.
