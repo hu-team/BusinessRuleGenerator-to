@@ -1,4 +1,4 @@
-package com.brg.model;
+package com.brg.domain;
 
 import java.util.ArrayList;
 
