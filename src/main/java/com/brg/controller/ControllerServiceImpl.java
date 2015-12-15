@@ -1,5 +1,6 @@
 package com.brg.controller;
 
 public interface ControllerServiceImpl {
-    public MainWindow getMainWindow();
+    MainWindow getMainWindow();
+    DefineTab getDefineTab();
 }
