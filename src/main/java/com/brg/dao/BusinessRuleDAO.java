@@ -5,6 +5,7 @@ import com.brg.ServiceProvider;
 import com.brg.domain.BusinessRule;
 import com.brg.domain.RuleValueBundle;
 
+import java.lang.reflect.Constructor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -24,17 +25,28 @@ public class BusinessRuleDAO implements DAO{
 
             while (set.next()) {
                 // Make business rule
-                BusinessRule rule;
-                // TODO: Bepaal welke rule het is en maak die aan.
+                BusinessRule rule = null;
 
-                // Make value bundle
-                RuleValueBundle bundle = new RuleValueBundle();
+                // Make rule based on code
+                try {
+                    String className = "com.brg.domain.rules." + set.getString("Code");
+                    Class<?> classPosibility = Class.forName(className);
+                    Constructor<?> constructor = classPosibility.getConstructor(String.class);
+                    rule = (BusinessRule)constructor.newInstance(new Object[] {});
+                }catch(Exception e) {
+                    e.printStackTrace();
+                }
 
-                // Get all bundle contents
-                // TODO: Call RuleValueBundleDAO (must be created first!)
+                if (rule != null) {
+                    // Make value bundle
+                    RuleValueBundle bundle = new RuleValueBundle();
 
-                rule.setValues(bundle);
+                    // Get all bundle contents
+                    // TODO: Call RuleValueBundleDAO (must be created first!)
 
+                    rule.setValues(bundle);
+
+                }
             }
 
         }catch (SQLException se) {
