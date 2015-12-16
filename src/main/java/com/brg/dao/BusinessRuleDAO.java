@@ -3,6 +3,7 @@ package com.brg.dao;
 
 import com.brg.ServiceProvider;
 import com.brg.domain.BusinessRule;
+import com.brg.domain.RuleValueBundle;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,6 +23,17 @@ public class BusinessRuleDAO implements DAO{
             ResultSet set = stmt.executeQuery(sql);
 
             while (set.next()) {
+                // Make business rule
+                BusinessRule rule;
+                // TODO: Bepaal welke rule het is en maak die aan.
+
+                // Make value bundle
+                RuleValueBundle bundle = new RuleValueBundle();
+
+                // Get all bundle contents
+                // TODO: Call RuleValueBundleDAO (must be created first!)
+
+                rule.setValues(bundle);
 
             }
 
@@ -29,9 +41,11 @@ public class BusinessRuleDAO implements DAO{
             se.printStackTrace();
         }
 
+
+        return rules;
     }
 
     public ArrayList<BusinessRule> getAllRules() {
-        return this.executeRead("SELECT * FROM Rule");
+        return this.executeRead("SELECT * FROM Rule;");
     }
 }
