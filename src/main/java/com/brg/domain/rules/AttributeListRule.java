@@ -6,8 +6,8 @@ import com.brg.domain.RuleValueBundle;
 
 public class AttributeListRule extends BusinessRule {
 
-    public AttributeListRule(RuleValueBundle bundle) {
-        super(bundle);
+    public AttributeListRule() {
+        super();
     }
 
     @Override

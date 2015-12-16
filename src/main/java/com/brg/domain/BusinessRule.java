@@ -11,9 +11,7 @@ public abstract class BusinessRule {
     private RuleOperand operand;
     private RuleValueBundle values;
 
-    public BusinessRule(RuleValueBundle bundle) {
-        this.values = bundle;
-    }
+    public BusinessRule() {}
 
     public abstract boolean validateRule();
 
