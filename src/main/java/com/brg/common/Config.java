@@ -10,7 +10,7 @@ public class Config {
 
     private Properties properties;
 
-    public Config getInstance() throws IOException {
+    public static Config getInstance() throws IOException {
         if (instance == null) {
             instance = new Config();
         }
