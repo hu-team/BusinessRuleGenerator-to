@@ -19,9 +19,9 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainWindow extends Application implements Initializable {
+    private static MainWindow instance;
 
     @FXML TabPane tabPane;
-
 
     private Stage stage;
 
@@ -33,15 +33,16 @@ public class MainWindow extends Application implements Initializable {
 
     private HashMap<String, TabControllerImpl> tabControllers = new HashMap<String, TabControllerImpl>();
 
+    private Parent content;
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent content;
-
+        instance = this;
         this.stage = primaryStage;
 
         try {
-            content = FXMLLoader.load(getClass().getResource("/mainWindow.fxml"));
+            this.content = FXMLLoader.load(getClass().getResource("/mainWindow.fxml"));
         } catch(Exception e ) {
             e.printStackTrace();
             return;
@@ -52,7 +53,7 @@ public class MainWindow extends Application implements Initializable {
 
 
         // Make main scene
-        Scene scene = new Scene(content);
+        Scene scene = new Scene(this.content);
 
         primaryStage.setScene(scene);
         primaryStage.sizeToScene();
@@ -107,9 +108,6 @@ public class MainWindow extends Application implements Initializable {
                         Parent root = loader.load(this.getClass().getResource("/tabs/" + fileName).openStream());
                         newValue.setContent(root);
 
-                        // Set stage
-                        // ((TabControllerImpl)loader.getController()).setStage(stage);
-
                         // Store the controller
                         tabControllers.put(newValue.getText(), loader.getController());
                     } catch (IOException ex) {
@@ -130,5 +128,28 @@ public class MainWindow extends Application implements Initializable {
 
         // Load first tab
         tabPane.getSelectionModel().selectFirst();
+    }
+
+
+    /**
+     * Set disabled state on golbal window
+     * @param disabled boolean Disable?
+     */
+    public void setDisabled(boolean disabled) {
+        if (this.tabPane != null) {
+            this.tabPane.setDisable(disabled);
+        }
+        if (this.content != null) {
+            this.content.setDisable(disabled);
+        }
+    }
+
+
+    /**
+     * Get current instance of MainWindow
+     * @return MainWindow instance
+     */
+    public static MainWindow getInstance() {
+        return instance;
     }
 }
