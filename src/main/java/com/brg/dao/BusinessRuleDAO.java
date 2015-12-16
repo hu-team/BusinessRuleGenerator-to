@@ -3,6 +3,7 @@ package com.brg.dao;
 
 import com.brg.ServiceProvider;
 import com.brg.domain.BusinessRule;
+import com.brg.domain.RuleOperand;
 import com.brg.domain.RuleValueBundle;
 
 import java.lang.reflect.Constructor;
@@ -38,13 +39,14 @@ public class BusinessRuleDAO implements DAO{
                 }
 
                 if (rule != null) {
-                    // Make value bundle
-                    RuleValueBundle bundle = new RuleValueBundle();
+                    // Set values
+                    rule.setDescription(set.getString("Description"));
+                    rule.setName(set.getString("Name"));
+                    rule.setCode(set.getString("Code"));
+                    rule.setOperand(new RuleOperand(set.getString("RuleOperand")));
 
                     // Get all bundle contents
-                    // TODO: Call RuleValueBundleDAO (must be created first!)
-
-                    rule.setValues(bundle);
+                    rule.setValues(ServiceProvider.getInstance().getPersistanceService().getRuleValueBundleService().getRuleById(set.getInt("RuleID")));
 
                 }
             }
