@@ -6,8 +6,8 @@ import com.brg.domain.RuleValueBundle;
 
 public class ModifyRule extends BusinessRule {
 
-    public ModifyRule(RuleValueBundle bundle) {
-        super(bundle);
+    public ModifyRule() {
+        super();
     }
 
     @Override

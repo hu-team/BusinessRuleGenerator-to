@@ -6,8 +6,8 @@ import com.brg.domain.RuleValueBundle;
 
 public class InterEntityCompareRule extends BusinessRule {
 
-    public InterEntityCompareRule(RuleValueBundle bundle) {
-        super(bundle);
+    public InterEntityCompareRule() {
+        super();
     }
 
     @Override
