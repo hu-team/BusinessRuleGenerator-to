@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
+// TODO: Not in use in prototype
 public class RepositoryConnection {
 
     private RepositoryConnection instance;
