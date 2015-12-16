@@ -19,7 +19,13 @@ public class RuleValueBundleDAO implements DAO{
             ResultSet set = stmt.executeQuery(sql);
 
             while(set.next()) {
+                RuleValueBundle bundle = new RuleValueBundle();
 
+                Statement valueStmt = ServiceProvider.getInstance().getPersistanceService().getConnection().createStatement();
+                ResultSet valueSet = valueStmt
+                        .executeQuery("SELECT Key FROM BundleKeyEntry WHERE BundleID=" + set.getInt("BundleID"));
+                
+                bundle.setValue(valueSet.getString("Key"), null);
             }
 
 
@@ -28,5 +34,14 @@ public class RuleValueBundleDAO implements DAO{
         }
 
         return values;
+    }
+
+    public RuleValueBundle getRuleValueBundleById(int id){
+
+        return null;
+    }
+
+    public ArrayList<RuleValueBundle> getAllRuleValueBundle(){
+        return this.executeRead("SELECT * FROM Rule;");
     }
 }
