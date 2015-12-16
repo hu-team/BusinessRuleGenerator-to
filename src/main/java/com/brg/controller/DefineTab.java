@@ -13,13 +13,12 @@ public class DefineTab implements Initializable, TabControllerImpl {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.webView.getEngine().load("http://www.google.com/");
-        this.webView.autosize();
+        this.updateContents();
     }
 
     @Override
     public void updateContents() {
-        this.webView.getEngine().load("http://www.google.com/");
+        this.webView.getEngine().load("https://apex.oracle.com/pls/apex/f?p=88436:1:117546319450435:::::");
         this.webView.autosize();
     }
 }
