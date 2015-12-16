@@ -1,8 +1,8 @@
 package com.brg.dao;
 
 
+import java.util.ArrayList;
+
 public interface DAO {
-
-    public void executeRead(String sql);
-
+    ArrayList<?> executeRead(String sql);
 }
