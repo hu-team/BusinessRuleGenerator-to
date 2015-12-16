@@ -6,8 +6,8 @@ import com.brg.domain.RuleValueBundle;
 
 public class AttributeOtherRule extends BusinessRule {
 
-    public AttributeOtherRule(RuleValueBundle bundle) {
-        super(bundle);
+    public AttributeOtherRule() {
+        super();
     }
 
     @Override

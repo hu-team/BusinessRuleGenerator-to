@@ -6,8 +6,8 @@ import com.brg.domain.RuleValueBundle;
 
 public class AttributeCompareRule extends BusinessRule{
 
-    public AttributeCompareRule(RuleValueBundle bundle) {
-        super(bundle);
+    public AttributeCompareRule() {
+        super();
     }
 
     @Override
