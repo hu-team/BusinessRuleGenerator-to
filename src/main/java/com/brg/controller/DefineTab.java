@@ -18,7 +18,7 @@ public class DefineTab implements Initializable, TabControllerImpl {
 
     @Override
     public void updateContents() {
-        this.webView.getEngine().load("https://apex.oracle.com/pls/apex/f?p=88436:1:117546319450435:::::");
+        this.webView.getEngine().load("https://ondora02.hu.nl:8080/ords/f?p=1567:LOGIN_DESKTOP:15608328208288:::::");
         this.webView.autosize();
     }
 }

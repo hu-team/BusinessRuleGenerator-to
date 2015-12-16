@@ -13,5 +13,4 @@ public class BusinessRuleGenerator {
         // Start the controller facade
         ServiceProvider.getInstance().getControllerService().getMainWindow().start(args);
     }
-
 }
