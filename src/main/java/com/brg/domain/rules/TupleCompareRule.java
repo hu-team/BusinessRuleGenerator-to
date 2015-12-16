@@ -6,8 +6,8 @@ import com.brg.domain.RuleValueBundle;
 
 public class TupleCompareRule extends BusinessRule{
 
-    public TupleCompareRule(RuleValueBundle bundle) {
-        super(bundle);
+    public TupleCompareRule() {
+        super();
     }
 
     @Override

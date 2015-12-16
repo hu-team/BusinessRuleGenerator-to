@@ -6,8 +6,8 @@ import com.brg.domain.RuleValueBundle;
 
 public class TupleOtherRule extends BusinessRule {
 
-    public TupleOtherRule(RuleValueBundle bundle) {
-        super(bundle);
+    public TupleOtherRule() {
+        super();
     }
 
     @Override
