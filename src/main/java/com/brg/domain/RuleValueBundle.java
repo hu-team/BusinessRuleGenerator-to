@@ -2,9 +2,7 @@ package com.brg.domain;
 
 import java.util.HashMap;
 
-/**
- * Developed by Arjan.
- */
+
 public class RuleValueBundle {
 
     private HashMap<String, Object> values;

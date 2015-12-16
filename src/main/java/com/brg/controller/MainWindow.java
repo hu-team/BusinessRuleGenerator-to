@@ -9,10 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -39,12 +36,12 @@ public class MainWindow extends Application implements Initializable {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root;
+        Parent content;
 
         this.stage = primaryStage;
 
         try {
-            root = FXMLLoader.load(getClass().getResource("/mainWindow.fxml"));
+            content = FXMLLoader.load(getClass().getResource("/mainWindow.fxml"));
         } catch(Exception e ) {
             e.printStackTrace();
             return;
@@ -53,11 +50,14 @@ public class MainWindow extends Application implements Initializable {
         primaryStage.setResizable(true);
         primaryStage.setTitle("Business Rule Generator (Version: " + BusinessRuleGenerator.VERSION + ", Build: " + BusinessRuleGenerator.BUILD + ")");
 
-        Scene scene = new Scene(root);
+
+        // Make main scene
+        Scene scene = new Scene(content);
 
         primaryStage.setScene(scene);
         primaryStage.sizeToScene();
         primaryStage.show();
+
 
         primaryStage.setOnCloseRequest(event -> {
             // Don't allow closing it when not in other stage.

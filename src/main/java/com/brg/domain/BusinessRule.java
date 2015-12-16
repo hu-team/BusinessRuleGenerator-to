@@ -1,8 +1,6 @@
 package com.brg.domain;
 
-/**
- * Developed by Arjan.
- */
+
 public abstract class BusinessRule {
 
     private String code;

@@ -3,9 +3,7 @@ package com.brg.generate;
 import com.brg.domain.DatabaseType;
 import com.brg.domain.RuleValueBundle;
 
-/**
- * Developed by Arjan.
- */
+
 public class MySQLExport implements ExportTemplate {
 
     @Override

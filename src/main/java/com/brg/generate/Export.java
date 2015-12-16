@@ -2,13 +2,10 @@ package com.brg.generate;
 
 import com.brg.domain.BusinessRule;
 import com.brg.domain.DatabaseType;
-import org.apache.ddlutils.model.Database;
 
 import java.util.ArrayList;
 
-/**
- * Developed by Arjan.
- */
+
 public class Export {
 
     private String triggerIdentifier;

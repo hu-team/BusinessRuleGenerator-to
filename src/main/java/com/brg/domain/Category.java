@@ -2,9 +2,7 @@ package com.brg.domain;
 
 import java.util.ArrayList;
 
-/**
- * Developed by Arjan.
- */
+
 public class Category {
 
     private String sign;
