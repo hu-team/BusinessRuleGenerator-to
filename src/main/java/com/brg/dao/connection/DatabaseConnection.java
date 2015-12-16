@@ -1,4 +1,4 @@
-package com.brg.dao;
+package com.brg.dao.connection;
 
 /**
  * Developed by Arjan.
