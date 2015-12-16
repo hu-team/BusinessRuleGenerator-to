@@ -24,7 +24,7 @@ public class RuleValueBundleDAO implements DAO{
                 Statement valueStmt = ServiceProvider.getInstance().getPersistanceService().getConnection().createStatement();
                 ResultSet valueSet = valueStmt
                         .executeQuery("SELECT Key FROM BundleKeyEntry WHERE BundleID=" + set.getInt("BundleID"));
-                
+
                 bundle.setValue(valueSet.getString("Key"), null);
             }
 
@@ -37,8 +37,8 @@ public class RuleValueBundleDAO implements DAO{
     }
 
     public RuleValueBundle getRuleValueBundleById(int id){
-
-        return null;
+        ArrayList<RuleValueBundle> values = new ArrayList<RuleValueBundle>(); //temp
+        return values.size() >= 1 ? values.get(0) : null;
     }
 
     public ArrayList<RuleValueBundle> getAllRuleValueBundle(){
