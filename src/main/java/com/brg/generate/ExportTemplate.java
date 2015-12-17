@@ -1,11 +1,12 @@
 package com.brg.generate;
 
 import com.brg.domain.DatabaseType;
+import com.brg.domain.RuleOperand;
 import com.brg.domain.RuleValueBundle;
 import org.stringtemplate.v4.ST;
 
 public interface ExportTemplate {
-    String fillTemplate(RuleValueBundle bundle);
+    String fillTemplate(RuleValueBundle bundle, RuleOperand operand);
 
     DatabaseType getType();
 
