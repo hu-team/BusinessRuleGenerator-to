@@ -4,7 +4,6 @@ package com.brg.dao;
 import com.brg.ServiceProvider;
 import com.brg.domain.BusinessRule;
 import com.brg.domain.RuleOperand;
-import com.brg.domain.RuleValueBundle;
 
 import java.lang.reflect.Constructor;
 import java.sql.ResultSet;
@@ -21,7 +20,7 @@ public class BusinessRuleDAO implements DAO{
 
         // Get all rules, query
         try {
-            Statement stmt = ServiceProvider.getInstance().getPersistanceService().getConnection().createStatement();
+            Statement stmt = ServiceProvider.getInstance().getPersistenceService().getConnection().createStatement();
             ResultSet set = stmt.executeQuery(sql);
 
             while (set.next()) {
@@ -46,7 +45,7 @@ public class BusinessRuleDAO implements DAO{
                     rule.setOperand(new RuleOperand(set.getString("RuleOperand")));
 
                     // Get all bundle contents
-                    rule.setValues(ServiceProvider.getInstance().getPersistanceService().getRuleValueBundleService().getRuleById(set.getInt("RuleID")));
+                    rule.setValues(ServiceProvider.getInstance().getPersistenceService().getRuleValueBundleService().getRuleById(set.getInt("RuleID")));
 
                 }
             }
