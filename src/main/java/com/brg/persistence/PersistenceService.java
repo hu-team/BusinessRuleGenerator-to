@@ -14,6 +14,7 @@ public class PersistenceService extends AbstractFacadeService implements Persist
 
     private BusinessRuleService businessRuleService = new BusinessRuleService();
     private RuleValueBundleService ruleValueBundleService = new RuleValueBundleService();
+    private RuleOperandService ruleOperandService = new RuleOperandService();
 
     public PersistenceService() {
         this.makeConnection();
@@ -57,6 +58,11 @@ public class PersistenceService extends AbstractFacadeService implements Persist
     @Override
     public RuleValueBundleService getRuleValueBundleService() {
         return this.ruleValueBundleService;
+    }
+
+    @Override
+    public RuleOperandService getRuleOperandService() {
+        return this.ruleOperandService;
     }
 
     @Override

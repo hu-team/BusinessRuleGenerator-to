@@ -7,6 +7,8 @@ public interface PersistenceServiceImpl {
 
     RuleValueBundleService getRuleValueBundleService();
 
+    RuleOperandService getRuleOperandService();
+
 
     // Only for prototype
     // TODO: refactor
