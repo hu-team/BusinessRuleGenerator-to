@@ -1,6 +1,6 @@
 CREATE TABLE Category (
   CategoryID number(10) NOT NULL, 
-  Sign       number(255) NOT NULL, 
+  Sign       varchar2(255) NOT NULL, 
   PRIMARY KEY (CategoryID));
 CREATE TABLE BusinessRule (
   BusinessRuleID number(10) NOT NULL, 
