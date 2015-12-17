@@ -53,7 +53,6 @@ public class BusinessRuleDAO implements DAO{
 
             set.close();
             stmt.close();
-
         }catch (SQLException se) {
             se.printStackTrace();
         }
@@ -62,7 +61,11 @@ public class BusinessRuleDAO implements DAO{
         return rules;
     }
 
+    /**
+     * Get all rules
+     * @return
+     */
     public ArrayList<BusinessRule> getAllRules() {
-        return this.executeRead("SELECT * FROM TOSAD_2015_2C_TEAM5.BUSINESSRULE;");
+        return this.executeRead("SELECT * FROM BUSINESSRULE");
     }
 }

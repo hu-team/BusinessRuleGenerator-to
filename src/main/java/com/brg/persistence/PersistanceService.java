@@ -18,7 +18,10 @@ public class PersistanceService extends AbstractFacadeService implements Persist
     private RuleValueBundleService ruleValueBundleService = new RuleValueBundleService();
 
     public PersistanceService() {
+        this.makeConnection();
+    }
 
+    private void makeConnection() {
         // TODO: Move this to the connection holder(s). This is only for prototype.
         // TODO: Refactor
         try {
@@ -60,6 +63,13 @@ public class PersistanceService extends AbstractFacadeService implements Persist
 
     @Override
     public Connection getConnection() {
+        try {
+            if (this.connection.isClosed()) {
+                this.makeConnection();
+            }
+        }catch (SQLException se) {
+            this.makeConnection();
+        }
         return this.connection;
     }
 
