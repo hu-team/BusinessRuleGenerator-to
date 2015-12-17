@@ -6,14 +6,17 @@ import com.brg.controller.ControllerService;
 import com.brg.controller.ControllerServiceImpl;
 import com.brg.dao.DaoService;
 import com.brg.dao.DaoServiceImpl;
-import com.brg.persistence.PersistanceService;
-import com.brg.persistence.PersistanceServiceImpl;
+import com.brg.generate.ExportService;
+import com.brg.generate.ExportServiceImpl;
+import com.brg.persistence.PersistenceService;
+import com.brg.persistence.PersistenceServiceImpl;
 
 public class ServiceProvider {
     private ControllerService controllerService;
-    private PersistanceService persistanceService;
+    private PersistenceService persistanceService;
     private AnalyseService analyseService;
     private DaoService daoService;
+    private ExportService exportService;
 
     private static ServiceProvider instance;
 
@@ -28,9 +31,10 @@ public class ServiceProvider {
     private ServiceProvider() {
         // Make instances of all services (facades)
         controllerService = new ControllerService();
-        persistanceService = new PersistanceService();
+        persistanceService = new PersistenceService();
         analyseService = new AnalyseService();
         daoService = new DaoService();
+        exportService = new ExportService();
     }
 
 
@@ -38,7 +42,7 @@ public class ServiceProvider {
         return this.controllerService;
     }
 
-    public PersistanceServiceImpl getPersistanceService() {
+    public PersistenceServiceImpl getPersistenceService() {
         return this.persistanceService;
     }
 
@@ -50,4 +54,5 @@ public class ServiceProvider {
         return this.daoService;
     }
 
+    public ExportServiceImpl getExportService() { return this.exportService; }
 }

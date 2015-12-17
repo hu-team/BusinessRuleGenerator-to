@@ -29,7 +29,7 @@ public class GenerateTab implements Initializable, TabControllerImpl {
         // TODO: Werkt niet in prototype, database structuur onderzoeken.
 
         // Start loading import progress from repository
-        ServiceProvider.getInstance().getPersistanceService().getBusinessRuleService().reloadRules();
+        ServiceProvider.getInstance().getPersistenceService().getBusinessRuleService().reloadRules();
 
         // Start the subview
         MainWindow.getInstance().setDisabled(false);
