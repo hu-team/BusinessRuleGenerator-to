@@ -1,6 +1,7 @@
 package com.brg.generate;
 
 import com.brg.domain.DatabaseType;
+import com.brg.domain.RuleOperand;
 import com.brg.domain.RuleValueBundle;
 import org.stringtemplate.v4.ST;
 
@@ -9,14 +10,9 @@ public class MySQLExport implements ExportTemplate {
 
     private ST template;
 
-    private RuleValueBundle valueBundle;
-
-    public MySQLExport(RuleValueBundle values) {
-        this.valueBundle = values;
-    }
 
     @Override
-    public String fillTemplate(RuleValueBundle bundle) {
+    public String fillTemplate(RuleValueBundle bundle, RuleOperand operand) {
         return null;
     }
 

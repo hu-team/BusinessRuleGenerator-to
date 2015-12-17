@@ -1,6 +1,7 @@
 package com.brg.generate;
 
 import com.brg.domain.DatabaseType;
+import com.brg.domain.RuleOperand;
 import com.brg.domain.RuleValueBundle;
 import org.stringtemplate.v4.ST;
 
@@ -9,15 +10,15 @@ public class OracleExport implements ExportTemplate {
 
     private ST template;
 
-    private RuleValueBundle valueBundle;
-
-    public OracleExport(RuleValueBundle values) {
-        this.valueBundle = values;
-    }
-
     @Override
-    public String fillTemplate(RuleValueBundle bundle) {
-        return null;
+    public String fillTemplate(RuleValueBundle bundle, RuleOperand operand) {
+        // TODO: Make dynamic
+        this.template.add("attribute_table", bundle.getValue("attribute.table"));
+        this.template.add("attribute_column", bundle.getValue("attribute.column"));
+        this.template.add("compare_with", bundle.getValue("compare.with"));
+        this.template.add("operand", operand.getSign());
+
+        return this.template.render();
     }
 
     @Override

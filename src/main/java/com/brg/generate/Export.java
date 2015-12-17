@@ -2,8 +2,8 @@ package com.brg.generate;
 
 import com.brg.domain.BusinessRule;
 import com.brg.domain.DatabaseType;
-
-import java.util.ArrayList;
+import com.brg.domain.RuleOperand;
+import com.brg.domain.RuleValueBundle;
 
 
 public class Export {
@@ -11,16 +11,21 @@ public class Export {
     private String triggerIdentifier;
     private String output;
 
+    private RuleValueBundle bundle;
+    private RuleOperand operand;
+
     private DatabaseType databaseType;
 
-    private ArrayList<ExportTemplate> templates;
+    private ExportTemplate template;
 
     public Export(BusinessRule rule){
-        templates = new ArrayList<ExportTemplate>();
+        this.triggerIdentifier = rule.getCode();
+        this.bundle = rule.getValues();
+        this.operand = rule.getOperand();
     }
 
-    public ArrayList<ExportTemplate> getTemplates() {
-        return this.templates;
+    public ExportTemplate getTemplate() {
+        return this.template;
     }
 
     public String getTriggerIdentifier() {
@@ -28,7 +33,7 @@ public class Export {
     }
 
     public String getOutput() {
-        return this.output;
+        return this.template.fillTemplate(this.bundle, this.operand);
     }
 
     public DatabaseType getDatabaseType(){
@@ -47,7 +52,7 @@ public class Export {
         this.output = output;
     }
 
-    public void setTemplates(ExportTemplate template) {
-        this.templates.add(template);
+    public void setTemplate(ExportTemplate template) {
+        this.template = template;
     }
 }
