@@ -30,7 +30,7 @@ public class BusinessRuleDAO implements DAO{
 
                 // Make rule based on code
                 try {
-                    String className = "com.brg.domain.rules." + set.getString("Code");
+                    String className = "com.brg.domain.rules." + set.getString("ClassName");
                     Class<?> classPosibility = Class.forName(className);
                     Constructor<?> constructor = classPosibility.getConstructor(String.class);
                     rule = (BusinessRule)constructor.newInstance(new Object[] {});
@@ -51,6 +51,9 @@ public class BusinessRuleDAO implements DAO{
                 }
             }
 
+            set.close();
+            stmt.close();
+
         }catch (SQLException se) {
             se.printStackTrace();
         }
@@ -60,6 +63,6 @@ public class BusinessRuleDAO implements DAO{
     }
 
     public ArrayList<BusinessRule> getAllRules() {
-        return this.executeRead("SELECT * FROM Rule;");
+        return this.executeRead("SELECT * FROM TOSAD_2015_2C_TEAM5.BUSINESSRULE;");
     }
 }

@@ -43,6 +43,7 @@ public class PersistanceService extends AbstractFacadeService implements Persist
 
         try{
             connection = DriverManager.getConnection(connectString, p.getProperty("repository_username"), p.getProperty("repository_password"));
+            //connection.createStatement().execute("ALTER SESSION SET CURRENT_SCHEMA = 'TOSAD_2015_2C_TEAM5';");
         } catch (SQLException e) {
             e.printStackTrace();
             return;
