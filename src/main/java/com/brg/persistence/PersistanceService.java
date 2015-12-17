@@ -5,9 +5,9 @@ import com.brg.common.AbstractFacadeService;
 import com.brg.common.Config;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class PersistanceService extends AbstractFacadeService implements PersistanceServiceImpl {
@@ -37,16 +37,14 @@ public class PersistanceService extends AbstractFacadeService implements Persist
             return;
         }
 
-        String connectString = "jdbc:oracle:thin:@" + p.getProperty("repository_host");
+        String connectString = "jdbc:oracle:thin:@//" + p.getProperty("repository_host");
         connectString += ":" + p.getProperty("repository_port");
         connectString += "/" + p.getProperty("repository_service");
 
         try{
             connection = DriverManager.getConnection(connectString, p.getProperty("repository_username"), p.getProperty("repository_password"));
-            //connection.createStatement().execute("ALTER SESSION SET CURRENT_SCHEMA = 'TOSAD_2015_2C_TEAM5';");
         } catch (SQLException e) {
             e.printStackTrace();
-            return;
         }
     }
 
