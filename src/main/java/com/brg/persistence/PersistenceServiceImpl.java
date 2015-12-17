@@ -2,7 +2,7 @@ package com.brg.persistence;
 
 import java.sql.Connection;
 
-public interface PersistanceServiceImpl {
+public interface PersistenceServiceImpl {
     BusinessRuleService getBusinessRuleService();
 
     RuleValueBundleService getRuleValueBundleService();

@@ -6,18 +6,16 @@ import com.brg.common.Config;
 
 import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
-public class PersistanceService extends AbstractFacadeService implements PersistanceServiceImpl {
+public class PersistenceService extends AbstractFacadeService implements PersistenceServiceImpl {
 
     private Connection connection;
 
     private BusinessRuleService businessRuleService = new BusinessRuleService();
     private RuleValueBundleService ruleValueBundleService = new RuleValueBundleService();
 
-    public PersistanceService() {
+    public PersistenceService() {
         this.makeConnection();
     }
 
