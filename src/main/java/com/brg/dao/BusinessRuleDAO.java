@@ -31,7 +31,7 @@ public class BusinessRuleDAO implements DAO{
                 try {
                     String className = "com.brg.domain.rules." + set.getString("ClassName");
                     Class<?> classPosibility = Class.forName(className);
-                    Constructor<?> constructor = classPosibility.getConstructor(String.class);
+                    Constructor<?> constructor = classPosibility.getConstructor();
                     rule = (BusinessRule)constructor.newInstance(new Object[] {});
                 }catch(Exception e) {
                     e.printStackTrace();
@@ -40,12 +40,12 @@ public class BusinessRuleDAO implements DAO{
                 if (rule != null) {
                     // Set values
                     rule.setDescription(set.getString("Description"));
-                    rule.setName(set.getString("Name"));
-                    rule.setCode(set.getString("Code"));
-                    rule.setOperand(new RuleOperand(set.getString("RuleOperand")));
+                    rule.setName(set.getString("RULENAME"));
+                    rule.setCode(set.getString("CODE"));
+                    //rule.setOperand(new RuleOperand(set.getString("RuleOperand")));
 
                     // Get all bundle contents
-                    rule.setValues(ServiceProvider.getInstance().getPersistenceService().getRuleValueBundleService().getRuleById(set.getInt("RuleID")));
+                    rule.setValues(ServiceProvider.getInstance().getPersistenceService().getRuleValueBundleService().getRuleById(set.getInt("BUSINESSRULEID")));
 
                 }
             }
