@@ -33,6 +33,7 @@ dependencies {
     compile 'commons-io:commons-io:2.4'
     compile 'org.apache.ddlutils:ddlutils:1.0'
     compile 'org.controlsfx:controlsfx:8.40.10'
+    compile 'org.antlr:stringtemplate:4.0.2'
 
     // Test Libraries:
     testCompile 'junit:junit:4.12'
