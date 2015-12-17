@@ -1,6 +1,8 @@
 package com.brg.controller;
 
 import com.brg.ServiceProvider;
+import com.brg.domain.BusinessRule;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,7 +18,7 @@ public class GenerateTab implements Initializable, TabControllerImpl {
 
     @FXML private TextArea outputText;
     @FXML private Button exportButton;
-    @FXML private ComboBox selectRule;
+    @FXML private ComboBox<BusinessRule> selectRule;
     @FXML private AnchorPane generateTabAnchor;
 
     private MainWindow rootController;
@@ -38,11 +40,22 @@ public class GenerateTab implements Initializable, TabControllerImpl {
         // Start loading import progress from repository
         ServiceProvider.getInstance().getPersistenceService().getBusinessRuleService().reloadRules();
 
+        // Fill in the combobox, clear the other elements.
+        this.clearSelections();
+        this.selectRule.getItems().addAll(FXCollections.observableArrayList(ServiceProvider.getInstance().getPersistenceService().getBusinessRuleService().getRules()));
+
         // Start the subview
         MainWindow.getInstance().setDisabled(false);
     }
 
+    private void clearSelections() {
+        this.selectRule.getItems().clear();
+        this.outputText.setText("");
+        this.outputText.setEditable(false);
+    }
+
     public void doExport(ActionEvent actionEvent) {
-        
+        String output = ServiceProvider.getInstance().getExportService().createExport(this.selectRule.getSelectionModel().getSelectedItem()).getOutput();
+        this.outputText.setText(output);
     }
 }
