@@ -1,3 +1,5 @@
+-- Tables
+
 CREATE TABLE Category (
   CategoryID number(10) NOT NULL, 
   Sign       varchar2(255) NOT NULL, 
@@ -34,94 +36,97 @@ CREATE TABLE EntryKeyValue (
   Description  varchar2(255), 
   PRIMARY KEY (EntryValueID));
 
+-- Constraints
 
-CREATE SEQUENCE cat_seq
+ALTER TABLE BusinessRule ADD CONSTRAINT FK1_BusinessRu FOREIGN KEY (CategoryID) REFERENCES Category (CategoryID);
+ALTER TABLE BusinessRule ADD CONSTRAINT FK2_BusinessRu FOREIGN KEY (RuleOperandID) REFERENCES RuleOperand (RuleOperandID);
+ALTER TABLE BusinessRule ADD CONSTRAINT FK3_BusinessRu FOREIGN KEY (BundleID) REFERENCES Bundle (BundleID);
+ALTER TABLE BundleKeyEntry ADD CONSTRAINT FK1_BundleKeyE FOREIGN KEY (BundleID) REFERENCES Bundle (BundleID);
+ALTER TABLE EntryKeyValue ADD CONSTRAINT FK1_EntryKeyVa FOREIGN KEY (EntryID) REFERENCES BundleKeyEntry (EntryID);
+
+-- Sequences
+
+CREATE SEQUENCE cat_seq_pk
   START WITH 100000
   INCREMENT BY 1
   CACHE 1;
 
-CREATE OR REPLACE TRIGGER cat_trg
+CREATE SEQUENCE br_seq_pk
+  START WITH 100000
+  INCREMENT BY 1
+  CACHE 1;
+
+CREATE SEQUENCE ope_seq_pk
+  START WITH 100000
+  INCREMENT BY 1
+  CACHE 1;
+
+CREATE SEQUENCE bun_seq_pk
+  START WITH 100000
+  INCREMENT BY 1
+  CACHE 1;
+
+CREATE SEQUENCE bke_seq_pk
+  START WITH 100000
+  INCREMENT BY 1
+  CACHE 1;
+
+CREATE SEQUENCE ekv_seq_pk
+  START WITH 100000
+  INCREMENT BY 1
+  CACHE 1;
+
+-- Triggerss
+
+CREATE OR REPLACE TRIGGER cat_trg_pk
   BEFORE INSERT ON Category
   FOR EACH ROW
-BEGIN 
-  SELECT cat_seq.NEXTVAL
-    INTO   :new.CategoryID
-    FROM   dual;  
+  WHEN (NEW.CategoryID IS NULL)
+BEGIN
+  :NEW.CategoryID := cat_seq_pk.NEXTVAL;
 END;
 
-CREATE SEQUENCE br_seq
-  START WITH 100000
-  INCREMENT BY 1
-  CACHE 1;
-
-CREATE OR REPLACE TRIGGER br_trg
+CREATE OR REPLACE TRIGGER br_trg_pk
   BEFORE INSERT ON BusinessRule
   FOR EACH ROW
+  WHEN (NEW.BusinessRuleID IS NULL)
 BEGIN 
-  SELECT br_seq.NEXTVAL
-    INTO   :new.BusinessRuleID
-    FROM   dual;  
+  :NEW.BusinessRuleID := br_seq_pk.NEXTVAL;
 END;
 
-CREATE SEQUENCE ope_seq
-  START WITH 100000
-  INCREMENT BY 1
-  CACHE 1;
-
-CREATE OR REPLACE TRIGGER ope_trg
+CREATE OR REPLACE TRIGGER ope_trg_pk
   BEFORE INSERT ON RuleOperand
   FOR EACH ROW
+  WHEN (NEW.RuleOperandID IS NULL)
 BEGIN 
-  SELECT ope_seq.NEXTVAL
-    INTO   :new.RuleOperandID
-    FROM   dual;  
+  :NEW.RuleOperandID := ope_seq_pk.NEXTVAL;
 END;
 
-CREATE SEQUENCE bun_seq
-  START WITH 100000
-  INCREMENT BY 1
-  CACHE 1;
-
-CREATE OR REPLACE TRIGGER bun_trg
+CREATE OR REPLACE TRIGGER bun_trg_pk
   BEFORE INSERT ON Bundle
   FOR EACH ROW
+  WHEN (NEW.BundleID IS NULL)
 BEGIN 
-  SELECT bun_seq.NEXTVAL
-    INTO   :new.BundleID
-    FROM   dual;  
+   :NEW.BundleID := bun_seq_pk.NEXTVAL;
 END;
 
-CREATE SEQUENCE bke_seq
-  START WITH 100000
-  INCREMENT BY 1
-  CACHE 1;
-
-CREATE OR REPLACE TRIGGER bke_trg
+CREATE OR REPLACE TRIGGER bke_trg_pk
   BEFORE INSERT ON BundleKeyEntry
   FOR EACH ROW
+  WHEN (NEW.EntryID IS NULL)
 BEGIN 
-  SELECT bke_seq.NEXTVAL
-    INTO   :new.EntryID
-    FROM   dual;  
+    :NEW.EntryID := bke_seq_pk.NEXTVAL;
 END;
 
-CREATE SEQUENCE ekv_seq
-  START WITH 100000
-  INCREMENT BY 1
-  CACHE 1;
-
-CREATE OR REPLACE TRIGGER ekv_trg
+CREATE OR REPLACE TRIGGER ekv_trg_pk
   BEFORE INSERT ON EntryKeyValue
   FOR EACH ROW
+  WHEN (NEW.EntryValueID IS NULL)
 BEGIN 
-  SELECT ekv_seq.NEXTVAL
-    INTO   :new.EntryValueID
-    FROM   dual;  
+  :NEW.EntryValueID := ekv_seq_pk.NEXTVAL;
 END;
 
 
-ALTER TABLE BusinessRule ADD CONSTRAINT FKBusinessRu704047 FOREIGN KEY (CategoryID) REFERENCES Category (CategoryID);
-ALTER TABLE BusinessRule ADD CONSTRAINT FKBusinessRu989116 FOREIGN KEY (RuleOperandID) REFERENCES RuleOperand (RuleOperandID);
-ALTER TABLE BusinessRule ADD CONSTRAINT FKBusinessRu548335 FOREIGN KEY (BundleID) REFERENCES Bundle (BundleID);
-ALTER TABLE BundleKeyEntry ADD CONSTRAINT FKBundleKeyE768418 FOREIGN KEY (BundleID) REFERENCES Bundle (BundleID);
-ALTER TABLE EntryKeyValue ADD CONSTRAINT FKEntryKeyVa860260 FOREIGN KEY (EntryID) REFERENCES BundleKeyEntry (EntryID);
+
+
+
