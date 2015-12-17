@@ -23,15 +23,37 @@ public class RuleValueBundleDAO implements DAO{
 
                 Statement valueStmt = ServiceProvider.getInstance().getPersistanceService().getConnection().createStatement();
                 ResultSet valueSet = valueStmt
-                        .executeQuery("SELECT Key FROM BundleKeyEntry WHERE BundleID=" + set.getInt("BundleID"));
+                        .executeQuery("SELECT bke.Key, ekv.String_Value, ekv.Int_Value, ekv.Float_Value" +
+                                "FROM BundleKeyEntry bke, EntryKeyValue ekv" +
+                                "WHERE bke.BundleID=" + set.getInt("BundleID") + " AND " +
+                                "ekv.EntryID = bke.EntryID" );
 
                 while(valueSet.next()) {
-                    bundle.setValue(valueSet.getString("Key"), null);
-                }
+                    String keyName = valueSet.getString("Key");
 
+                    Integer intValue = valueSet.getInt("Int_Value");
+                    if(!valueSet.wasNull()){
+                        bundle.setValue(keyName, intValue);
+                    }
+
+                    Float floatValue = valueSet.getFloat("Float_Value");
+                    if(!valueSet.wasNull()){
+                        bundle.setValue(keyName, floatValue);
+                    }
+
+                    if(valueSet.getString("String_Value") != null){
+                        bundle.setValue(keyName, valueSet.getString("String_Value"));
+                    }
+
+
+                }
+                valueSet.close();
+                valueStmt.close();
 
             }
 
+            set.close();
+            stmt.close();
 
         } catch(Exception e){
             e.printStackTrace();
