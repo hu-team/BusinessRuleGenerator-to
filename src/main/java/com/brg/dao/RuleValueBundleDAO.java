@@ -23,8 +23,8 @@ public class RuleValueBundleDAO implements DAO{
 
                 Statement valueStmt = ServiceProvider.getInstance().getPersistanceService().getConnection().createStatement();
                 ResultSet valueSet = valueStmt
-                        .executeQuery("SELECT bke.Key, ekv.String_Value, ekv.Int_Value, ekv.Float_Value" +
-                                "FROM BundleKeyEntry bke, EntryKeyValue ekv" +
+                        .executeQuery("SELECT bke.Key, ekv.String_Value, ekv.Int_Value, ekv.Float_Value " +
+                                "FROM BundleKeyEntry bke, EntryKeyValue ekv " +
                                 "WHERE bke.BundleID=" + set.getInt("BundleID") + " AND " +
                                 "ekv.EntryID = bke.EntryID" );
 
