@@ -63,11 +63,11 @@ public class RuleValueBundleDAO implements DAO{
     }
 
     public RuleValueBundle getRuleValueBundleById(int id){
-        ArrayList<RuleValueBundle> values = new ArrayList<RuleValueBundle>(); //temp
+        ArrayList<RuleValueBundle> values = this.executeRead("SELECT * FROM BUNDLE WHERE BUNDLEID = " + id); //temp
         return values.size() >= 1 ? values.get(0) : null;
     }
 
     public ArrayList<RuleValueBundle> getAllRuleValueBundle(){
-        return this.executeRead("SELECT * FROM Rule;");
+        return this.executeRead("SELECT * FROM BUNDLE;");
     }
 }
