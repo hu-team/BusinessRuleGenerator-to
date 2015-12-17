@@ -47,6 +47,8 @@ public class BusinessRuleDAO implements DAO{
                     // Get all bundle contents
                     rule.setValues(ServiceProvider.getInstance().getPersistenceService().getRuleValueBundleService().getRuleById(set.getInt("BUSINESSRULEID")));
 
+                    // Add to array
+                    rules.add(rule);
                 }
             }
 

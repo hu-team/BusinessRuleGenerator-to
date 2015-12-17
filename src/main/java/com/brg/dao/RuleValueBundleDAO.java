@@ -33,23 +33,23 @@ public class RuleValueBundleDAO implements DAO{
 
                     Integer intValue = valueSet.getInt("Int_Value");
                     if(!valueSet.wasNull()){
-                        bundle.setValue(keyName, intValue);
+                        bundle.putValue(keyName, intValue);
                     }
 
                     Float floatValue = valueSet.getFloat("Float_Value");
                     if(!valueSet.wasNull()){
-                        bundle.setValue(keyName, floatValue);
+                        bundle.putValue(keyName, floatValue);
                     }
 
                     if(valueSet.getString("String_Value") != null){
-                        bundle.setValue(keyName, valueSet.getString("String_Value"));
+                        bundle.putValue(keyName, valueSet.getString("String_Value"));
                     }
-
-
                 }
+
+                values.add(bundle);
+
                 valueSet.close();
                 valueStmt.close();
-
             }
 
             set.close();
