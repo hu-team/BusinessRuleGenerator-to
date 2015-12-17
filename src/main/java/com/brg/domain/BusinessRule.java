@@ -62,4 +62,8 @@ public abstract class BusinessRule {
     public RuleValueBundle getValues() {
         return values;
     }
+
+    public String toString() {
+        return this.getCode() + " - " + this.getName();
+    }
 }
