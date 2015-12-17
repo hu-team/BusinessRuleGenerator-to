@@ -6,6 +6,7 @@ public class DaoService extends AbstractFacadeService implements DaoServiceImpl 
 
     private BusinessRuleDAO businessRuleDAO = new BusinessRuleDAO();
     private RuleValueBundleDAO ruleValueBundleDAO = new RuleValueBundleDAO();
+    private RuleOperandDAO ruleOperandDAO = new RuleOperandDAO();
 
 
     @Override
@@ -16,5 +17,10 @@ public class DaoService extends AbstractFacadeService implements DaoServiceImpl 
     @Override
     public RuleValueBundleDAO getRuleValueBundleDAO() {
         return this.ruleValueBundleDAO;
+    }
+
+    @Override
+    public RuleOperandDAO getRuleOperandDAO() {
+        return this.ruleOperandDAO;
     }
 }
