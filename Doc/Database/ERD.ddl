@@ -76,7 +76,7 @@ CREATE SEQUENCE ekv_seq_pk
   INCREMENT BY 1
   CACHE 1;
 
--- Triggers
+-- Triggerss
 
 CREATE OR REPLACE TRIGGER cat_trg_pk
   BEFORE INSERT ON Category
