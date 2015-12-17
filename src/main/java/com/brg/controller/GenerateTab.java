@@ -1,8 +1,12 @@
 package com.brg.controller;
 
 import com.brg.ServiceProvider;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
@@ -10,6 +14,9 @@ import java.util.ResourceBundle;
 
 public class GenerateTab implements Initializable, TabControllerImpl {
 
+    @FXML private TextArea outputText;
+    @FXML private Button exportButton;
+    @FXML private ComboBox selectRule;
     @FXML private AnchorPane generateTabAnchor;
 
     private MainWindow rootController;
@@ -33,5 +40,9 @@ public class GenerateTab implements Initializable, TabControllerImpl {
 
         // Start the subview
         MainWindow.getInstance().setDisabled(false);
+    }
+
+    public void doExport(ActionEvent actionEvent) {
+        
     }
 }

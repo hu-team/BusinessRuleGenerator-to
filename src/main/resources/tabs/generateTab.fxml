@@ -4,12 +4,10 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.brg.controller.GenerateTab"
-            fx:id="generateTabAnchor">
+<AnchorPane fx:id="generateTabAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.brg.controller.GenerateTab">
    <children>
-
+      <ComboBox id="selectRule" fx:id="selectRule" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="254.0" promptText="Select Rule" />
+      <Button id="exportButton" fx:id="exportButton" layoutX="274.0" layoutY="14.0" mnemonicParsing="false" onAction="#doExport" text="Export" />
+      <TextArea fx:id="outputText" layoutX="14.0" layoutY="50.0" prefHeight="338.0" prefWidth="573.0" />
    </children>
 </AnchorPane>
