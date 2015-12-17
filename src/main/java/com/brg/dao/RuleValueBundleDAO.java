@@ -25,7 +25,11 @@ public class RuleValueBundleDAO implements DAO{
                 ResultSet valueSet = valueStmt
                         .executeQuery("SELECT Key FROM BundleKeyEntry WHERE BundleID=" + set.getInt("BundleID"));
 
-                bundle.setValue(valueSet.getString("Key"), null);
+                while(valueSet.next()) {
+                    bundle.setValue(valueSet.getString("Key"), null);
+                }
+
+
             }
 
 
