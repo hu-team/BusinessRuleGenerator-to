@@ -5,6 +5,10 @@ public class RuleOperand {
 
     private String sign;
 
+    public RuleOperand(){
+
+    };
+
     public RuleOperand(String s) {
         this.sign = s;
     }
