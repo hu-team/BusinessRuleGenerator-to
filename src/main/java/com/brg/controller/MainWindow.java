@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 public class MainWindow extends Application implements Initializable {
     private static MainWindow instance;
 
-    @FXML TabPane tabPane;
+    @FXML private TabPane tabPane;
 
     private Stage stage;
 
