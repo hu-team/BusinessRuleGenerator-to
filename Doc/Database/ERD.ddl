@@ -8,8 +8,9 @@ CREATE TABLE BusinessRule (
   RuleOperandID  number(10), 
   BundleID       number(10), 
   Code           varchar2(255) NOT NULL, 
-  Name           varchar2(255) NOT NULL, 
-  Description    varchar2(255) NOT NULL, 
+  RuleName       varchar2(255) NOT NULL, 
+  Description    varchar2(255) NOT NULL,
+  ClassName 	 varchar2(255) NOT NULL, 
   PRIMARY KEY (BusinessRuleID));
 CREATE TABLE RuleOperand (
   RuleOperandID number(10) NOT NULL, 
@@ -32,6 +33,7 @@ CREATE TABLE EntryKeyValue (
   Float_Value  varchar2(255), 
   Description  varchar2(255), 
   PRIMARY KEY (EntryValueID));
+
 
 CREATE SEQUENCE cat_seq
   START WITH 100000
