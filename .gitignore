@@ -18,5 +18,9 @@ build
 hs_err_pid*
 
 
+
+### Application
+src/main/resources/config.properties
+
 ### Exceptios
 !lib/*
