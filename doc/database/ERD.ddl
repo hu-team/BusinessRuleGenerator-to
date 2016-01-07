@@ -6,7 +6,7 @@ CREATE TABLE Category (
   PRIMARY KEY (CategoryID));
 CREATE TABLE BusinessRule (
   BusinessRuleID number(10) NOT NULL, 
-  CategoryID     number(10) NOT NULL, 
+  CategoryID     number(10) NOT NULL,
   RuleOperandID  number(10), 
   BundleID       number(10), 
   Code           varchar2(255) NOT NULL, 
