@@ -45,6 +45,11 @@ public class SettingsTab implements Initializable, TabControllerImpl {
         return arrDatabaseType;
     }
 
+
+    /**
+     * load default config properties
+     *
+     */
     private void loadSettings() {
         try {
             properties = Config.getInstance().getConfig();
@@ -62,6 +67,10 @@ public class SettingsTab implements Initializable, TabControllerImpl {
         }
     }
 
+    /**
+     * set default config properties
+     *
+     */
     private void setSettings() {
         targetHost.setText(properties.getProperty("target_host"));
         targetUsername.setText(properties.getProperty("target_username"));
@@ -70,7 +79,22 @@ public class SettingsTab implements Initializable, TabControllerImpl {
         targetPort.setText(properties.getProperty("target_port"));
     }
 
+    /**
+     * save config properties
+     *
+     */
     public void saveSettings() {
+        properties.setProperty("target_host", targetHost.getText());
+        properties.setProperty("target_username", targetUsername.getText());
+        properties.setProperty("target_password", targetPassword.getText());
+        properties.setProperty("target_service", targetService.getText());
+        properties.setProperty("target_port", targetPort.getText());
+        properties.setProperty("target_type", exportOptions.getValue().toString());
 
+        try {
+            Config.getInstance().save();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
