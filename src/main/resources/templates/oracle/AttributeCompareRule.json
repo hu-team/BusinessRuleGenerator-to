@@ -1,0 +1,6 @@
+{
+  "name": "Oracle Attribute Compare Rule Template",
+  "type": "ORACLE",
+  "code": "ATTRCOMP",
+  "template": "JAAA ORACLE"
+}

@@ -6,4 +6,6 @@ public interface PersistenceServiceImpl {
     RuleValueBundleService getRuleValueBundleService();
 
     RuleOperandService getRuleOperandService();
+
+    TemplateService getTemplateService();
 }

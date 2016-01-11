@@ -5,9 +5,7 @@ import com.brg.domain.RuleOperand;
 
 import java.util.ArrayList;
 
-/**
- * Developed by Arjan.
- */
+
 public class RuleOperandService {
 
     private ArrayList<RuleOperand> operands;

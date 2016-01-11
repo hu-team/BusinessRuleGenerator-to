@@ -1,17 +1,13 @@
 package com.brg.persistence;
 
-
 import com.brg.common.AbstractFacadeService;
 
-import java.sql.Connection;
-
 public class PersistenceService extends AbstractFacadeService implements PersistenceServiceImpl {
-
-    private Connection connection;
 
     private BusinessRuleService businessRuleService = new BusinessRuleService();
     private RuleValueBundleService ruleValueBundleService = new RuleValueBundleService();
     private RuleOperandService ruleOperandService = new RuleOperandService();
+    private TemplateService templateService = new TemplateService();
 
     @Override
     public BusinessRuleService getBusinessRuleService() {
@@ -26,6 +22,11 @@ public class PersistenceService extends AbstractFacadeService implements Persist
     @Override
     public RuleOperandService getRuleOperandService() {
         return this.ruleOperandService;
+    }
+
+    @Override
+    public TemplateService getTemplateService() {
+        return this.templateService;
     }
 
 }
