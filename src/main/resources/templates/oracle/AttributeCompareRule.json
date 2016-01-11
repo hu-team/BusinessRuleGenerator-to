@@ -11,7 +11,7 @@
     "l_passed := :new.<attribute_column> <operand> <compare_with>;",
     "if not l_passed",
     "then" ,
-    "l_error_stack := l_error_stack || 'De prijs van het product mag niet negatief zijn.';",
+    "l_error_stack := l_error_stack || <error> ;",
     "end if;" ,
     "end if;" ,
     "end;"

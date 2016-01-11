@@ -1,6 +1,6 @@
 {
-  "name": "MySQL Attribute Compare Rule Template",
-  "type": "MYSQL",
-  "code": "ATTRCOMP",
-  "template": "JAAA MYSQL"
+  "name": "Oracle Attribute Other Rule Template",
+  "type": "ORACLE",
+  "code": "ATTROTHER",
+  "template": []
 }

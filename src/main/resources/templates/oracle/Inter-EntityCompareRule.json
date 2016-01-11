@@ -1,6 +1,6 @@
 {
-  "name": "MySQL Attribute Compare Rule Template",
-  "type": "MYSQL",
-  "code": "ATTRCOMP",
+  "name": "Oracle Inter-Entity Compare Rule Template",
+  "type": "ORACLE",
+  "code": "INTENTCOMP",
   "template": "JAAA MYSQL"
 }
