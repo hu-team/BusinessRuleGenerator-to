@@ -5,6 +5,9 @@ import com.brg.domain.RuleOperand;
 import com.brg.domain.RuleValueBundle;
 import org.stringtemplate.v4.ST;
 
+import java.util.Iterator;
+import java.util.Map;
+
 
 public class OracleExport implements ExportTemplate {
 
@@ -12,11 +15,16 @@ public class OracleExport implements ExportTemplate {
 
     @Override
     public String fillTemplate(RuleValueBundle bundle, RuleOperand operand) {
-        // TODO: Make dynamic
-        this.template.add("attribute_table", bundle.getValue("attribute.table"));
-        this.template.add("attribute_column", bundle.getValue("attribute.column"));
-        this.template.add("compare_with", bundle.getValue("compare.with"));
-        this.template.add("operand", operand.getSign());
+        for(String key: bundle.getKeys()) {
+            String templateKey = key.replaceAll("\\.", "_");
+
+            this.template.add(templateKey, bundle.getValue(key));
+        }
+
+        // Add operator
+        if (operand != null) {
+            this.template.add("operand", operand.getSign());
+        }
 
         return this.template.render();
     }

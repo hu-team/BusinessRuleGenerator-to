@@ -2,5 +2,8 @@
   "name": "MySQL Attribute Compare Rule Template",
   "type": "MYSQL",
   "code": "ATTRCOMP",
-  "template": "JAAA MYSQL"
+  "template": [
+    "DECLARE  .. . . asdfasdf",
+    "l_passed := gdfdaa"
+  ]
 }

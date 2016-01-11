@@ -27,16 +27,16 @@ public class TemplateService {
      * The fetching object
      */
     private class JsonTemplate {
-        private String template;
+        private String[] template;
         private String name;
         private String type;
         private String code;
 
-        public String getTemplate() {
+        public String[] getTemplate() {
             return template;
         }
 
-        public void setTemplate(String template) {
+        public void setTemplate(String[] template) {
             this.template = template;
         }
 
@@ -100,7 +100,8 @@ public class TemplateService {
      * @param template Template object from json
      */
     private void registerTemplate(JsonTemplate template) {
-        System.out.println(template.getTemplate());
+        String stringTemplate = String.join("\n", template.getTemplate());
+        System.out.println(stringTemplate);
 
         // TODO: Convert to MySQLExport or OracleExport and save it in the local templates hashmap with the Type as key.
     }
