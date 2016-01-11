@@ -13,18 +13,25 @@ public class MySQLExport implements ExportTemplate {
 
     @Override
     public String fillTemplate(RuleValueBundle bundle, RuleOperand operand) {
-        return null;
+        // TODO: Make dynamic
+        this.template.add("attribute_table", bundle.getValue("attribute.table"));
+        this.template.add("attribute_column", bundle.getValue("attribute.column"));
+        this.template.add("compare_with", bundle.getValue("compare.with"));
+        this.template.add("operand", operand.getSign());
+
+        return this.template.render();
     }
 
     @Override
     public DatabaseType getType() {
-        return null;
+        return DatabaseType.MYSQL;
     }
 
     @Override
     public String getCode() {
         return null;
     }
+    //MySqlcode
 
     @Override
     public String getName() {

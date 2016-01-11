@@ -24,6 +24,8 @@ public class ExportService implements ExportServiceImpl {
                 "end if;\n" +
                 "end;"));
 
+        //is compare rule plsql voorbeeld, moet in aparte klasse
+
         Export export = new Export(rule);
         export.setTemplate(template);
 

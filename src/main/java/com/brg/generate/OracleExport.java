@@ -23,13 +23,14 @@ public class OracleExport implements ExportTemplate {
 
     @Override
     public DatabaseType getType() {
-        return null;
+        return DatabaseType.ORACLE;
     }
 
     @Override
     public String getCode() {
         return null;
     }
+
 
     @Override
     public String getName() {
