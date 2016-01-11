@@ -15,7 +15,7 @@ public class RuleOperandDAO implements DAO {
         ArrayList<RuleOperand> operands = new ArrayList<RuleOperand>();
 
         try{
-            Statement stmt = ServiceProvider.getInstance().getPersistenceService().getConnection().createStatement();
+            Statement stmt = ServiceProvider.getInstance().getDaoService().getRepositoryConnection().getConnection().createStatement();
             ResultSet set = stmt.executeQuery(sql);
 
             while(set.next()){

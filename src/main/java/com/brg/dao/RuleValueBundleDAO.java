@@ -15,13 +15,13 @@ public class RuleValueBundleDAO implements DAO{
         ArrayList<RuleValueBundle> values = new ArrayList<RuleValueBundle>();
 
         try{
-            Statement stmt = ServiceProvider.getInstance().getPersistenceService().getConnection().createStatement();
+            Statement stmt = ServiceProvider.getInstance().getDaoService().getRepositoryConnection().getConnection().createStatement();
             ResultSet set = stmt.executeQuery(sql);
 
             while(set.next()) {
                 RuleValueBundle bundle = new RuleValueBundle();
 
-                Statement valueStmt = ServiceProvider.getInstance().getPersistenceService().getConnection().createStatement();
+                Statement valueStmt = ServiceProvider.getInstance().getDaoService().getRepositoryConnection().getConnection().createStatement();
                 ResultSet valueSet = valueStmt
                         .executeQuery("SELECT bke.Key, ekv.String_Value, ekv.Int_Value, ekv.Float_Value " +
                                 "FROM BundleKeyEntry bke, EntryKeyValue ekv " +

@@ -20,7 +20,7 @@ public class BusinessRuleDAO implements DAO{
 
         // Get all rules, query
         try {
-            Statement stmt = ServiceProvider.getInstance().getPersistenceService().getConnection().createStatement();
+            Statement stmt = ServiceProvider.getInstance().getDaoService().getRepositoryConnection().getConnection().createStatement();
             ResultSet set = stmt.executeQuery(sql);
 
             while (set.next()) {
@@ -54,8 +54,8 @@ public class BusinessRuleDAO implements DAO{
 
             set.close();
             stmt.close();
-        }catch (SQLException se) {
-            se.printStackTrace();
+        }catch (Exception e) {
+            e.printStackTrace();
         }
 
 

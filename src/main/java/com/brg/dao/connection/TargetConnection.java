@@ -81,7 +81,7 @@ public class TargetConnection implements DatabaseConnection {
             // Make connection
             connection = DriverManager.getConnection(connectString, username, password);
         }
-        return DriverManager.getConnection(host + schema, username, password);
+        return connection;
     }
 
     @Override
