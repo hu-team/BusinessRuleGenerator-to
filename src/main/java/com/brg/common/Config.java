@@ -3,6 +3,8 @@ package com.brg.common;
 import com.brg.ServiceProvider;
 
 import java.io.*;
+import java.net.URI;
+import java.net.URL;
 import java.util.Properties;
 
 public class Config {
@@ -43,10 +45,16 @@ public class Config {
     /**
      * Save the current properties in memory to the disk.
      */
-    public void save() throws Exception {
-        File file = new File(getClass().getResource("config.properties").toURI());
-        FileOutputStream fileOutputStream = new FileOutputStream(file);
-        this.properties.store(fileOutputStream, null);
+    public boolean save() throws Exception {
+        URL url = getClass().getClassLoader().getResource("config.properties");
+        if (url != null) {
+            File file = new File(url.toURI());
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            this.properties.store(fileOutputStream, null);
+
+            return true;
+        }
+        return false;
     }
 
     /**
