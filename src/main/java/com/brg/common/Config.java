@@ -2,9 +2,7 @@ package com.brg.common;
 
 import com.brg.ServiceProvider;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Properties;
 
 public class Config {
@@ -40,6 +38,15 @@ public class Config {
             throw new FileNotFoundException("property file 'config.properties' not found in the classpath");
         }
 
+    }
+
+    /**
+     * Save the current properties in memory to the disk.
+     */
+    public void save() throws Exception {
+        File file = new File(getClass().getResource("config.properties").toURI());
+        FileOutputStream fileOutputStream = new FileOutputStream(file);
+        this.properties.store(fileOutputStream, null);
     }
 
     /**
