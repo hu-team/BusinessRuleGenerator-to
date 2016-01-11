@@ -1,13 +1,13 @@
 package com.brg.dao.connection;
 
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.sql.*;
 
 
 public interface DatabaseConnection {
 
-    public Connection getConnection() throws SQLException;
+    public Connection getConnection() throws SQLException, Exception;
 
-    //TODO: De static methods moeten nog in de interface komen maar ?????
+    public ResultSet select(PreparedStatement preparedStatement) throws SQLException;
+    public ResultSet select(Statement statement) throws SQLException;
 
 }

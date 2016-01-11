@@ -1,5 +1,7 @@
 package com.brg.common;
 
+import com.brg.ServiceProvider;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,6 +12,11 @@ public class Config {
 
     private Properties properties;
 
+    /**
+     * Get Config instance
+     * @return config instance
+     * @throws IOException
+     */
     public static Config getInstance() throws IOException {
         if (instance == null) {
             instance = new Config();
@@ -17,6 +24,10 @@ public class Config {
         return instance;
     }
 
+    /**
+     * Load config
+     * @throws IOException
+     */
     private Config() throws IOException {
         this.properties = new Properties();
 
@@ -31,8 +42,23 @@ public class Config {
 
     }
 
-
+    /**
+     * Get Configuration Properties
+     * @return properties
+     */
     public Properties getConfig() {
         return properties;
+    }
+
+    /**
+     * Reload Config and clear Database Connections
+     * @throws IOException
+     */
+    public static void reloadConfig() throws IOException {
+        instance = null;
+        instance = new Config();
+
+        // Clear connections
+        ServiceProvider.getInstance().getDaoService().clearConnections();
     }
 }
