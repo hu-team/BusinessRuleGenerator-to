@@ -22,7 +22,9 @@ public class OracleExport implements ExportTemplate {
         }
 
         // Add operator
-        this.template.add("operand", operand.getSign());
+        if (operand != null) {
+            this.template.add("operand", operand.getSign());
+        }
 
         return this.template.render();
     }
