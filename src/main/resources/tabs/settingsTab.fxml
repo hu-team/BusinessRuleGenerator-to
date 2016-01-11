@@ -17,27 +17,27 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField prefHeight="27.0" prefWidth="476.0" promptText="Host">
+                  <TextField id="targetHost" fx:id="targetHost" prefHeight="27.0" prefWidth="476.0" promptText="Host">
                      <VBox.margin>
                         <Insets bottom="15.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField promptText="Username">
+                  <TextField id="targetUsername" fx:id="targetUsername" promptText="Username">
                      <VBox.margin>
                         <Insets bottom="15.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField promptText="Password">
+                  <TextField id="targetPassword" fx:id="targetPassword" promptText="Password">
                      <VBox.margin>
                         <Insets bottom="15.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField promptText="Service">
+                  <TextField id="targetService" fx:id="targetService" promptText="Service">
                      <VBox.margin>
                         <Insets bottom="15.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField promptText="Port">
+                  <TextField id="targetPort" fx:id="targetPort" promptText="Port">
                      <VBox.margin>
                         <Insets bottom="15.0" />
                      </VBox.margin>
