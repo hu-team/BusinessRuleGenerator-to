@@ -5,9 +5,6 @@ import com.brg.domain.RuleOperand;
 import com.brg.domain.RuleValueBundle;
 import org.stringtemplate.v4.ST;
 
-import java.util.Iterator;
-import java.util.Map;
-
 
 public class OracleExport implements ExportTemplate {
 

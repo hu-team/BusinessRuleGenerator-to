@@ -3,7 +3,6 @@ package com.brg.common;
 import com.brg.ServiceProvider;
 
 import java.io.*;
-import java.net.URI;
 import java.net.URL;
 import java.util.Properties;
 
