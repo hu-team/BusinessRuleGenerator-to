@@ -13,14 +13,14 @@ public class RepositoryConnection implements DatabaseConnection {
 
     private static RepositoryConnection instance;
 
-    private static String host;
-    private static String service;
-    private static int port;
-    private static String schema;
-    private static String username;
-    private static String password;
+    private final String host;
+    private final String service;
+    private final int port;
+    private final String schema;
+    private final String username;
+    private final String password;
 
-    private static DatabaseType type;
+    private final DatabaseType type;
 
     private Connection connection;
 
@@ -43,6 +43,8 @@ public class RepositoryConnection implements DatabaseConnection {
     public static void clearConnection() {
         instance = null;
     }
+
+
 
     private RepositoryConnection() throws Exception {
         // Load database config from Config class.
