@@ -3,7 +3,7 @@ package com.brg.persistence;
 
 import com.brg.common.AbstractFacadeService;
 
-import java.sql.*;
+import java.sql.Connection;
 
 public class PersistenceService extends AbstractFacadeService implements PersistenceServiceImpl {
 

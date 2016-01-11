@@ -1,10 +1,8 @@
 package com.brg.dao.connection;
 
-import com.brg.ServiceProvider;
 import com.brg.common.Config;
 import com.brg.domain.DatabaseType;
 
-import java.io.IOException;
 import java.sql.*;
 import java.util.Properties;
 

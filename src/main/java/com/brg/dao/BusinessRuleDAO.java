@@ -3,11 +3,9 @@ package com.brg.dao;
 
 import com.brg.ServiceProvider;
 import com.brg.domain.BusinessRule;
-import com.brg.domain.RuleOperand;
 
 import java.lang.reflect.Constructor;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
