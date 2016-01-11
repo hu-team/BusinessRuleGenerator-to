@@ -2,5 +2,18 @@
   "name": "Oracle Attribute Compare Rule Template",
   "type": "ORACLE",
   "code": "ATTRCOMP",
-  "template": "JAAA ORACLE"
+  "template":[
+    "declare\n",
+    "l_passed boolean := true;\n",
+    "begin\n",
+    "if l_oper in ( 'INS', 'UPD' )\n",
+    "then\n",
+    "l_passed := :new.<attribute_column> <operand> <compare_with>;\n",
+    "if not l_passed\n",
+    "then\n" ,
+    "l_error_stack := l_error_stack || 'De prijs van het product mag niet negatief zijn.';\n",
+    "end if;\n" ,
+    "end if;\n" ,
+    "end;"
+  ]
 }
