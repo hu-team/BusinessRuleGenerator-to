@@ -14,11 +14,11 @@ public class DefineTab implements Initializable, TabControllerImpl {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.updateContents();
+        this.webView.getEngine().load("https://ondora02.hu.nl:8080/ords/f?p=1567:LOGIN_DESKTOP:15608328208288:::::");
     }
 
     @Override
     public void updateContents() {
-        this.webView.getEngine().load("https://ondora02.hu.nl:8080/ords/f?p=1567:LOGIN_DESKTOP:15608328208288:::::");
         this.webView.autosize();
     }
 }
