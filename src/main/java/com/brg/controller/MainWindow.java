@@ -9,10 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -30,7 +27,8 @@ public class MainWindow extends Application implements Initializable {
 
     private String[][] tabNames = {
             {"Define rules", "defineTab.fxml"},
-            {"Generate rules", "generateTab.fxml"}
+            {"Generate rules", "generateTab.fxml"},
+            {"Settings", "settingsTab.fxml"}
     };
 
 
