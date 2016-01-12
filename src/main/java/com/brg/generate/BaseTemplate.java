@@ -6,6 +6,9 @@ import org.stringtemplate.v4.ST;
 
 public abstract class BaseTemplate {
 
+    protected ST template;
+    protected String code;
+
     protected String fillTemplateWithBundle(ST template, RuleValueBundle bundle, RuleOperand operand) {
         for(String key: bundle.getKeys()) {
             String templateKey = key.replaceAll("\\.", "_");
