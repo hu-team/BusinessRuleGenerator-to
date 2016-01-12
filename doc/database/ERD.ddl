@@ -2,15 +2,15 @@
 
 CREATE TABLE Category (
   CategoryID number(10) NOT NULL, 
-  Sign       varchar2(255) NOT NULL, 
+  NAME       varchar2(255) NOT NULL,
   PRIMARY KEY (CategoryID));
 CREATE TABLE BusinessRule (
   BusinessRuleID number(10) NOT NULL, 
   CategoryID     number(10) NOT NULL,
   RuleOperandID  number(10), 
   BundleID       number(10), 
-  Code           varchar2(255) NOT NULL, 
-  RuleName       varchar2(255) NOT NULL, 
+  Code           varchar2(255) NOT NULL,
+  RuleName       varchar2(255) NOT NULL,
   Description    varchar2(255) NOT NULL,
   ClassName 	 varchar2(255) NOT NULL, 
   PRIMARY KEY (BusinessRuleID));
