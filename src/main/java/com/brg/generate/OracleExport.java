@@ -44,4 +44,14 @@ public class OracleExport extends BaseTemplate implements ExportTemplate {
     public ST getTemplate() {
         return this.template;
     }
+
+    @Override
+    public void setRuleClass(String clazz) {
+        this.ruleClass = clazz;
+    }
+
+    @Override
+    public String getRuleClass() {
+        return this.ruleClass;
+    }
 }

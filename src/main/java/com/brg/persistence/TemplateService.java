@@ -43,11 +43,11 @@ public class TemplateService {
 
         // Search for the correct
         for (ExportTemplate template : templates) {
-            if (template.getCode().equals(rule.getClass().getName())) {
+            if (template.getRuleClass().equals(rule.getClass().getName())) {
                 return template;
             }
         }
-        
+
         return null;
     }
 
@@ -59,6 +59,7 @@ public class TemplateService {
         private String name;
         private String type;
         private String code;
+        private String clazz;
 
         public String[] getTemplate() {
             return template;
@@ -91,6 +92,14 @@ public class TemplateService {
         public void setCode(String code) {
             this.code = code;
         }
+
+        public String getClazz() {
+            return clazz;
+        }
+
+        public void setClazz(String clazz) {
+            this.clazz = clazz;
+        }
     }
 
 
@@ -120,7 +129,7 @@ public class TemplateService {
             JsonTemplate templateJson = gson.fromJson(templateInputStream, JsonTemplate.class);
 
             // Inject code
-            templateJson.setCode(templateFile.substring(0, templateFile.length() - 5));
+            templateJson.setClazz(templateFile.substring(0, templateFile.length() - 5));
 
             // Read the file, and make and register the template
             this.registerTemplate(templateJson);
