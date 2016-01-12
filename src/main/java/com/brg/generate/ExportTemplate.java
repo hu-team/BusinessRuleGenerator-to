@@ -8,7 +8,7 @@ import org.stringtemplate.v4.ST;
 import java.net.InetSocketAddress;
 
 public interface ExportTemplate {
-    String fillTemplate(RuleValueBundle bundle, RuleOperand operand);
+    String fillTemplate(RuleValueBundle bundle, RuleOperand operand, String code);
 
     DatabaseType getType();
 

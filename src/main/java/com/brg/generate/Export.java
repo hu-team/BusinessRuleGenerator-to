@@ -33,7 +33,7 @@ public class Export {
     }
 
     public String getOutput() {
-        return this.template.fillTemplate(this.bundle, this.operand);
+        return this.template.fillTemplate(this.bundle, this.operand, this.triggerIdentifier);
     }
 
     public DatabaseType getDatabaseType(){

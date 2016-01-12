@@ -13,7 +13,7 @@ public abstract class BaseTemplate {
     protected String ruleClass;
 
     @SuppressWarnings("unchecked")
-    protected String fillTemplateWithBundle(ST template, RuleValueBundle bundle, RuleOperand operand) {
+    protected String fillTemplateWithBundle(ST template, RuleValueBundle bundle, RuleOperand operand, String code) {
         for(String key: bundle.getKeys()) {
             String templateKey = key.replaceAll("\\.", "_");
             String templateValue = null;
@@ -49,6 +49,11 @@ public abstract class BaseTemplate {
         // Add operator
         if (operand != null) {
             template.add("operand", operand.getSign());
+        }
+
+        // Add code
+        if (code != null) {
+            template.add("code", code);
         }
 
         return template.render();

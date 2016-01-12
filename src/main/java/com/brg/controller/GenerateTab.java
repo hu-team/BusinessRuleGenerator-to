@@ -34,8 +34,7 @@ public class GenerateTab implements Initializable, TabControllerImpl {
         MainWindow.getInstance().setDisabled(true);
 
         // Start loading target database structure
-        ServiceProvider.getInstance().getAnalyseService().getDatabaseService();
-        // TODO: Werkt niet in prototype, database structuur onderzoeken.
+        ServiceProvider.getInstance().getAnalyseService().getDatabaseService(); // TODO: DdlUtils implementing and verify
 
         // Start loading import progress from repository
         ServiceProvider.getInstance().getPersistenceService().getBusinessRuleService().reloadRules();
@@ -55,7 +54,13 @@ public class GenerateTab implements Initializable, TabControllerImpl {
     }
 
     public void doExport(ActionEvent actionEvent) {
-        String output = ServiceProvider.getInstance().getExportService().createExport(this.selectRule.getSelectionModel().getSelectedItem()).getOutput();
+        String output = "Error!";
+        try {
+            output = ServiceProvider.getInstance().getExportService().createExport(this.selectRule.getSelectionModel().getSelectedItem()).getOutput();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         this.outputText.setText(output);
     }
 }
