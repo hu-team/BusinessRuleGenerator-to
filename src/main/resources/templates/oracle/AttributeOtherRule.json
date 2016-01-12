@@ -21,6 +21,7 @@
       "elsif deleting",
       "then",
         "l_oper := 'DEL';",
-      "end if;"
+      "end if;",
+
   ]
 }
