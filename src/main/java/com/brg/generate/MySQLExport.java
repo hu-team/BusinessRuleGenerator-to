@@ -6,25 +6,14 @@ import com.brg.domain.RuleValueBundle;
 import org.stringtemplate.v4.ST;
 
 
-public class MySQLExport implements ExportTemplate {
+public class MySQLExport extends BaseTemplate implements ExportTemplate {
 
     private ST template;
     private String code;
 
     @Override
     public String fillTemplate(RuleValueBundle bundle, RuleOperand operand) {
-        for(String key: bundle.getKeys()) {
-            String templateKey = key.replaceAll("\\.", "_");
-
-            this.template.add(templateKey, bundle.getValue(key));
-        }
-
-        // Add operator
-        if (operand != null) {
-            this.template.add("operand", operand.getSign());
-        }
-
-        return this.template.render();
+        return this.fillTemplateWithBundle(this.template, bundle, operand);
     }
 
     @Override
