@@ -121,8 +121,5 @@ public class TemplateService {
         template.setCode(jsonTemplate.getCode());
 
         this.templates.put(type, template);
-
-
-        // TODO: Convert to MySQLExport or OracleExport and save it in the local templates hashmap with the Type as key.
     }
 }
