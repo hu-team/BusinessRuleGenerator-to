@@ -1,6 +1,7 @@
 package com.brg.controller;
 
 import com.brg.ServiceProvider;
+import com.brg.common.ExceptionAlert;
 import com.brg.domain.BusinessRule;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -58,7 +59,8 @@ public class GenerateTab implements Initializable, TabControllerImpl {
         try {
             output = ServiceProvider.getInstance().getExportService().createExport(this.selectRule.getSelectionModel().getSelectedItem()).getOutput();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            ExceptionAlert alert = new ExceptionAlert(e);
+            alert.showAndWait();
         }
 
         this.outputText.setText(output);

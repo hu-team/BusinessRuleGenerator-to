@@ -15,7 +15,6 @@ public class ExportService implements ExportServiceImpl {
         try {
             template = ServiceProvider.getInstance().getPersistenceService().getTemplateService().getTemplateForBundle(rule);
         } catch (Exception e) {
-            e.printStackTrace();
             throw new ClassNotFoundException("No template class could be found for your business rule!");
         }
 
