@@ -2,8 +2,11 @@ package com.brg.persistence;
 
 import com.brg.domain.DatabaseType;
 import com.brg.generate.ExportTemplate;
+import com.brg.generate.MySQLExport;
+import com.brg.generate.OracleExport;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
+import org.stringtemplate.v4.ST;
 
 import java.io.InputStreamReader;
 import java.util.HashMap;
@@ -99,9 +102,25 @@ public class TemplateService {
      * Register template from Json into the local Service
      * @param template Template object from json
      */
-    private void registerTemplate(JsonTemplate template) {
-        String stringTemplate = String.join("\n", template.getTemplate());
-        System.out.println(stringTemplate);
+    private void registerTemplate(JsonTemplate jsonTemplate) {
+        String stringTemplate = String.join("\n", jsonTemplate.getTemplate());
+
+        ExportTemplate template = null;
+        DatabaseType type = null;
+
+        if("MYSQL".equals(jsonTemplate.getType())){
+            type = DatabaseType.MYSQL;
+            template = new MySQLExport();
+
+        } else if("ORACLE".equals(jsonTemplate.getType())){
+            type = DatabaseType.ORACLE;
+            template = new OracleExport();
+        }
+
+        template.setTemplate(new ST(stringTemplate));
+
+        this.templates.put(type, template);
+
 
         // TODO: Convert to MySQLExport or OracleExport and save it in the local templates hashmap with the Type as key.
     }
