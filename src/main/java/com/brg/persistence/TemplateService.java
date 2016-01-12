@@ -43,7 +43,6 @@ public class TemplateService {
 
         // Search for the correct
         for (ExportTemplate template : templates) {
-            System.out.println(template.getRuleClass() + " ==" + rule.getClass().getSimpleName());
             if (template.getRuleClass().equals(rule.getClass().getSimpleName())) {
                 return template;
             }
