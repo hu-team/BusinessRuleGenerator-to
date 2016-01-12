@@ -1,6 +1,6 @@
 {
   "name": "Oracle Tuple Other Rule Template",
   "type": "ORACLE",
-  "code": "TUPOTHER",
+  "code": "TOTH",
   "template": []
 }
