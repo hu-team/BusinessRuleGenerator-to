@@ -4,16 +4,16 @@
   "code": "ATTRCOMP",
   "template":[
     "declare",
-    "l_passed boolean := true;",
+      "l_passed boolean := true;",
     "begin",
-    "if l_oper in ( 'INS', 'UPD' )",
-    "then",
-    "l_passed := :new.<attribute_column> <operand> <compare_with>;",
-    "if not l_passed",
-    "then" ,
-    "l_error_stack := l_error_stack || <error> ;",
-    "end if;" ,
-    "end if;" ,
+      "if l_oper in ( 'INS', 'UPD' )",
+      "then",
+        "l_passed := :new.<attribute_column> <operand> <compare_with>;",
+      "if not l_passed",
+      "then" ,
+        "l_error_stack := l_error_stack || <error> ;",
+      "end if;" ,
+      "end if;" ,
     "end;"
   ]
 }
