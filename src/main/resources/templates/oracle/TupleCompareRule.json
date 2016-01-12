@@ -1,6 +1,6 @@
 {
   "name": "Oracle Tuple Compare Rule Template",
   "type": "ORACLE",
-  "code": "TYPCOMP",
+  "code": "TCMP",
   "template": []
 }

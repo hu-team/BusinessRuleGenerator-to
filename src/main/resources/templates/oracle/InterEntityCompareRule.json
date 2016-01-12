@@ -1,6 +1,6 @@
 {
   "name": "Oracle Inter-Entity Compare Rule Template",
   "type": "ORACLE",
-  "code": "INTENTCOMP",
+  "code": "ICMP",
   "template": []
 }

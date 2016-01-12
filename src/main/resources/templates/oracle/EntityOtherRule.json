@@ -1,6 +1,13 @@
 {
   "name": "Oracle Entity Other Rule Template",
   "type": "ORACLE",
-  "code": "ENTOTHER",
-  "template": []
+  "code": "EOTH",
+  "template": [
+
+  ]
 }
+
+
+
+
+
