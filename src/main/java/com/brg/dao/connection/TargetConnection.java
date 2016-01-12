@@ -84,6 +84,10 @@ public class TargetConnection implements DatabaseConnection {
         return connection;
     }
 
+    public String getSchema() {
+        return schema.toUpperCase();
+    }
+
     @Override
     public ResultSet select(PreparedStatement preparedStatement) throws SQLException {
         return null;
