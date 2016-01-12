@@ -32,13 +32,13 @@ public class OracleExport implements ExportTemplate {
     }
 
     @Override
-    public void setName(String n){
+    public void setName(String name){
 
     }
 
     @Override
-    public void setCode(String c){
-        
+    public void setCode(String code){
+
     }
 
     @Override

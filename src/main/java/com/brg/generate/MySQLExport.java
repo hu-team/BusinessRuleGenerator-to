@@ -33,25 +33,16 @@ public class MySQLExport implements ExportTemplate {
     }
 
     @Override
-    public void setCode(String c){
+    public void setCode(String code){
 
     }
 
-    @Override
-    public void setName(String n){
-
-    }
 
     @Override
     public String getCode() {
         return null;
     }
     //MySqlcode
-
-    @Override
-    public String getName() {
-        return null;
-    }
 
     @Override
     public String getSource() {
