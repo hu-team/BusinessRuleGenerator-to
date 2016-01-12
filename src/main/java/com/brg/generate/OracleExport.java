@@ -9,6 +9,8 @@ import org.stringtemplate.v4.ST;
 public class OracleExport implements ExportTemplate {
 
     private ST template;
+    private String code;
+
 
     @Override
     public String fillTemplate(RuleValueBundle bundle, RuleOperand operand) {
@@ -34,14 +36,14 @@ public class OracleExport implements ExportTemplate {
 
     @Override
     public void setCode(String code){
-
+        this.code = code;
     }
 
     @Override
     public String getCode() {
-        return null;
+        return this.code;
     }
-    
+
 
     @Override
     public String getSource() {
