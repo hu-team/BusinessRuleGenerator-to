@@ -2,6 +2,11 @@ package com.brg.dao.connection;
 
 import com.brg.common.Config;
 import com.brg.domain.DatabaseType;
+import org.apache.commons.dbcp.BasicDataSource;
+import org.apache.ddlutils.Platform;
+import org.apache.ddlutils.PlatformFactory;
+import org.apache.ddlutils.model.Database;
+import org.apache.ddlutils.platform.JdbcModelReader;
 
 import java.sql.*;
 import java.util.Properties;
@@ -84,6 +89,26 @@ public class TargetConnection implements DatabaseConnection {
         return connection;
     }
 
+
+    /**
+     * Get Connection url as String
+     * @return String
+     */
+    public String getConnectionUrl() {
+        String connectString = "";
+
+        // Driver independent
+        if (type == DatabaseType.ORACLE) {
+            connectString = "jdbc:oracle:thin:@//" + host + ":" + port + "/" + service;
+        }
+
+        return connectString;
+    }
+
+    /**
+     * Get Target schema in uppercase
+     * @return String
+     */
     public String getSchema() {
         return schema.toUpperCase();
     }
