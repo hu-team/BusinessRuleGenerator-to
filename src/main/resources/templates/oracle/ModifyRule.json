@@ -2,5 +2,18 @@
   "name": "Oracle Modify Rule Template",
   "type": "ORACLE",
   "code": "MODIFY",
-  "template": []
+  "template": [
+    "declare",
+      "l_passed boolean := true;",
+    "begin",
+      "if :new.<attribute_column> = <value> and l_oper = 'UPD'",
+        "then",
+          "l_passed := :new.<attribute_column>  <= :old.<attribute_column> ;",
+    "end if;",
+    "if not l_passed",
+      "then",
+        "l_error_stack := l_error_stack || <error>",
+      "end if;",
+    "end;"
+  ]
 }
