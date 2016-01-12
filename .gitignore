@@ -24,3 +24,6 @@ src/main/resources/config.properties
 
 ### Exceptios
 !lib/*
+
+### Dependencies with licenses
+lib/ojdbc7.jar
