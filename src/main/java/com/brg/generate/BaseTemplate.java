@@ -33,6 +33,12 @@ public abstract class BaseTemplate {
 
                 // Parse the array to the string
                 stringList = (ArrayList<String>) bundle.getValue(key);
+                // Add quotes
+                for (int i = 0; i < stringList.size(); i++) {
+                    stringList.set(i, "'" + stringList.get(i) + "'");
+                }
+
+                // Join parts
                 templateValue = String.join(", ", stringList);
             } else {
                 if (bundle.getValue(key) instanceof String) {
