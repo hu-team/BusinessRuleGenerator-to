@@ -30,6 +30,9 @@ public class SettingsTab implements Initializable, TabControllerImpl {
     public void updateContents() {
         loadSettings();
         String selected = properties.getProperty("target_type");
+
+        // Fill in the combobox, clear the other elements.
+        exportOptions.getItems().clear();
         exportOptions.getItems().addAll(FXCollections.observableArrayList(getGetDatabaseType()));
         exportOptions.setValue(selectedDatabaseType(selected));
 
