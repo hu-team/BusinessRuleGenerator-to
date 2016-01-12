@@ -8,6 +8,7 @@ import org.apache.ddlutils.PlatformFactory;
 import org.apache.ddlutils.model.Database;
 import org.apache.ddlutils.platform.JdbcModelReader;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.Properties;
 
@@ -111,6 +112,15 @@ public class TargetConnection implements DatabaseConnection {
      */
     public String getSchema() {
         return schema.toUpperCase();
+    }
+
+    public DataSource getDataSource() {
+        BasicDataSource dataSource = new BasicDataSource();
+        dataSource.setUrl(this.getConnectionUrl());
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
+
+        return dataSource;
     }
 
     @Override
