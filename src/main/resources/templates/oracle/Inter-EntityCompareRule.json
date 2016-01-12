@@ -2,5 +2,5 @@
   "name": "Oracle Inter-Entity Compare Rule Template",
   "type": "ORACLE",
   "code": "INTENTCOMP",
-  "template": "JAAA MYSQL"
+  "template": []
 }
