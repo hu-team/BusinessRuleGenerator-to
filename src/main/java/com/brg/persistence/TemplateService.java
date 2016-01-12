@@ -117,7 +117,8 @@ public class TemplateService {
             template = new OracleExport();
         }
 
-        template.setTemplate(new ST(stringTemplate));
+        System.out.println("Importing " + jsonTemplate.getName());
+        template.setTemplate(new ST(stringTemplate, '{', '}'));
         template.setCode(jsonTemplate.getCode());
 
         this.templates.put(type, template);

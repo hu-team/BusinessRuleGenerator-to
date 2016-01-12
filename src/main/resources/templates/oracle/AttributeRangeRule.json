@@ -8,8 +8,8 @@
     "begin",
       "if l_oper in ( 'INS', 'UPD' )",
       "then",
-        "l_passed :=  :new.<attribute_column> > <min_value> && :new.<attribute_column> < <max_value>;",
-        "l_passed := l_passed <operand> l_passed;",
+        "l_passed :=  :new.{attribute_column} > {range_min} && :new.{attribute_column} < {range_max};",
+        "l_passed := l_passed {operand} l_passed;",
       "end if;" ,
     "end;"
   ]

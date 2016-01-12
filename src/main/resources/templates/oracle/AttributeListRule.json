@@ -8,11 +8,11 @@
     "begin",
       "if l_oper in ( 'INS', 'UPD' )",
       "then",
-        "l_passed := :new.<attribute_column> in <list>;",
+        "l_passed := :new.<attribute_column> in (<list>);",
         "l_passed := l_passed <operand> l_passed;",
       "end if;",
     "end;"
-  ]
-  //De attribuut waarde moet wel of niet overeenkomen met een waarde uit een reeks.
-  //Hierboven is het alleen voor wel en anders komt er een error, moeten wss twee versies maken dan
+  ],
+  "_comm1": "De attribuut waarde moet wel of niet overeenkomen met een waarde uit een reeks.",
+  "_comm2": "Hierboven is het alleen voor wel en anders komt er een error, moeten wss twee versies maken dan"
 }

@@ -2,5 +2,8 @@
   "mysql/AttributeCompareRule.json",
 
 
-  "oracle/AttributeCompareRule.json"
+  "oracle/AttributeCompareRule.json",
+  "oracle/AttributeListRule.json",
+
+  "oracle/AttributeRangeRule.json"
 ]
