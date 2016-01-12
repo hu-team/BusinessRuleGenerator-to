@@ -4,9 +4,9 @@
   "code": "ATTRCOMP",
   "template":[
     //Trigger
-    "create or replace trigger brg_<code>_<attribute_table>_trigger",
+    "create or replace trigger brg_{code}_{attribute_table}_trigger",
     "before delete or insert or update",
-      "on <code>_<attribute_table>",
+      "on {code}_{attribute_table}",
       "for each row",
     "declare",
       "l_oper varchar2(3);",
@@ -28,10 +28,10 @@
     "begin",
       "if l_oper in ( 'INS', 'UPD' )",
       "then",
-        "l_passed := :new.<attribute_column> <operand> <compare_with>;",
+        "l_passed := :new.{attribute_column} {operand} {compare_with};",
       "if not l_passed",
       "then" ,
-        "l_error_stack := l_error_stack || <error> ;",
+        "l_error_stack := l_error_stack || {error} ;",
       "end if;" ,
       "end if;" ,
     "end;"
