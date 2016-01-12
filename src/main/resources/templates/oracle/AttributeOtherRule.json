@@ -8,8 +8,8 @@
     " on {code}_{attribute_table}",
     " for each row",
     "declare",
-    "   l_oper varchar2(3);",
-    "   l_error_stack varchar2(4000);",
+    " l_oper varchar2(3);",
+    " l_error_stack varchar2(4000);",
     "begin",
     " if inserting",
     " then",
@@ -21,6 +21,19 @@
     " then",
     "   l_oper := 'DEL';",
     " end if;",
+
+    "declare",
+    " l_passed boolean := true;",
+    "begin",
+    " if l_oper in ( 'INS', 'UPD' )",
+    " then",
+    "   l_passed := {statement}",
+    " if not l_passed",
+    " then" ,
+    "   l_error_stack := l_error_stack || {error} ;",
+    " end if;" ,
+    " end if;" ,
+    "end;"
 
   ]
 }
