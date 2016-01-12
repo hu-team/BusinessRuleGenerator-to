@@ -47,7 +47,7 @@ public class OracleExport implements ExportTemplate {
 
     @Override
     public String getSource() {
-        return null;
+        return template.render();
     }
 
     @Override
