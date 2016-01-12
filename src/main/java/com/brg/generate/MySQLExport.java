@@ -8,9 +8,6 @@ import org.stringtemplate.v4.ST;
 
 public class MySQLExport extends BaseTemplate implements ExportTemplate {
 
-    private ST template;
-    private String code;
-
     @Override
     public String fillTemplate(RuleValueBundle bundle, RuleOperand operand) {
         return this.fillTemplateWithBundle(this.template, bundle, operand);

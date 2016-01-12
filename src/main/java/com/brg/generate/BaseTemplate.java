@@ -8,6 +8,9 @@ import java.util.ArrayList;
 
 public abstract class BaseTemplate {
 
+    protected ST template;
+    protected String code;
+
     @SuppressWarnings("unchecked")
     protected String fillTemplateWithBundle(ST template, RuleValueBundle bundle, RuleOperand operand) {
         for(String key: bundle.getKeys()) {
