@@ -33,12 +33,12 @@ public class MySQLExport implements ExportTemplate {
     }
 
     @Override
-    public void setCode(String c){
+    public void setCode(String code){
 
     }
 
     @Override
-    public void setName(String n){
+    public void setName(String name){
 
     }
 

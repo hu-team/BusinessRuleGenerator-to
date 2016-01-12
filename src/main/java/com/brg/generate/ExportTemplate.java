@@ -10,8 +10,8 @@ public interface ExportTemplate {
 
     DatabaseType getType();
 
-    void setCode(String c);
-    void setName(String n);
+    void setCode(String code);
+    void setName(String name);
 
     String getCode();
     String getName();
