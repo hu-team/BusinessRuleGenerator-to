@@ -100,7 +100,7 @@ public class TemplateService {
 
     /**
      * Register template from Json into the local Service
-     * @param template Template object from json
+     * @param jsonTemplate Template object from json
      */
     private void registerTemplate(JsonTemplate jsonTemplate) {
         String stringTemplate = String.join("\n", jsonTemplate.getTemplate());

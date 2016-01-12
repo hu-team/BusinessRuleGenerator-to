@@ -4,8 +4,7 @@ package com.brg.analyse;
 public class DatabaseService {
 
     /**
-     *     Reference
-     *     http://db.apache.org/ddlutils/index.html
+     * @see {http://db.apache.org/ddlutils/index.html} Reference to docs
      */
     public DatabaseService() {
 
