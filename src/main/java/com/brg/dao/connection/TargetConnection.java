@@ -93,4 +93,8 @@ public class TargetConnection implements DatabaseConnection {
     public ResultSet select(Statement statement) throws SQLException {
         return null;
     }
+
+    public DatabaseType getType() {
+        return type;
+    }
 }

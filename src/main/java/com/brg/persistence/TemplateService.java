@@ -1,5 +1,7 @@
 package com.brg.persistence;
 
+import com.brg.ServiceProvider;
+import com.brg.domain.BusinessRule;
 import com.brg.domain.DatabaseType;
 import com.brg.generate.ExportTemplate;
 import com.brg.generate.MySQLExport;
@@ -9,13 +11,15 @@ import com.google.gson.stream.JsonReader;
 import org.stringtemplate.v4.ST;
 
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class TemplateService {
     /**
      * Export Template Holder
      */
-    private HashMap<DatabaseType, ExportTemplate> templates = new HashMap<DatabaseType, ExportTemplate>();
+    private HashMap<DatabaseType, List<ExportTemplate>> templates = new HashMap<DatabaseType, List<ExportTemplate>>();
 
     public TemplateService() {
         // Load templates from disk
@@ -27,6 +31,27 @@ public class TemplateService {
     }
 
     /**
+     * Get the template needed for the rule
+     * @param rule Business rule given
+     * @return template or null
+     */
+    public ExportTemplate getTemplateForBundle(BusinessRule rule) throws Exception {
+        // Get target database type
+        DatabaseType type = ServiceProvider.getInstance().getDaoService().getTargetConnection().getType();
+
+        List<ExportTemplate> templates = this.templates.get(type);
+
+        // Search for the correct
+        for (ExportTemplate template : templates) {
+            if (template.getRuleClass().equals(rule.getClass().getName())) {
+                return template;
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * The fetching object
      */
     private class JsonTemplate {
@@ -34,6 +59,7 @@ public class TemplateService {
         private String name;
         private String type;
         private String code;
+        private String clazz;
 
         public String[] getTemplate() {
             return template;
@@ -66,6 +92,14 @@ public class TemplateService {
         public void setCode(String code) {
             this.code = code;
         }
+
+        public String getClazz() {
+            return clazz;
+        }
+
+        public void setClazz(String clazz) {
+            this.clazz = clazz;
+        }
     }
 
 
@@ -75,6 +109,10 @@ public class TemplateService {
     public void loadTemplates() throws Exception {
         // Clear the current templates first
         this.templates.clear();
+
+        // Prepare the templates arrays
+        this.templates.put(DatabaseType.MYSQL, new ArrayList<ExportTemplate>());
+        this.templates.put(DatabaseType.ORACLE, new ArrayList<ExportTemplate>());
 
         // Read all files with templates
         JsonReader reader = new JsonReader(new InputStreamReader(getClass().getResource("/templates/contents.json").openStream(), "UTF-8"));
@@ -90,10 +128,11 @@ public class TemplateService {
             Gson gson = new Gson();
             JsonTemplate templateJson = gson.fromJson(templateInputStream, JsonTemplate.class);
 
+            // Inject code
+            templateJson.setClazz(templateFile.substring(0, templateFile.length() - 5));
+
             // Read the file, and make and register the template
-            if (templateJson != null) {
-                this.registerTemplate(templateJson);
-            }
+            this.registerTemplate(templateJson);
         }
     }
 
@@ -117,10 +156,9 @@ public class TemplateService {
             template = new OracleExport();
         }
 
-        System.out.println("Importing " + jsonTemplate.getName());
         template.setTemplate(new ST(stringTemplate, '{', '}'));
         template.setCode(jsonTemplate.getCode());
 
-        this.templates.put(type, template);
+        this.templates.get(type).add(template);
     }
 }

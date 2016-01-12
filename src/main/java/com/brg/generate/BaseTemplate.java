@@ -10,6 +10,7 @@ public abstract class BaseTemplate {
 
     protected ST template;
     protected String code;
+    protected String ruleClass;
 
     @SuppressWarnings("unchecked")
     protected String fillTemplateWithBundle(ST template, RuleValueBundle bundle, RuleOperand operand) {
