@@ -2,5 +2,15 @@
   "name": "Oracle Attribute Range Rule Template",
   "type": "ORACLE",
   "code": "ATTRRANGE",
-  "template": []
+  "template": [
+    "declare",
+      "l_passed boolean := true;",
+    "begin",
+      "if l_oper in ( 'INS', 'UPD' )",
+      "then",
+        "l_passed :=  :new.<attribute_column> > <min_value> && :new.<attribute_column> < <max_value>;",
+        "l_passed := l_passed <operand> l_passed;",
+      "end if;" ,
+    "end;"
+  ]
 }

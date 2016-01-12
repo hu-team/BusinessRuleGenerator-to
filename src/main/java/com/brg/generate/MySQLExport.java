@@ -9,7 +9,7 @@ import org.stringtemplate.v4.ST;
 public class MySQLExport implements ExportTemplate {
 
     private ST template;
-
+    private String code;
 
     @Override
     public String fillTemplate(RuleValueBundle bundle, RuleOperand operand) {
@@ -34,19 +34,19 @@ public class MySQLExport implements ExportTemplate {
 
     @Override
     public void setCode(String code){
-
+        this.code = code;
     }
 
 
     @Override
     public String getCode() {
-        return null;
+        return this.code;
     }
     //MySqlcode
 
     @Override
     public String getSource() {
-        return null;
+        return template.render();
     }
 
     @Override
