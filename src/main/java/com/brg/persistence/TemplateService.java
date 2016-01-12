@@ -118,6 +118,7 @@ public class TemplateService {
         }
 
         template.setTemplate(new ST(stringTemplate));
+        template.setCode(jsonTemplate.getCode());
 
         this.templates.put(type, template);
 
