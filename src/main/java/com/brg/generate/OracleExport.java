@@ -31,10 +31,6 @@ public class OracleExport implements ExportTemplate {
         return DatabaseType.ORACLE;
     }
 
-    @Override
-    public void setName(String name){
-
-    }
 
     @Override
     public void setCode(String code){
@@ -45,12 +41,7 @@ public class OracleExport implements ExportTemplate {
     public String getCode() {
         return null;
     }
-
-
-    @Override
-    public String getName() {
-        return null;
-    }
+    
 
     @Override
     public String getSource() {
