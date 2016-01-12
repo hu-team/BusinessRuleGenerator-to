@@ -5,28 +5,14 @@
   "template": [
     "declare",
     "l_passed boolean := true;",
-
     "begin",
-
     "if l_oper in ( 'INS', 'UPD' )",
-
     "then",
-
     "l_passed := :new.<attribute_column> in (<list>);",
-
     "if not l_passed",
-
     "then",
-
-    "l_error_stack :=",
-
-    "l_error_stack ||",
-
-    "<error>;",
-
+    "l_error_stack := l_error_stack || <error> ;",
     "end if;",
-
     "end if;",
-
     "end;"]
 }
