@@ -2,5 +2,7 @@
   "name": "Oracle Tuple Other Rule Template",
   "type": "ORACLE",
   "code": "TOTH",
-  "template": []
+  "template": [
+        
+  ]
 }
