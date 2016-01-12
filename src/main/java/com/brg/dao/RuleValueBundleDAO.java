@@ -43,6 +43,13 @@ public class RuleValueBundleDAO implements DAO{
                     }
 
                     if (valueSet.getString("String_Value") != null){
+
+                        if (bundle.getValue(keyName) != null && bundle.getValue(keyName) instanceof ArrayList) {
+                            @SuppressWarnings("unchecked")
+                            ArrayList<String> stringList = (ArrayList<String>) bundle.getValue(keyName);
+                            stringList.add(valueSet.getString("String_Value")); // Add new entry
+                        }
+
                         if (bundle.getValue(keyName) != null && bundle.getValue(keyName) instanceof String) {
                             // We are going to create an array inside!
                             String currentString = "" + bundle.getValue(keyName); // Copy it first
@@ -50,11 +57,8 @@ public class RuleValueBundleDAO implements DAO{
                             stringList.add(currentString);
 
                             stringList.add(valueSet.getString("String_Value")); // Add new entry
-                        }
 
-                        if (bundle.getValue(keyName) != null && bundle.getValue(keyName) instanceof ArrayList) {
-                            ArrayList<String> stringList = (ArrayList<String>) bundle.getValue(keyName);
-                            stringList.add(valueSet.getString("String_Value")); // Add new entry
+                            bundle.setValue(keyName, stringList); // Replace by the list
                         }
 
                         if (bundle.getValue(keyName) == null) {
