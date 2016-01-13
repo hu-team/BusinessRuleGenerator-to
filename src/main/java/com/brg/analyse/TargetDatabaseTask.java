@@ -11,12 +11,8 @@ import org.apache.ddlutils.model.Table;
 import org.apache.ddlutils.platform.JdbcModelReader;
 
 import javax.sql.DataSource;
-import javax.xml.ws.Service;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.concurrent.*;
 
 public class TargetDatabaseTask implements Runnable {
     private final Callback callback;

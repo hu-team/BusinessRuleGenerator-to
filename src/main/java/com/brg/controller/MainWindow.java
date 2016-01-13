@@ -1,6 +1,5 @@
 package com.brg.controller;
 
-import com.aquafx_project.AquaFx;
 import com.brg.BusinessRuleGenerator;
 import com.brg.ServiceProvider;
 import javafx.application.Application;
@@ -16,7 +15,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;

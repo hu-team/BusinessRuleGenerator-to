@@ -5,8 +5,6 @@ import com.brg.domain.RuleOperand;
 import com.brg.domain.RuleValueBundle;
 import org.stringtemplate.v4.ST;
 
-import java.net.InetSocketAddress;
-
 public interface ExportTemplate {
     String fillTemplate(RuleValueBundle bundle, RuleOperand operand, String code);
 

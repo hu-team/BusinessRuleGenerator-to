@@ -3,10 +3,6 @@ package com.brg.dao.connection;
 import com.brg.common.Config;
 import com.brg.domain.DatabaseType;
 import org.apache.commons.dbcp.BasicDataSource;
-import org.apache.ddlutils.Platform;
-import org.apache.ddlutils.PlatformFactory;
-import org.apache.ddlutils.model.Database;
-import org.apache.ddlutils.platform.JdbcModelReader;
 
 import javax.sql.DataSource;
 import java.sql.*;

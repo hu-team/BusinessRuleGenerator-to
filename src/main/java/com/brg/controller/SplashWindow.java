@@ -3,7 +3,6 @@ package com.brg.controller;
 import com.aquafx_project.AquaFx;
 import com.aquafx_project.controls.skin.styles.ButtonType;
 import com.aquafx_project.controls.skin.styles.ControlSizeVariant;
-import com.aquafx_project.controls.skin.styles.MacOSDefaultIcons;
 import com.brg.ServiceProvider;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
