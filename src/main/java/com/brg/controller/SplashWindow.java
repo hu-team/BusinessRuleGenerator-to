@@ -1,16 +1,24 @@
 package com.brg.controller;
 
+import com.aquafx_project.AquaFx;
+import com.aquafx_project.controls.skin.styles.ButtonType;
+import com.aquafx_project.controls.skin.styles.ControlSizeVariant;
+import com.aquafx_project.controls.skin.styles.MacOSDefaultIcons;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -18,6 +26,7 @@ import java.util.ResourceBundle;
  * Splash Window
  */
 public class SplashWindow implements Initializable {
+    @FXML private Button splashClose;
     @FXML private ImageView splashImage;
     @FXML private Label splashLabel;
     @FXML private ProgressBar splashProgress;
@@ -66,13 +75,20 @@ public class SplashWindow implements Initializable {
         }
     }
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Initialize fxml
         this.splashProgress.setProgress(-1.0f);
         this.splashLabel.setText("Loading...");
-        //this.splashImage.setImage(); TODO: Load image
+
+        InputStream imageStream = getClass().getClassLoader().getResourceAsStream("splash.png");
+        if (imageStream != null) {
+            this.splashImage.setImage(new Image(imageStream));
+        }
+
+        AquaFx.createLabelStyler().style(this.splashLabel);
+        AquaFx.createProgressBarStyler().setSizeVariant(ControlSizeVariant.REGULAR).style(this.splashProgress);
+        AquaFx.createButtonStyler().setType(ButtonType.CENTER_PILL).setSizeVariant(ControlSizeVariant.MINI).style(this.splashClose);
     }
 
     public void prepare() {
@@ -84,10 +100,10 @@ public class SplashWindow implements Initializable {
             root = FXMLLoader.load(fxml);
 
             stage = new Stage();
-            stage.initStyle(StageStyle.UNDECORATED);
+            AquaFx.styleStage(this.stage, StageStyle.UNDECORATED);
 
             stage.setTitle("Loading...");
-            stage.setScene(new Scene(root, 500, 300));
+            stage.setScene(new Scene(root, 502, 302));
             stage.setAlwaysOnTop(true);
             stage.setResizable(false);
 
@@ -98,5 +114,10 @@ public class SplashWindow implements Initializable {
         }catch(Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML private void clickSplashClose(ActionEvent actionEvent) {
+        // Close forced
+        System.exit(1);
     }
 }

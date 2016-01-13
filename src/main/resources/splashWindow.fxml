@@ -7,18 +7,19 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.brg.controller.SplashWindow">
+<AnchorPane prefHeight="302.0" prefWidth="502.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.brg.controller.SplashWindow">
    <children>
-      <BorderPane prefHeight="300.0" prefWidth="500.0">
+      <BorderPane prefHeight="300.0" prefWidth="500.0" style="-fx-border-width: 1px; -fx-border-color: #5d5d5d; -fx-border-style: solid;">
          <bottom>
             <AnchorPane prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
                <children>
-                  <ProgressBar id="splashProgress" fx:id="splashProgress" layoutY="35.0" prefHeight="5.0" prefWidth="500.0" progress="0.0" style="-fx-border-radius: 0;" />
-                  <Label id="splashLabel" fx:id="splashLabel" layoutX="8.0" layoutY="7.0" prefHeight="17.0" prefWidth="484.0" text="..." textFill="WHITE">
+                  <ProgressBar id="splashProgress" fx:id="splashProgress" layoutY="35.0" prefHeight="5.0" prefWidth="500.0" progress="0.0" style="-fx-border-radius: 0; -fx-start-margin: 0; -fx-padding: 0;" />
+                  <Label id="splashLabel" fx:id="splashLabel" layoutX="8.0" layoutY="7.0" prefHeight="20.0" prefWidth="454.0" text="..." textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
+                  <Button id="splashClose" fx:id="splashClose" layoutX="471.0" layoutY="5.0" mnemonicParsing="false" onAction="#clickSplashClose" prefHeight="10.0" prefWidth="24.0" text="X" />
                </children>
             </AnchorPane>
          </bottom>

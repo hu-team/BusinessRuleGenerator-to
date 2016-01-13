@@ -2,10 +2,13 @@ package com.brg.controller;
 
 import com.brg.common.AbstractFacadeService;
 
+
 public class ControllerService extends AbstractFacadeService implements ControllerServiceImpl {
 
     private MainWindow mainWindow;
     private DefineTab defineTab;
+
+    private SplashWindow splashWindow;
 
     public ControllerService() {
         this.mainWindow = new MainWindow();
@@ -20,5 +23,10 @@ public class ControllerService extends AbstractFacadeService implements Controll
     @Override
     public DefineTab getDefineTab() {
         return this.defineTab;
+    }
+
+
+    public SplashWindow getSplashWindow() {
+        return this.getMainWindow().getSplashWindow();
     }
 }

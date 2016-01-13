@@ -1,6 +1,8 @@
 package com.brg.controller;
 
+import com.aquafx_project.AquaFx;
 import com.brg.BusinessRuleGenerator;
+import com.brg.ServiceProvider;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -14,6 +16,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,17 +27,24 @@ import java.util.ResourceBundle;
 public class MainWindow extends Application implements Initializable {
     private static MainWindow instance;
 
+    private SplashWindow splashWindow;
+
     @FXML private TabPane tabPane;
 
     private Stage stage;
 
+    /**
+     * Declare Tab names with the FXML files.
+     */
     private String[][] tabNames = {
             {"Define rules", "defineTab.fxml"},
             {"Generate rules", "generateTab.fxml"},
             {"Settings", "settingsTab.fxml"}
     };
 
-
+    /**
+     * Tab Controller holder.
+     */
     private HashMap<String, TabControllerImpl> tabControllers = new HashMap<String, TabControllerImpl>();
 
     private Parent content;
@@ -79,10 +89,21 @@ public class MainWindow extends Application implements Initializable {
         });
     }
 
+    /**
+     * Start the main window application.
+     *
+     * @param args
+     */
     public void start(String[] args) {
         launch(args);
     }
 
+    /**
+     * Initialize method - Parse our defined tabs and add to the tab bar.
+     *
+     * @param location Location
+     * @param resources Resources (Bundle)
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Define tabs
@@ -132,6 +153,9 @@ public class MainWindow extends Application implements Initializable {
 
         // Load first tab
         tabPane.getSelectionModel().selectFirst();
+
+        //ServiceProvider.getInstance().getControllerService().startSplashScreen();
+        ServiceProvider.getInstance().getControllerService().getSplashWindow().start();
     }
 
 
@@ -155,5 +179,28 @@ public class MainWindow extends Application implements Initializable {
      */
     public static MainWindow getInstance() {
         return instance;
+    }
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    /**
+     * Get splash window instance
+     * @return splash window controller instance
+     */
+    public SplashWindow getSplashWindow() {
+        try {
+            if (this.splashWindow == null) {
+                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("splashWindow.fxml"));
+                Parent splashRoot = loader.load();
+
+                this.splashWindow = loader.getController();
+                this.splashWindow.prepare();
+            }
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+        return this.splashWindow;
     }
 }
