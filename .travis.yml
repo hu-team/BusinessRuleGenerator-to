@@ -4,9 +4,11 @@ language: java
 jdk:
   - oraclejdk8
 
+sudo: true
 
-sudo: false
 addons:
   apt:
     packages:
       - oracle-java8-installer
+
+cache: apt
