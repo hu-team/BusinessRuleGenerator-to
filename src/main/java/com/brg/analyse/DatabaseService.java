@@ -89,18 +89,18 @@ public class DatabaseService {
      * @return Table[]
      * @throws Exception
      */
-    public Table[] getTables() throws Exception {
+    private Table[] getTables() throws Exception {
         Table[] tables = _tempdatabase.getTables();
 
         return tables;
     }
 
-    public Table getTable(int i) throws Exception {
+    private Table getTable(int i) throws Exception {
         Table table = _tempdatabase.getTable(i);
         return table;
     }
 
-    public Column[] getColumns(int tableId) throws Exception {
+    private Column[] getColumns(int tableId) throws Exception {
         Column[] columns = _tempdatabase.getTable(tableId).getColumns();
         return columns;
     }
