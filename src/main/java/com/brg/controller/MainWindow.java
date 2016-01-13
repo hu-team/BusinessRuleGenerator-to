@@ -49,10 +49,13 @@ public class MainWindow extends Application implements Initializable {
 
     private Parent content;
 
+    private boolean hide;
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         instance = this;
+        hide = false;
         this.stage = primaryStage;
 
         try {
@@ -65,14 +68,11 @@ public class MainWindow extends Application implements Initializable {
         primaryStage.setResizable(true);
         primaryStage.setTitle("Business Rule Generator (Version: " + BusinessRuleGenerator.VERSION + ", Build: " + BusinessRuleGenerator.BUILD + ")");
 
-
         // Make main scene
         Scene scene = new Scene(this.content);
 
         primaryStage.setScene(scene);
         primaryStage.sizeToScene();
-        primaryStage.show();
-
 
         primaryStage.setOnCloseRequest(event -> {
             // Don't allow closing it when not in other stage.
@@ -87,6 +87,9 @@ public class MainWindow extends Application implements Initializable {
                 event.consume();
             }
         });
+
+        // Start second start sequence
+        ServiceProvider.getInstance().startSecondWave();
     }
 
     /**
@@ -153,9 +156,6 @@ public class MainWindow extends Application implements Initializable {
 
         // Load first tab
         tabPane.getSelectionModel().selectFirst();
-
-        // Start second start sequence
-        ServiceProvider.getInstance().startSecondWave();
     }
 
 
@@ -202,5 +202,16 @@ public class MainWindow extends Application implements Initializable {
             e.printStackTrace();
         }
         return this.splashWindow;
+    }
+
+    public void setHide(boolean hide) {
+        this.hide = hide;
+        if (this.stage != null) {
+            if (hide) {
+                this.stage.hide();
+            }else{
+                this.stage.show();
+            }
+        }
     }
 }

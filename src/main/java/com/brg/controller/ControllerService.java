@@ -17,7 +17,10 @@ public class ControllerService extends AbstractFacadeService implements Controll
 
     @Override
     public MainWindow getMainWindow() {
-        return this.mainWindow;
+        if (MainWindow.getInstance() == null) {
+            return this.mainWindow;
+        }
+        return MainWindow.getInstance();
     }
 
     @Override

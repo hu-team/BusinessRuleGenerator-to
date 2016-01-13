@@ -58,8 +58,6 @@ public class ServiceProvider {
 
     public void startSecondWave() {
         this.analyseService.getDatabaseService().startIndexingTargetDatabase();
-        // TODO: Callback
         this.controllerService.getSplashWindow().start();
-        this.controllerService.getSplashWindow().update(-1, "Loading target database structure...");
     }
 }

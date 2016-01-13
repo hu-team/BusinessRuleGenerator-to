@@ -37,6 +37,8 @@ public class DatabaseService implements Callback {
 
     @Override
     public Object call(Object param) {
+        ServiceProvider.getInstance().getControllerService().getMainWindow().getStage().show();
+        //ServiceProvider.getInstance().getControllerService().getMainWindow().setDisabled(false);
         ServiceProvider.getInstance().getControllerService().getSplashWindow().stop();
         return null;
     }

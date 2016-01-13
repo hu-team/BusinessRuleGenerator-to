@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 public class BusinessRuleDAO implements DAO{
 
-
     @Override
     public ArrayList<BusinessRule> executeRead(String sql) {
         ArrayList<BusinessRule> rules = new ArrayList<BusinessRule>();
@@ -55,7 +54,6 @@ public class BusinessRuleDAO implements DAO{
         }catch (Exception e) {
             e.printStackTrace();
         }
-
 
         return rules;
     }

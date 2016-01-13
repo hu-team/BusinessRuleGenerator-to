@@ -4,6 +4,7 @@ import com.aquafx_project.AquaFx;
 import com.aquafx_project.controls.skin.styles.ButtonType;
 import com.aquafx_project.controls.skin.styles.ControlSizeVariant;
 import com.aquafx_project.controls.skin.styles.MacOSDefaultIcons;
+import com.brg.ServiceProvider;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,6 +49,8 @@ public class SplashWindow implements Initializable {
             return;
         }
 
+        ServiceProvider.getInstance().getControllerService().getMainWindow().setHide(true);
+
         this.stage.show();
         this.started = true;
     }
@@ -56,6 +59,8 @@ public class SplashWindow implements Initializable {
         if (this.stage != null) {
             this.stage.hide();
             this.started = false;
+
+            ServiceProvider.getInstance().getControllerService().getMainWindow().setHide(false);
         }
     }
 
@@ -79,7 +84,7 @@ public class SplashWindow implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         // Initialize fxml
         this.splashProgress.setProgress(-1.0f);
-        this.splashLabel.setText("Loading...");
+        this.splashLabel.setText("Loading target database structure...");
 
         InputStream imageStream = getClass().getClassLoader().getResourceAsStream("splash.png");
         if (imageStream != null) {
@@ -104,7 +109,7 @@ public class SplashWindow implements Initializable {
 
             stage.setTitle("Loading...");
             stage.setScene(new Scene(root, 502, 302));
-            stage.setAlwaysOnTop(true);
+            // stage.setAlwaysOnTop(true);
             stage.setResizable(false);
 
             if (this.willStart) {
