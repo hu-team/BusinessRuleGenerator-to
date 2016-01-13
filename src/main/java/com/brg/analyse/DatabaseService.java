@@ -63,6 +63,9 @@ public class DatabaseService {
             e.printStackTrace();
         }
 
+        //Clear memory
+        _tempdatabase = null;
+
     }
 
     /**
