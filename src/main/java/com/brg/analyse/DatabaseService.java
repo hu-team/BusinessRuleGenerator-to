@@ -7,7 +7,13 @@ public class DatabaseService {
 
     public DatabaseService()  {
         targetDatabaseThread = new TargetDatabaseThread();
-        targetDatabaseThread.start();
+    }
+
+    /**
+     * Start indexing target db
+     */
+    public void startIndexingTargetDatabase() {
+        this.targetDatabaseThread.start();
     }
 
     public void stopTargetDatabaseThread() {

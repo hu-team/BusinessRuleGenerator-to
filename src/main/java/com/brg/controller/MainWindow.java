@@ -154,8 +154,8 @@ public class MainWindow extends Application implements Initializable {
         // Load first tab
         tabPane.getSelectionModel().selectFirst();
 
-        //ServiceProvider.getInstance().getControllerService().startSplashScreen();
-        ServiceProvider.getInstance().getControllerService().getSplashWindow().start();
+        // Start second start sequence
+        ServiceProvider.getInstance().startSecondWave();
     }
 
 
