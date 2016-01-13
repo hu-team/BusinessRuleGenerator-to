@@ -62,9 +62,9 @@ public class BusinessRuleDAO implements DAO{
 
     /**
      * Get all rules
-     * @return
+     * @return All rules that are active
      */
     public ArrayList<BusinessRule> getAllRules() {
-        return this.executeRead("SELECT * FROM BUSINESSRULE");
+        return this.executeRead("SELECT * FROM BUSINESSRULE WHERE BUSINESSRULE.ACTIVE = 1");
     }
 }
