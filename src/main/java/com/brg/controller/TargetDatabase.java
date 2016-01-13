@@ -1,5 +1,6 @@
 package com.brg.controller;
 
+import com.brg.ServiceProvider;
 import com.brg.dao.connection.TargetConnection;
 import org.apache.ddlutils.Platform;
 import org.apache.ddlutils.PlatformFactory;
@@ -61,8 +62,8 @@ public class TargetDatabase {
 
         //Clear memory
         _tempdatabase = null;
-
         System.out.println("Done: Indexed Target database");
+        ServiceProvider.getInstance().getAnalyseService().getDatabaseService().stopTargetDatabaseThread();
 
     }
 
