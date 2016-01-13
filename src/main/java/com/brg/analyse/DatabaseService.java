@@ -19,8 +19,9 @@ public class DatabaseService {
     /**
      * @see {http://db.apache.org/ddlutils/index.html} Reference to docs
      */
-    public DatabaseService() throws Exception {
-        targetConnection.getInstance();
+    public DatabaseService()  {
+        //targetConnection.getInstance();
+        //System.out.println(this.getTable(1));
     }
 
     /**
