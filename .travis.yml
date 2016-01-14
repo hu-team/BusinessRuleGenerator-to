@@ -15,4 +15,4 @@ cache: apt
 
 script:
   - gradle build
-  - gradle test
+#  - gradle test
