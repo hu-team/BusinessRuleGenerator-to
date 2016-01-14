@@ -29,4 +29,8 @@ public class PersistenceService extends AbstractFacadeService implements Persist
         return this.templateService;
     }
 
+    @Override
+    public void willExitApplication() {
+
+    }
 }

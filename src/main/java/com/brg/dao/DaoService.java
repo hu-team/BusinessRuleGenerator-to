@@ -37,4 +37,9 @@ public class DaoService extends AbstractFacadeService implements DaoServiceImpl 
         RepositoryConnection.clearConnection();
         TargetConnection.clearConnection();
     }
+
+    @Override
+    public void willExitApplication() {
+
+    }
 }

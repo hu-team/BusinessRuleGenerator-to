@@ -62,6 +62,6 @@ public class ServiceProvider {
     }
 
     public void willExitApplication() {
-        
+
     }
 }

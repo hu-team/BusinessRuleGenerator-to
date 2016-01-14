@@ -1,9 +1,10 @@
 package com.brg.generate;
 
 import com.brg.ServiceProvider;
+import com.brg.common.AbstractFacadeService;
 import com.brg.domain.BusinessRule;
 
-public class ExportService implements ExportServiceImpl {
+public class ExportService extends AbstractFacadeService implements ExportServiceImpl {
     @Override
     public Export createExport(BusinessRule rule) throws ClassNotFoundException {
         if (rule == null) {return null;}
@@ -23,5 +24,10 @@ public class ExportService implements ExportServiceImpl {
         export.setTriggerIdentifier(rule.getCode());
 
         return export;
+    }
+
+    @Override
+    public void willExitApplication() {
+
     }
 }
