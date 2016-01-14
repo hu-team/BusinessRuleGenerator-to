@@ -10,14 +10,13 @@ public class OracleExport extends BaseTemplate implements ExportTemplate {
 
     @Override
     public String fillTemplate(RuleValueBundle bundle, RuleOperand operand, String code) {
-        return this.fillTemplateWithBundle(this.template, bundle, operand, code);
+        return this.fillTemplateWithBundle(this.getTemplate(), bundle, operand, code);
     }
 
     @Override
     public DatabaseType getType() {
         return DatabaseType.ORACLE;
     }
-
 
     @Override
     public void setCode(String code){
@@ -29,22 +28,6 @@ public class OracleExport extends BaseTemplate implements ExportTemplate {
         return this.code;
     }
 
-
-    @Override
-    public String getSource() {
-        return template.render();
-    }
-
-    @Override
-    public void setTemplate(ST template) {
-        this.template = template;
-    }
-
-    @Override
-    public ST getTemplate() {
-        return this.template;
-    }
-
     @Override
     public void setRuleClass(String clazz) {
         this.ruleClass = clazz;
@@ -53,5 +36,15 @@ public class OracleExport extends BaseTemplate implements ExportTemplate {
     @Override
     public String getRuleClass() {
         return this.ruleClass;
+    }
+
+    @Override
+    public String getSource() {
+        return this.source;
+    }
+
+    @Override
+    public void setSource(String source) {
+        this.source = source;
     }
 }
