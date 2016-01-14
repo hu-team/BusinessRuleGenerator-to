@@ -30,8 +30,6 @@ public class DatabaseService implements Callback {
      */
     public void startIndexingTargetDatabase() {
         Thread targetDatabaseThread = new Thread(this.targetDatabaseTask);
-        ServiceProvider.getInstance().getControllerService().getSplashWindow().update(-1, "Loading target database structure...");
-
         ServiceProvider.getInstance().getControllerService().setLoadingProgress(-1.0);
         targetDatabaseThread.start();
     }
