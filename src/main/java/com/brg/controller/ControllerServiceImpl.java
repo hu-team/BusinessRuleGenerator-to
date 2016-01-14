@@ -4,5 +4,5 @@ public interface ControllerServiceImpl {
     MainWindow getMainWindow();
     DefineTab getDefineTab();
 
-    void setLoadingProgress(double percentage);
+    void setLoadingProgress(double percentage, String text);
 }

@@ -27,8 +27,8 @@ public class ControllerService extends AbstractFacadeService implements Controll
     }
 
     @Override
-    public void setLoadingProgress(double percentage) {
-        MainWindow.getInstance().setLoadingProgress(percentage);
+    public void setLoadingProgress(double percentage, String text) {
+        MainWindow.getInstance().setLoadingProgress(percentage, text);
     }
 
     @Override

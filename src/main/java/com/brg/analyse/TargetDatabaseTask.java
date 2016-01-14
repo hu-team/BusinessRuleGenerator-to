@@ -47,15 +47,12 @@ public class TargetDatabaseTask implements Runnable {
             Database database = modelReader.getDatabase(targetConnection.getConnection(), targetConnection.getSchema(), null, targetConnection.getSchema(), null);
             service.setDatabase(database);
 
-            System.out.println("Indexer: Reading tables and columns...");
-            // Tables
+            // Tables loop
             for(Table table : database.getTables()) {
                 if (Thread.currentThread().isInterrupted()) {
                     System.out.println("Done: Cancelled!");
                     return;
                 }
-
-
                 String tableName = table.getName();
 
                 // Add table to list

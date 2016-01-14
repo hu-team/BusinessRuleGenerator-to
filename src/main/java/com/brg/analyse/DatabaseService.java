@@ -31,13 +31,13 @@ public class DatabaseService implements Callback {
      */
     public void startIndexingTargetDatabase() {
         this.targetDatabaseThread = new Thread(this.targetDatabaseTask);
-        ServiceProvider.getInstance().getControllerService().setLoadingProgress(-1.0);
+        ServiceProvider.getInstance().getControllerService().setLoadingProgress(-1.0, "Loading target database structure...");
         this.targetDatabaseThread.start();
     }
 
     @Override
     public Object call(Object param) {
-        ServiceProvider.getInstance().getControllerService().getMainWindow().setLoadingProgress(0.0);
+        ServiceProvider.getInstance().getControllerService().setLoadingProgress(0.0, "");
         return null;
     }
 

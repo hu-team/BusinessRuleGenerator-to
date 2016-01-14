@@ -58,7 +58,7 @@ public class ServiceProvider {
 
     public void startSecondWave() {
         this.analyseService.getDatabaseService().startIndexingTargetDatabase();
-        this.controllerService.setLoadingProgress(-1.0);
+        this.controllerService.setLoadingProgress(-1.0, "Loading target database structure...");
     }
 
     public void willExitApplication() {

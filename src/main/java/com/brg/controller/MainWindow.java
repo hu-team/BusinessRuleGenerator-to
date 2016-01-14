@@ -24,6 +24,7 @@ public class MainWindow extends Application implements Initializable {
 
     @FXML private TabPane tabPane;
     @FXML private ProgressBar loadingProgress;
+    @FXML private Label loadingText;
 
     private Stage stage;
 
@@ -200,7 +201,10 @@ public class MainWindow extends Application implements Initializable {
         }
     }
 
-    public void setLoadingProgress(double percentage) {
+    public void setLoadingProgress(double percentage, String text) {
+        if (text != null) {
+            this.loadingText.setText(text);
+        }
         this.loadingProgress.setProgress(percentage);
     }
 }
