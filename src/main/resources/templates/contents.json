@@ -4,6 +4,11 @@
 
   "oracle/AttributeCompareRule.json",
   "oracle/AttributeListRule.json",
-
-  "oracle/AttributeRangeRule.json"
+  "oracle/AttributeOtherRule.json",
+  "oracle/AttributeRangeRule.json",
+  "oracle/EntityOtherRule.json",
+  "oracle/InterEntityCompareRule.json",
+  "oracle/ModifyRule.json",
+  "oracle/TupleCompareRule.json",
+  "oracle/TupleOtherRule.json"
 ]
