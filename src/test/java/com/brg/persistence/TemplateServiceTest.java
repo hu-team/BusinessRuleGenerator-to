@@ -14,8 +14,7 @@ import static org.junit.Assert.*;
 
 
 public class TemplateServiceTest {
-
-    private HashMap<DatabaseType, List<ExportTemplate>> templates = new HashMap<DatabaseType, List<ExportTemplate>>();
+    
     private TemplateService templateService;
     private BusinessRule AttributeCompareRule, AttributeListRule, AttributeOtherRule, AttributeRangeRule, EntityOtherRule, InterEntityCompareRule, ModifyRule, TupleCompareRule, TupleOtherRule;
 
