@@ -32,14 +32,13 @@ public class DatabaseService implements Callback {
         Thread targetDatabaseThread = new Thread(this.targetDatabaseTask);
         ServiceProvider.getInstance().getControllerService().getSplashWindow().update(-1, "Loading target database structure...");
 
+        ServiceProvider.getInstance().getControllerService().setLoadingProgress(-1.0);
         targetDatabaseThread.start();
     }
 
     @Override
     public Object call(Object param) {
-        ServiceProvider.getInstance().getControllerService().getMainWindow().getStage().show();
-        //ServiceProvider.getInstance().getControllerService().getMainWindow().setDisabled(false);
-        ServiceProvider.getInstance().getControllerService().getSplashWindow().stop();
+        ServiceProvider.getInstance().getControllerService().getMainWindow().setLoadingProgress(0.0);
         return null;
     }
 

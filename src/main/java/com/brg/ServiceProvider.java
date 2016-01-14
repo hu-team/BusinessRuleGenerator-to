@@ -58,6 +58,6 @@ public class ServiceProvider {
 
     public void startSecondWave() {
         this.analyseService.getDatabaseService().startIndexingTargetDatabase();
-        this.controllerService.getSplashWindow().start();
+        this.controllerService.setLoadingProgress(-1.0);
     }
 }

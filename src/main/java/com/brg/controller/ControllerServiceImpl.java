@@ -5,4 +5,6 @@ public interface ControllerServiceImpl {
     DefineTab getDefineTab();
 
     SplashWindow getSplashWindow();
+
+    void setLoadingProgress(double percentage);
 }

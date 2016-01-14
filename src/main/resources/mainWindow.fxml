@@ -4,11 +4,12 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.brg.controller.MainWindow">
-    <TabPane AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-             AnchorPane.rightAnchor="0.0" tabClosingPolicy="UNAVAILABLE" fx:id="tabPane">
-        <tabs>
+<AnchorPane minHeight="750.0" minWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.brg.controller.MainWindow">
+   <children>
+       <TabPane fx:id="tabPane" prefHeight="727.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+           <tabs>
         </tabs>
-    </TabPane>
+       </TabPane>
+      <ProgressBar id="loadingProgress" fx:id="loadingProgress" layoutY="732.0" prefHeight="18.0" prefWidth="1000.0" progress="0.0" />
+   </children>
 </AnchorPane>

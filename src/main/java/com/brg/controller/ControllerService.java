@@ -32,4 +32,9 @@ public class ControllerService extends AbstractFacadeService implements Controll
     public SplashWindow getSplashWindow() {
         return this.getMainWindow().getSplashWindow();
     }
+
+    @Override
+    public void setLoadingProgress(double percentage) {
+        MainWindow.getInstance().setLoadingProgress(percentage);
+    }
 }

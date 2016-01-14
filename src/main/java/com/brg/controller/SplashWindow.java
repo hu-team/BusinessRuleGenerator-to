@@ -104,7 +104,7 @@ public class SplashWindow implements Initializable {
             root = FXMLLoader.load(fxml);
 
             stage = new Stage();
-            AquaFx.styleStage(this.stage, StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.UNDECORATED);
 
             stage.setTitle("Loading...");
             stage.setScene(new Scene(root, 502, 302));
