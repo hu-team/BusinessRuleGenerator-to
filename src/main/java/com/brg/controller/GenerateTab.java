@@ -41,7 +41,7 @@ public class GenerateTab implements Initializable, TabControllerImpl {
         MainWindow.getInstance().setDisabled(true);
 
         // Start loading target database structure
-        ServiceProvider.getInstance().getAnalyseService().getDatabaseService(); // TODO: DdlUtils implementing and verify
+        ServiceProvider.getInstance().getAnalyseService().getDatabaseService();
 
         // Start loading import progress from repository
         ServiceProvider.getInstance().getPersistenceService().getBusinessRuleService().reloadRules();
