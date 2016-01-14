@@ -3,6 +3,7 @@ package com.brg.persistence;
 import com.brg.ServiceProvider;
 import com.brg.domain.BusinessRule;
 import com.brg.domain.DatabaseType;
+import com.brg.generate.BaseTemplate;
 import com.brg.generate.ExportTemplate;
 import com.brg.generate.MySQLExport;
 import com.brg.generate.OracleExport;
@@ -156,7 +157,7 @@ public class TemplateService {
             template = new OracleExport();
         }
 
-        template.setTemplate(new ST(stringTemplate, '{', '}'));
+        template.setSource(stringTemplate);
         template.setCode(jsonTemplate.getCode());
         template.setRuleClass(jsonTemplate.getClazz());
 

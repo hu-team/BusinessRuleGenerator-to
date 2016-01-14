@@ -10,7 +10,7 @@ public class MySQLExport extends BaseTemplate implements ExportTemplate {
 
     @Override
     public String fillTemplate(RuleValueBundle bundle, RuleOperand operand, String code) {
-        return this.fillTemplateWithBundle(this.template, bundle, operand, code);
+        return this.fillTemplateWithBundle(this.getTemplate(), bundle, operand, code);
     }
 
     @Override
@@ -23,26 +23,9 @@ public class MySQLExport extends BaseTemplate implements ExportTemplate {
         this.code = code;
     }
 
-
     @Override
     public String getCode() {
         return this.code;
-    }
-    //MySqlcode
-
-    @Override
-    public String getSource() {
-        return template.render();
-    }
-
-    @Override
-    public void setTemplate(ST template) {
-        this.template = template;
-    }
-
-    @Override
-    public ST getTemplate() {
-        return this.template;
     }
 
     @Override
@@ -53,5 +36,15 @@ public class MySQLExport extends BaseTemplate implements ExportTemplate {
     @Override
     public String getRuleClass() {
         return this.ruleClass;
+    }
+
+    @Override
+    public String getSource() {
+        return this.source;
+    }
+
+    @Override
+    public void setSource(String source) {
+        this.source = source;
     }
 }

@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="generateTabAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.brg.controller.GenerateTab">
+<AnchorPane fx:id="generateTabAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.brg.controller.GenerateTab">
    <children>
-      <ComboBox id="selectRule" fx:id="selectRule" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="254.0" promptText="Select Rule" />
-      <Button id="exportButton" fx:id="exportButton" layoutX="274.0" layoutY="14.0" mnemonicParsing="false" onAction="#doExport" text="Export" />
-      <TextArea fx:id="outputText" layoutX="14.0" layoutY="50.0" prefHeight="650.0" prefWidth="950.0" />
+      <Button id="exportButton" fx:id="exportButton" layoutX="749.0" layoutY="619.0" mnemonicParsing="false" onAction="#doExport" prefHeight="19.0" prefWidth="100.0" text="Export" />
+      <TextArea id="outputText" fx:id="outputText" layoutX="392.0" layoutY="116.0" prefHeight="486.0" prefWidth="572.0" />
+      <ListView id="selectRule" fx:id="selectRule" layoutX="15.0" layoutY="116.0" prefHeight="486.0" prefWidth="365.0" />
+      <Button id="validateButton" fx:id="validateButton" layoutX="630.0" layoutY="620.0" mnemonicParsing="false" onAction="#doExport" prefHeight="25.0" prefWidth="100.0" text="Validate" />
+      <Label layoutX="20.0" layoutY="17.0" prefHeight="53.0" prefWidth="492.0" text="Generate Rule">
+         <font>
+            <Font size="33.0" />
+         </font>
+      </Label>
+      <Label layoutX="16.0" layoutY="90.0" text="Select Rule">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="392.0" layoutY="90.0" text="Code Output">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Button id="applyTarget" fx:id="applyTarget" layoutX="866.0" layoutY="619.0" mnemonicParsing="false" onAction="#doExport" prefHeight="19.0" prefWidth="100.0" text="Apply to target" />
    </children>
 </AnchorPane>

@@ -7,13 +7,14 @@ import org.stringtemplate.v4.ST;
 import java.util.ArrayList;
 
 public abstract class BaseTemplate {
-
-    protected ST template;
     protected String code;
     protected String ruleClass;
+    protected String source;
 
     @SuppressWarnings("unchecked")
     protected String fillTemplateWithBundle(ST template, RuleValueBundle bundle, RuleOperand operand, String code) {
+        template = new ST(template);
+
         for(String key: bundle.getKeys()) {
             String templateKey = key.replaceAll("\\.", "_");
             String templateValue = null;
@@ -32,10 +33,11 @@ public abstract class BaseTemplate {
                 }
 
                 // Parse the array to the string
-                stringList = (ArrayList<String>) bundle.getValue(key);
+                ArrayList<String> oldStringList = (ArrayList<String>) bundle.getValue(key);
+                stringList = new ArrayList<String>();
                 // Add quotes
-                for (int i = 0; i < stringList.size(); i++) {
-                    stringList.set(i, "'" + stringList.get(i) + "'");
+                for (String item: oldStringList) {
+                    stringList.add("'" + item + "'");
                 }
 
                 // Join parts
@@ -63,5 +65,9 @@ public abstract class BaseTemplate {
         }
 
         return template.render();
+    }
+
+    protected ST getTemplate() {
+        return new ST(this.source, '{', '}');
     }
 }
