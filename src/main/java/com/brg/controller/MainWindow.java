@@ -70,6 +70,7 @@ public class MainWindow extends Application implements Initializable {
 
         primaryStage.setScene(scene);
         primaryStage.sizeToScene();
+        primaryStage.setResizable(false);
 
         primaryStage.show();
 

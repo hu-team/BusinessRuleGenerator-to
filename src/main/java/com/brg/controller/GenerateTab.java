@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 
@@ -18,8 +19,13 @@ import java.util.ResourceBundle;
 public class GenerateTab implements Initializable, TabControllerImpl {
 
     @FXML private TextArea outputText;
+
     @FXML private Button exportButton;
-    @FXML private ComboBox<BusinessRule> selectRule;
+    @FXML private Button validateButton;
+    @FXML private Button applyTarget;
+
+    @FXML private ListView<BusinessRule> selectRule;
+
     @FXML private AnchorPane generateTabAnchor;
 
     private MainWindow rootController;
@@ -42,6 +48,8 @@ public class GenerateTab implements Initializable, TabControllerImpl {
 
         // Fill in the combobox, clear the other elements.
         this.clearSelections();
+
+
         this.selectRule.getItems().addAll(FXCollections.observableArrayList(ServiceProvider.getInstance().getPersistenceService().getBusinessRuleService().getRules()));
 
         // Start the subview
@@ -56,16 +64,18 @@ public class GenerateTab implements Initializable, TabControllerImpl {
 
     public void doExport(ActionEvent actionEvent) {
         String output = "Error!";
+
         if(this.selectRule.getSelectionModel().getSelectedItem() == null ){
             return;
         }
-        
+
         try {
             output = ServiceProvider.getInstance().getExportService().createExport(this.selectRule.getSelectionModel().getSelectedItem()).getOutput();
         } catch (ClassNotFoundException e) {
             ExceptionAlert alert = new ExceptionAlert(e);
             alert.showAndWait();
         }
+
 
         this.outputText.setText(output);
     }
