@@ -12,3 +12,8 @@ addons:
       - oracle-java8-installer
 
 cache: apt
+
+script:
+  - gradle build
+  - gradle jar
+  - gradle test
