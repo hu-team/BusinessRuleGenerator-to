@@ -8,8 +8,6 @@ public class ControllerService extends AbstractFacadeService implements Controll
     private MainWindow mainWindow;
     private DefineTab defineTab;
 
-    private SplashWindow splashWindow;
-
     public ControllerService() {
         this.mainWindow = new MainWindow();
         this.defineTab = new DefineTab();
@@ -28,13 +26,13 @@ public class ControllerService extends AbstractFacadeService implements Controll
         return this.defineTab;
     }
 
-
-    public SplashWindow getSplashWindow() {
-        return this.getMainWindow().getSplashWindow();
-    }
-
     @Override
     public void setLoadingProgress(double percentage) {
         MainWindow.getInstance().setLoadingProgress(percentage);
+    }
+
+    @Override
+    public void willExitApplication() {
+
     }
 }

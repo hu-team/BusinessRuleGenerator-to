@@ -65,6 +65,9 @@ public class GenerateTab implements Initializable, TabControllerImpl {
     public void doExport(ActionEvent actionEvent) {
         String output = "Error!";
 
+        if(this.selectRule.getSelectionModel().getSelectedItem() == null ){
+            return;
+        }
 
         try {
             output = ServiceProvider.getInstance().getExportService().createExport(this.selectRule.getSelectionModel().getSelectedItem()).getOutput();

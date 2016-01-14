@@ -60,4 +60,8 @@ public class ServiceProvider {
         this.analyseService.getDatabaseService().startIndexingTargetDatabase();
         this.controllerService.setLoadingProgress(-1.0);
     }
+
+    public void willExitApplication() {
+
+    }
 }

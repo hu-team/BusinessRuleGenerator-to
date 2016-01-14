@@ -13,4 +13,9 @@ public class AnalyseService extends AbstractFacadeService implements AnalyseServ
     public DatabaseService getDatabaseService() {
         return this.databaseService;
     }
+
+    @Override
+    public void willExitApplication() {
+        this.getDatabaseService().willExitApplication();
+    }
 }

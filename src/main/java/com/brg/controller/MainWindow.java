@@ -22,8 +22,6 @@ import java.util.ResourceBundle;
 public class MainWindow extends Application implements Initializable {
     private static MainWindow instance;
 
-    private SplashWindow splashWindow;
-
     @FXML private TabPane tabPane;
     @FXML private ProgressBar loadingProgress;
 
@@ -64,7 +62,7 @@ public class MainWindow extends Application implements Initializable {
             return;
         }
 
-        primaryStage.setResizable(true);
+        primaryStage.setResizable(false);
         primaryStage.setTitle("Business Rule Generator (Version: " + BusinessRuleGenerator.VERSION + ", Build: " + BusinessRuleGenerator.BUILD + ")");
 
         // Make main scene
@@ -86,7 +84,11 @@ public class MainWindow extends Application implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.CANCEL) {
                 event.consume();
+                return;
             }
+
+            // Close all threads
+            ServiceProvider.getInstance().willExitApplication();
         });
 
         // Start second start sequence
@@ -184,25 +186,6 @@ public class MainWindow extends Application implements Initializable {
 
     public Stage getStage() {
         return stage;
-    }
-
-    /**
-     * Get splash window instance
-     * @return splash window controller instance
-     */
-    public SplashWindow getSplashWindow() {
-        try {
-            if (this.splashWindow == null) {
-                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("splashWindow.fxml"));
-                Parent splashRoot = loader.load();
-
-                this.splashWindow = loader.getController();
-                this.splashWindow.prepare();
-            }
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
-        return this.splashWindow;
     }
 
     public void setHide(boolean hide) {

@@ -12,6 +12,7 @@ import java.util.List;
 
 public class DatabaseService implements Callback {
     private TargetDatabaseTask targetDatabaseTask;
+    private Thread targetDatabaseThread;
 
     private Database database;
     private HashMap<String, Table> tables;
@@ -29,11 +30,9 @@ public class DatabaseService implements Callback {
      * Start indexing target db
      */
     public void startIndexingTargetDatabase() {
-        Thread targetDatabaseThread = new Thread(this.targetDatabaseTask);
-        ServiceProvider.getInstance().getControllerService().getSplashWindow().update(-1, "Loading target database structure...");
-
+        this.targetDatabaseThread = new Thread(this.targetDatabaseTask);
         ServiceProvider.getInstance().getControllerService().setLoadingProgress(-1.0);
-        targetDatabaseThread.start();
+        this.targetDatabaseThread.start();
     }
 
     @Override
@@ -89,5 +88,9 @@ public class DatabaseService implements Callback {
 
     public void putColumns(Table table, ArrayList<Column> columns) {
         this.columns.put(table, columns);
+    }
+
+    public void willExitApplication() {
+        this.targetDatabaseThread.interrupt();
     }
 }
