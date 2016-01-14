@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
@@ -60,6 +61,26 @@ public class GenerateTab implements Initializable, TabControllerImpl {
         this.selectRule.getItems().clear();
         this.outputText.setText("");
         this.outputText.setEditable(false);
+    }
+
+    public void clickExport(MouseEvent click){
+        if(this.selectRule.getSelectionModel().getSelectedItem() == null){
+            return;
+        }
+
+        if(click.getClickCount() == 2){
+            String output = "";
+
+            try {
+                output = ServiceProvider.getInstance().getExportService().createExport(this.selectRule.getSelectionModel().getSelectedItem()).getOutput();
+            }catch (ClassNotFoundException e){
+                ExceptionAlert alert = new ExceptionAlert(e);
+                alert.showAndWait();
+            }
+
+            this.outputText.setText(output);
+        }
+
     }
 
     public void doExport(ActionEvent actionEvent) {
