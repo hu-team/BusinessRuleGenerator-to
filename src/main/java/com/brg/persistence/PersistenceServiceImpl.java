@@ -1,11 +1,36 @@
 package com.brg.persistence;
 
-public interface PersistenceServiceImpl {
-    BusinessRuleService getBusinessRuleService();
+import com.brg.common.AbstractFacadeService;
 
-    RuleValueBundleService getRuleValueBundleService();
+public class PersistenceServiceImpl extends AbstractFacadeService implements PersistenceService {
 
-    RuleOperandService getRuleOperandService();
+    private BusinessRuleService businessRuleService = new BusinessRuleService();
+    private RuleValueBundleService ruleValueBundleService = new RuleValueBundleService();
+    private RuleOperandService ruleOperandService = new RuleOperandService();
+    private TemplateService templateService = new TemplateService();
 
-    TemplateService getTemplateService();
+    @Override
+    public BusinessRuleService getBusinessRuleService() {
+        return this.businessRuleService;
+    }
+
+    @Override
+    public RuleValueBundleService getRuleValueBundleService() {
+        return this.ruleValueBundleService;
+    }
+
+    @Override
+    public RuleOperandService getRuleOperandService() {
+        return this.ruleOperandService;
+    }
+
+    @Override
+    public TemplateService getTemplateService() {
+        return this.templateService;
+    }
+
+    @Override
+    public void willExitApplication() {
+
+    }
 }
