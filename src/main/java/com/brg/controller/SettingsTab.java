@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -17,7 +18,8 @@ import java.util.ResourceBundle;
 public class SettingsTab implements Initializable, TabControllerImpl {
 
     @FXML private ComboBox<DatabaseType> exportOptions;
-    @FXML private TextField targetHost, targetUsername, targetPassword, targetService, targetPort;
+    @FXML private TextField targetHost, targetUsername, targetService, targetPort;
+    @FXML private PasswordField targetPassword;
     private ArrayList<DatabaseType> arrDatabaseType;
     private Properties properties;
 
