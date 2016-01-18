@@ -52,8 +52,13 @@ public class ServiceProvider {
 
     public ExportServiceImpl getExportService() { return this.exportService; }
 
+
+    public void startFirstWave(String[] args) {
+        this.controllerService.startApplication(args);
+    }
+
     public void startSecondWave() {
-        this.analyseService.getDatabaseService().startIndexingTargetDatabase();
+        this.getAnalyseService().startIndexingTargetDatabase();
         this.controllerService.setLoadingProgress(-1.0, "Loading target database structure...");
     }
 

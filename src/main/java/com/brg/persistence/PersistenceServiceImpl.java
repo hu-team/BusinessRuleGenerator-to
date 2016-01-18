@@ -1,6 +1,13 @@
 package com.brg.persistence;
 
 import com.brg.common.AbstractFacadeService;
+import com.brg.domain.BusinessRule;
+import com.brg.domain.RuleOperand;
+import com.brg.domain.RuleValueBundle;
+import com.brg.generate.ExportTemplate;
+
+import java.util.Collection;
+import java.util.List;
 
 public class PersistenceServiceImpl extends AbstractFacadeService implements PersistenceService {
 
@@ -9,28 +16,31 @@ public class PersistenceServiceImpl extends AbstractFacadeService implements Per
     private RuleOperandService ruleOperandService = new RuleOperandService();
     private TemplateService templateService = new TemplateService();
 
+
     @Override
-    public BusinessRuleService getBusinessRuleService() {
-        return this.businessRuleService;
+    public ExportTemplate getTemplateForBundle(BusinessRule rule) throws Exception {
+        return this.templateService.getTemplateForBundle(rule);
     }
 
     @Override
-    public RuleValueBundleService getRuleValueBundleService() {
-        return this.ruleValueBundleService;
+    public RuleOperand getRuleOperandById(int id) {
+        return this.ruleOperandService.getRuleOperandById(id);
     }
 
     @Override
-    public RuleOperandService getRuleOperandService() {
-        return this.ruleOperandService;
+    public RuleValueBundle getRuleValueBundleById(int id) {
+        return this.ruleValueBundleService.getRuleById(id);
     }
 
     @Override
-    public TemplateService getTemplateService() {
-        return this.templateService;
+    public void reloadRules() {
+        this.businessRuleService.reloadRules();
     }
 
     @Override
-    public void willExitApplication() {
-
+    public List<BusinessRule> getAllRules() {
+        return this.businessRuleService.getRules();
     }
+
+
 }

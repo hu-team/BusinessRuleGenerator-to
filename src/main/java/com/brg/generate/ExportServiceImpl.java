@@ -12,7 +12,7 @@ public class ExportServiceImpl extends AbstractFacadeService implements ExportSe
         // Decide the template
         ExportTemplate template = null;
         try {
-            template = ServiceProvider.getInstance().getPersistenceService().getTemplateService().getTemplateForBundle(rule);
+            template = ServiceProvider.getInstance().getPersistenceService().getTemplateForBundle(rule);
         } catch (Exception e) {
             throw new ClassNotFoundException("No template class could be found for your business rule!");
         }
@@ -24,10 +24,5 @@ public class ExportServiceImpl extends AbstractFacadeService implements ExportSe
         export.setTriggerIdentifier(rule.getCode());
 
         return export;
-    }
-
-    @Override
-    public void willExitApplication() {
-
     }
 }

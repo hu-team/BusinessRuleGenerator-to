@@ -37,8 +37,8 @@ public class TargetDatabaseTask implements Runnable {
 
         try{
             // Clear all in the service
-            DatabaseService service = ServiceProvider.getInstance().getAnalyseService().getDatabaseService();
-            service.clearAll();
+            AnalyseService service = ServiceProvider.getInstance().getAnalyseService();
+            service.clearAllTargetMetadata();
 
             // Connect and fetch
             TargetConnection targetConnection = ServiceProvider.getInstance().getDaoService().getTargetConnection();
@@ -50,7 +50,7 @@ public class TargetDatabaseTask implements Runnable {
 
             //Database database = modelReader.getDatabase(targetConnection.getConnection(), targetConnection.getSchema(), null, targetConnection.getSchema(), null);
             Database database = targetDatabaseMock.getDatabase();
-            service.setDatabase(database);
+            service.setTargetDatabaseMetadata(database);
 
             // Tables loop
             for(Table table : database.getTables()) {
@@ -61,14 +61,14 @@ public class TargetDatabaseTask implements Runnable {
                 String tableName = table.getName();
 
                 // Add table to list
-                service.getTables().put(tableName, table);
+                service.addTargetTable(tableName, table);
 
                 // Add columns
                 ArrayList<Column> columns = new ArrayList<Column>();
                 Collections.addAll(columns, table.getColumns());
 
                 // Add to the service
-                service.putColumns(table, columns);
+                service.addTargetColumns(table, columns);
             }
         } catch (Exception e) {
             e.printStackTrace();

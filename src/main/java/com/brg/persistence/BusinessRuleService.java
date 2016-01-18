@@ -16,9 +16,7 @@ public class BusinessRuleService {
      * Will reload all rules from the database into the local application memory.
      */
     public void reloadRules() {
-        BusinessRuleDAO dao = ServiceProvider.getInstance().getDaoService().getBusinessRuleDAO();
-
-        this.rules = dao.getAllRules();
+        this.rules = ServiceProvider.getInstance().getDaoService().getAllBusinessRules();
     }
 
     /**

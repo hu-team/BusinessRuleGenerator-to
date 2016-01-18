@@ -40,17 +40,13 @@ public class GenerateTab implements Initializable, TabControllerImpl {
         // Set all content disabled
         MainWindow.getInstance().setDisabled(true);
 
-        // Start loading target database structure
-        ServiceProvider.getInstance().getAnalyseService().getDatabaseService();
-
         // Start loading import progress from repository
-        ServiceProvider.getInstance().getPersistenceService().getBusinessRuleService().reloadRules();
+        ServiceProvider.getInstance().getPersistenceService().reloadRules();
 
         // Fill in the combobox, clear the other elements.
         this.clearSelections();
 
-
-        this.selectRule.getItems().addAll(FXCollections.observableArrayList(ServiceProvider.getInstance().getPersistenceService().getBusinessRuleService().getRules()));
+        this.selectRule.getItems().addAll(FXCollections.observableArrayList(ServiceProvider.getInstance().getPersistenceService().getAllRules()));
 
         // Start the subview
         MainWindow.getInstance().setDisabled(false);

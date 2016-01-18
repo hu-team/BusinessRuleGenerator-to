@@ -14,6 +14,7 @@ public class RuleValueBundleService {
     }
 
     public RuleValueBundle getRuleById(int ruleID) {
-        return ServiceProvider.getInstance().getDaoService().getRuleValueBundleDAO().getRuleValueBundleById(ruleID);
+        return ServiceProvider.getInstance().getDaoService().getRuleValueBundleForRule(ruleID);
+
     }
 }

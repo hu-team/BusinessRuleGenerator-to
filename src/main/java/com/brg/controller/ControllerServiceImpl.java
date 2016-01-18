@@ -14,25 +14,12 @@ public class ControllerServiceImpl extends AbstractFacadeService implements Cont
     }
 
     @Override
-    public MainWindow getMainWindow() {
-        if (MainWindow.getInstance() == null) {
-            return this.mainWindow;
-        }
-        return MainWindow.getInstance();
-    }
-
-    @Override
-    public DefineTab getDefineTab() {
-        return this.defineTab;
-    }
-
-    @Override
     public void setLoadingProgress(double percentage, String text) {
         MainWindow.getInstance().setLoadingProgress(percentage, text);
     }
 
     @Override
-    public void willExitApplication() {
-
+    public void startApplication(String[] args) {
+        this.mainWindow.start(args);
     }
 }

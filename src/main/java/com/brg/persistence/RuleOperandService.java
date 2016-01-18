@@ -15,6 +15,6 @@ public class RuleOperandService {
     }
 
     public RuleOperand getRuleOperandById(int id){
-        return ServiceProvider.getInstance().getDaoService().getRuleOperandDAO().getRuleOperandById(id);
+        return ServiceProvider.getInstance().getDaoService().getRuleOperandById(id);
     }
 }
