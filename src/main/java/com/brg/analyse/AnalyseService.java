@@ -14,4 +14,5 @@ public interface AnalyseService {
     void setTargetDatabaseMetadata(Database database);
     void addTargetTable(String tableName, Table table);
     void addTargetColumns(Table table, List<Column> columns);
+    DatabaseService getDatabaseService();
 }

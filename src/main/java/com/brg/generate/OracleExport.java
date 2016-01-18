@@ -8,7 +8,7 @@ import com.brg.domain.RuleValueBundle;
 public class OracleExport extends BaseTemplate implements ExportTemplate {
 
     @Override
-    public String fillTemplate(RuleValueBundle bundle, RuleOperand operand, String code) {
+    public String fillTemplate(RuleValueBundle bundle, RuleOperand operand, String code) throws Exception {
         return this.fillTemplateWithBundle(this.getTemplate(), bundle, operand, code);
     }
 

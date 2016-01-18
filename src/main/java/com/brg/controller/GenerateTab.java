@@ -62,7 +62,7 @@ public class GenerateTab implements Initializable, TabControllerImpl {
         this.outputText.setEditable(false);
     }
 
-    public void clickExport(MouseEvent click){
+    public void clickExport(MouseEvent click) throws Exception {
         if(this.selectRule.getSelectionModel().getSelectedItem() == null){
             return;
         }
@@ -82,7 +82,7 @@ public class GenerateTab implements Initializable, TabControllerImpl {
 
     }
 
-    public void doExport(ActionEvent actionEvent) {
+    public void doExport(ActionEvent actionEvent) throws Exception {
         String output = "Error!";
 
         if(this.selectRule.getSelectionModel().getSelectedItem() == null ){
@@ -98,5 +98,20 @@ public class GenerateTab implements Initializable, TabControllerImpl {
 
 
         this.outputText.setText(output);
+    }
+
+    public void doValidate(ActionEvent actionEvent) {
+        if(this.selectRule.getSelectionModel().getSelectedItem() == null ){
+            return;
+        }
+
+        boolean selectedbusinnes = this.selectRule.getSelectionModel().getSelectedItem().validateRule();
+
+        if(selectedbusinnes) {
+            System.out.println("Code is valid");
+        } else {
+            System.out.println("Code is invalid");
+        }
+
     }
 }
