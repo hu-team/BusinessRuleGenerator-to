@@ -89,8 +89,11 @@ public class MainWindow extends Application implements Initializable {
                 return;
             }
 
-            // Close all threads
+            // Close all threads.
             ServiceProvider.getInstance().willExitApplication();
+
+            // Force exit for all threads.
+            System.exit(0);
         });
 
         // Start second start sequence

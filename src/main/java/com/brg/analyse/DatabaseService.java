@@ -91,6 +91,7 @@ public class DatabaseService implements Callback {
     }
 
     public void willExitApplication() {
-        this.targetDatabaseThread.interrupt();
+        //noinspection deprecation
+        this.targetDatabaseThread.stop();
     }
 }
