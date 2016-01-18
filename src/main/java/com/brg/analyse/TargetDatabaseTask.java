@@ -1,7 +1,9 @@
 package com.brg.analyse;
 
+
 import com.brg.ServiceProvider;
 import com.brg.dao.connection.TargetConnection;
+import com.brg.mock.TargetDatabaseMock;
 import javafx.util.Callback;
 import org.apache.ddlutils.Platform;
 import org.apache.ddlutils.PlatformFactory;
@@ -16,6 +18,7 @@ import java.util.Collections;
 
 public class TargetDatabaseTask implements Runnable {
     private final Callback callback;
+    private TargetDatabaseMock targetDatabaseMock;
 
     /**
      * @see {http://db.apache.org/ddlutils/index.html} Reference to docs
@@ -30,6 +33,7 @@ public class TargetDatabaseTask implements Runnable {
         System.out.println("Indexer: Starting Index Target database");
 
         System.out.println("Indexer: Connecting to target database...");
+        targetDatabaseMock = new TargetDatabaseMock();
 
         try{
             // Clear all in the service
@@ -44,7 +48,8 @@ public class TargetDatabaseTask implements Runnable {
             Platform platform = PlatformFactory.createNewPlatformInstance(dataSource);
             JdbcModelReader modelReader = platform.getModelReader();
 
-            Database database = modelReader.getDatabase(targetConnection.getConnection(), targetConnection.getSchema(), null, targetConnection.getSchema(), null);
+            //Database database = modelReader.getDatabase(targetConnection.getConnection(), targetConnection.getSchema(), null, targetConnection.getSchema(), null);
+            Database database = targetDatabaseMock.getDatabase();
             service.setDatabase(database);
 
             // Tables loop

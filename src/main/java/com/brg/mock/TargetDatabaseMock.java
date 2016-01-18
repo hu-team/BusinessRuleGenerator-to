@@ -4,8 +4,6 @@ import org.apache.ddlutils.model.Column;
 import org.apache.ddlutils.model.Database;
 import org.apache.ddlutils.model.Table;
 
-import java.util.ArrayList;
-
 public class TargetDatabaseMock {
     private Database database;
     private Table afdelingen, cursussen, historie, inschrijvingen, medewerkers, schalen, uitvoering;
