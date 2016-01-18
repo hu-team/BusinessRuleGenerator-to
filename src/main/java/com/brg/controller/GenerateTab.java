@@ -95,4 +95,19 @@ public class GenerateTab implements Initializable, TabControllerImpl {
 
         this.outputText.setText(output);
     }
+
+    public void doValidate(ActionEvent actionEvent) {
+        if(this.selectRule.getSelectionModel().getSelectedItem() == null ){
+            return;
+        }
+
+        boolean selectedbusinnes = this.selectRule.getSelectionModel().getSelectedItem().validateRule();
+
+        if(selectedbusinnes) {
+            System.out.println("Code is valid");
+        } else {
+            System.out.println("Code is invalid");
+        }
+
+    }
 }
