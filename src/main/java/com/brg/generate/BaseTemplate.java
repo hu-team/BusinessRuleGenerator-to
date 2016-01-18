@@ -61,9 +61,11 @@ public abstract class BaseTemplate {
         }
 
         // Add operator
-        if (operand != null) {
-            template.add("operand", operand.getSign());
+        if (operand == null) {
+            throw new Exception("Operand should be filled! Check your database contents! (Repository Database)");
         }
+        template.add("operand", operand.getSign());
+        template.add("error", "'Error Raised!'");
 
         // Add code
         if (code != null) {
