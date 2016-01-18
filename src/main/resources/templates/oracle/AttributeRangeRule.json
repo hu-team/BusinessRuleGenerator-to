@@ -3,7 +3,7 @@
   "type": "ORACLE",
   "code": "ARNG",
   "template": [
-    "CREATE OR REPLACE TRIGGER BRG_<code>_<attribute_table>_TRIGGER",
+    "CREATE OR REPLACE TRIGGER BRG_{code}_{attribute_table}_TRIGGER",
     "BEFORE DELETE OR INSERT OR UPDATE",
     " ON {code}_{attribute_table}",
     " FOR EACH ROW",
