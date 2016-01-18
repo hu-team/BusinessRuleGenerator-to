@@ -4,6 +4,7 @@ import com.brg.ServiceProvider;
 import com.brg.common.ExceptionAlert;
 import com.brg.domain.BusinessRule;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,6 +15,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 public class GenerateTab implements Initializable, TabControllerImpl {
@@ -46,7 +50,7 @@ public class GenerateTab implements Initializable, TabControllerImpl {
         // Fill in the combobox, clear the other elements.
         this.clearSelections();
 
-        this.selectRule.getItems().addAll(FXCollections.observableArrayList(ServiceProvider.getInstance().getPersistenceService().getAllRules()));
+        this.selectRule.getItems().addAll(FXCollections.observableArrayList(FXCollections.observableArrayList(ServiceProvider.getInstance().getPersistenceService().getAllRules())));
 
         // Start the subview
         MainWindow.getInstance().setDisabled(false);
