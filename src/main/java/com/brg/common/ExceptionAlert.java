@@ -16,7 +16,7 @@ public class ExceptionAlert {
         alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Exception Found!");
         alert.setHeaderText("Exception Thrown! See the details here:");
-        alert.setContentText("Exception Thrown!");
+        alert.setContentText("Exception Thrown! Please contact the developers, and send the log files.");
 
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);

@@ -32,7 +32,7 @@ public class Export {
         return this.triggerIdentifier;
     }
 
-    public String getOutput() {
+    public String getOutput() throws Exception {
         return this.template.fillTemplate(this.bundle, this.operand, this.triggerIdentifier);
     }
 

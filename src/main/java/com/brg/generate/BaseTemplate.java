@@ -12,7 +12,7 @@ public abstract class BaseTemplate {
     protected String source;
 
     @SuppressWarnings("unchecked")
-    protected String fillTemplateWithBundle(ST template, RuleValueBundle bundle, RuleOperand operand, String code) {
+    protected String fillTemplateWithBundle(ST template, RuleValueBundle bundle, RuleOperand operand, String code) throws Exception {
         template = new ST(template);
 
         for(String key: bundle.getKeys()) {
@@ -43,10 +43,16 @@ public abstract class BaseTemplate {
                 // Join parts
                 templateValue = String.join(", ", stringList);
             } else {
-                if (bundle.getValue(key) instanceof String) {
-                    templateValue = (String)bundle.getValue(key);
+                Object value = bundle.getValue(key);
+
+                if (value instanceof Integer) {
+                    value = "" + value;
+                }
+
+                if (value instanceof String) {
+                    templateValue = (String)value;
                 } else {
-                    System.err.println("Bundle entry should be a string, maybe update the application will help?");
+                    throw new Exception("Bundle entry should be a string or should be converted to string!");
                 }
             }
 

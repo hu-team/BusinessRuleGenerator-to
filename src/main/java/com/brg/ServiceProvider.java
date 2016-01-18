@@ -1,10 +1,13 @@
 package com.brg;
 
 import com.brg.analyse.AnalyseServiceImpl;
+import com.brg.common.Config;
+import com.brg.common.ExceptionAlert;
 import com.brg.controller.ControllerServiceImpl;
 import com.brg.dao.DaoServiceImpl;
 import com.brg.generate.ExportServiceImpl;
 import com.brg.persistence.PersistenceServiceImpl;
+import javafx.application.Platform;
 
 public class ServiceProvider {
     private ControllerServiceImpl controllerService;
@@ -53,6 +56,20 @@ public class ServiceProvider {
 
 
     public void startFirstWave(String[] args) {
+        // Catch all exceptions
+        Thread.setDefaultUncaughtExceptionHandler((thread, exception) -> {
+            if (BusinessRuleGenerator.DEBUG) {
+                exception.printStackTrace();
+            }
+
+            if (exception instanceof Exception && BusinessRuleGenerator.DEBUG) {
+                Platform.runLater(() -> {
+                    ExceptionAlert alert = new ExceptionAlert((Exception)exception);
+                    alert.showAndWait();
+                });
+            }
+        });
+
         this.controllerService.startApplication(args);
     }
 
