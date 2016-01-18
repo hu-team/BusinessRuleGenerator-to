@@ -5,7 +5,6 @@ import com.brg.domain.RuleOperand;
 import com.brg.domain.RuleValueBundle;
 import com.brg.generate.ExportTemplate;
 
-import java.util.Collection;
 import java.util.List;
 
 public interface PersistenceService {

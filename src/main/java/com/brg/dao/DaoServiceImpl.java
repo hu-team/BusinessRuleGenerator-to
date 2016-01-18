@@ -1,6 +1,5 @@
 package com.brg.dao;
 
-import com.brg.ServiceProvider;
 import com.brg.common.AbstractFacadeService;
 import com.brg.dao.connection.RepositoryConnection;
 import com.brg.dao.connection.TargetConnection;

@@ -2,7 +2,6 @@ package com.brg.persistence;
 
 
 import com.brg.ServiceProvider;
-import com.brg.dao.BusinessRuleDAO;
 import com.brg.domain.BusinessRule;
 
 import java.util.ArrayList;

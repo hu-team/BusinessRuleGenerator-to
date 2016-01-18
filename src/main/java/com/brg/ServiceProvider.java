@@ -5,7 +5,6 @@ import com.brg.controller.ControllerServiceImpl;
 import com.brg.dao.DaoServiceImpl;
 import com.brg.generate.ExportServiceImpl;
 import com.brg.persistence.PersistenceServiceImpl;
-import com.brg.persistence.PersistenceService;
 
 public class ServiceProvider {
     private ControllerServiceImpl controllerService;
