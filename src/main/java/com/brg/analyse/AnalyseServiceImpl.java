@@ -45,4 +45,9 @@ public class AnalyseServiceImpl extends AbstractFacadeService implements Analyse
     public void addTargetColumns(Table table, List<Column> columns) {
         this.databaseService.getColumns().put(table, columns);
     }
+
+    @Override
+    public DatabaseService getDatabaseService() {
+        return databaseService;
+    }
 }

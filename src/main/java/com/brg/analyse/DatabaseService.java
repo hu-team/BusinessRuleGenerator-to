@@ -63,11 +63,12 @@ public class DatabaseService implements Callback {
 
     public boolean hasColumn(String tableName, String columnName) {
         if (this.hasTable(tableName) && this.columns.containsKey(this.tables.get(tableName))) {
-            for(Column column: this.columns.get(this.tables.get(columnName))) {
-                if (columnName.equals(column.getName())) {
+            for(Column column: this.getColumns(tableName)) {
+                if(columnName.equals(column.getName())) {
                     return true;
                 }
             }
+
         }
 
         return false;
