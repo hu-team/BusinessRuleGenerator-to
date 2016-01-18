@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
@@ -104,9 +105,15 @@ public class GenerateTab implements Initializable, TabControllerImpl {
         boolean selectedbusinnes = this.selectRule.getSelectionModel().getSelectedItem().validateRule();
 
         if(selectedbusinnes) {
-            System.out.println("Code is valid");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Validate Rule");
+            alert.setHeaderText("Code is valid");
+            alert.showAndWait();
         } else {
-            System.out.println("Code is invalid");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Validate Rule");
+            alert.setHeaderText("Code is invalid");
+            alert.showAndWait();
         }
 
     }

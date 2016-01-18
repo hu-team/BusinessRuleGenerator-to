@@ -17,7 +17,6 @@ public class AttributeCompareRule extends BusinessRule{
         DatabaseService databaseService = ServiceProvider.getInstance().getAnalyseService().getDatabaseService();
 
         for(String key: this.getValues().getKeys()) {
-            System.out.println(key);
             if(key.equals("attribute.column")) {
 
                 column = (String) this.getValues().getValue(key);
