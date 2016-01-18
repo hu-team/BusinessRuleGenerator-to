@@ -58,7 +58,7 @@ public class GenerateTab implements Initializable, TabControllerImpl {
         this.outputText.setEditable(false);
     }
 
-    public void clickExport(MouseEvent click){
+    public void clickExport(MouseEvent click) throws Exception {
         if(this.selectRule.getSelectionModel().getSelectedItem() == null){
             return;
         }
@@ -78,7 +78,7 @@ public class GenerateTab implements Initializable, TabControllerImpl {
 
     }
 
-    public void doExport(ActionEvent actionEvent) {
+    public void doExport(ActionEvent actionEvent) throws Exception {
         String output = "Error!";
 
         if(this.selectRule.getSelectionModel().getSelectedItem() == null ){
