@@ -202,4 +202,8 @@ public class TargetDatabaseMock {
         uitvoering.addColumn(docent);
         uitvoering.addColumn(locatie);
     }
+
+    public Database getDatabase() {
+        return database;
+    }
 }
