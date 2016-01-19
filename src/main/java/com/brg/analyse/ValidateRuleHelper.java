@@ -35,6 +35,25 @@ public class ValidateRuleHelper {
     }
 
     private boolean TupleValidate() {
+        String table = "", column1 = "", column2 = "";
+        for(String key: ruleValueBundle.getKeys()) {
+            if(key.equals("tuple.table")) {
+                table = (String) ruleValueBundle.getValue(key);
+            }
+
+            if(key.equals("tuple.column1")) {
+                column1 = (String) ruleValueBundle.getValue(key);
+            }
+
+            if(key.equals("tuple.column2")) {
+                column2 = (String) ruleValueBundle.getValue(key);
+            }
+        }
+
+        if(databaseService.hasTable(table.toUpperCase()) && databaseService.hasColumn(table.toUpperCase(), column1.toUpperCase()) && databaseService.hasColumn(table.toUpperCase(), column2.toUpperCase())) {
+            return true;
+        }
+
         return false;
     }
 
