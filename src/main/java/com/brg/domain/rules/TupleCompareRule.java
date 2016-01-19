@@ -1,5 +1,6 @@
 package com.brg.domain.rules;
 
+import com.brg.analyse.ValidateRuleHelper;
 import com.brg.domain.BusinessRule;
 
 
@@ -11,7 +12,7 @@ public class TupleCompareRule extends BusinessRule{
 
     @Override
     public boolean validateRule() {
-        System.out.println(this.getValues().getKeys());
-        return false;
+        ValidateRuleHelper validateRuleHelper = new ValidateRuleHelper(this.getValues());
+        return validateRuleHelper.RuleType("Tuple");
     }
 }
