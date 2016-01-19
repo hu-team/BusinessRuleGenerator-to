@@ -3,6 +3,7 @@ package com.brg.generate;
 import com.brg.ServiceProvider;
 import com.brg.common.AbstractFacadeService;
 import com.brg.domain.BusinessRule;
+import com.brg.domain.DatabaseType;
 
 public class ExportServiceImpl extends AbstractFacadeService implements ExportService {
     @Override
@@ -24,5 +25,16 @@ public class ExportServiceImpl extends AbstractFacadeService implements ExportSe
         export.setTriggerIdentifier(rule.getCode());
 
         return export;
+    }
+
+    @Override
+    public ExportTemplate createTemplate(DatabaseType type) {
+        switch(type) {
+            case MYSQL:
+                return new MySQLExport();
+            case ORACLE:
+                return new OracleExport();
+        }
+        return null;
     }
 }

@@ -41,5 +41,10 @@ public class PersistenceServiceImpl extends AbstractFacadeService implements Per
         return this.businessRuleService.getRules();
     }
 
+    @Override
+    public void reloadTemplatesFromDisk() {
+        this.templateService.reloadTemplatesFromDisk();
+    }
+
 
 }

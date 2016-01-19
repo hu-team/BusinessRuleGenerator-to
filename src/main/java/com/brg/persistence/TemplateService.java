@@ -3,13 +3,15 @@ package com.brg.persistence;
 import com.brg.ServiceProvider;
 import com.brg.domain.BusinessRule;
 import com.brg.domain.DatabaseType;
-import com.brg.generate.ExportTemplate;
-import com.brg.generate.MySQLExport;
-import com.brg.generate.OracleExport;
+import com.brg.generate.*;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
+import org.apache.commons.io.FileUtils;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +22,8 @@ public class TemplateService {
      */
     private HashMap<DatabaseType, List<ExportTemplate>> templates = new HashMap<DatabaseType, List<ExportTemplate>>();
 
-    public TemplateService() {
+
+    public void reloadTemplatesFromDisk() {
         // Load templates from disk
         try {
             this.loadTemplates();
@@ -55,6 +58,7 @@ public class TemplateService {
      */
     private class JsonTemplate {
         private String[] template;
+        private String templateFile;
         private String name;
         private String type;
         private String code;
@@ -66,6 +70,14 @@ public class TemplateService {
 
         public void setTemplate(String[] template) {
             this.template = template;
+        }
+
+        public String getTemplateFile() {
+            return templateFile;
+        }
+
+        public void setTemplateFile(String templateFile) {
+            this.templateFile = templateFile;
         }
 
         public String getName() {
@@ -141,19 +153,39 @@ public class TemplateService {
      * @param jsonTemplate Template object from json
      */
     private void registerTemplate(JsonTemplate jsonTemplate) {
-        String stringTemplate = String.join("\n", jsonTemplate.getTemplate());
+        // Get the template itself
+        String stringTemplate;
+
+        if (jsonTemplate.getTemplate() == null && jsonTemplate.getTemplateFile() != null) {
+            // Load from file
+            try {
+                File file = new File(getClass().getResource("/templates/" + jsonTemplate.getType().toLowerCase() + "/" + jsonTemplate.getTemplateFile()).getFile());
+                stringTemplate = FileUtils.readFileToString(file, "UTF-8");
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+                return;
+            }
+        } else {
+            stringTemplate = String.join("\n", jsonTemplate.getTemplate());
+        }
 
         ExportTemplate template = null;
         DatabaseType type = null;
 
-        if("MYSQL".equals(jsonTemplate.getType())){
-            type = DatabaseType.MYSQL;
-            template = new MySQLExport();
-
-        } else if("ORACLE".equals(jsonTemplate.getType())){
-            type = DatabaseType.ORACLE;
-            template = new OracleExport();
+        DatabaseType[] types = DatabaseType.values();
+        for (DatabaseType matchType: types) {
+            if (jsonTemplate.getType().equals(matchType.name())) {
+                type = matchType;
+            }
         }
+
+        if (type == null) {
+            System.err.println("No type matched!");
+            return;
+        }
+
+
+        template = ServiceProvider.getInstance().getExportService().createTemplate(type);
 
         template.setSource(stringTemplate);
         template.setCode(jsonTemplate.getCode());

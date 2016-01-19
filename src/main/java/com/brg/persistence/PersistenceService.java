@@ -15,4 +15,6 @@ public interface PersistenceService {
     void reloadRules();
 
     List<BusinessRule> getAllRules();
+
+    void reloadTemplatesFromDisk();
 }

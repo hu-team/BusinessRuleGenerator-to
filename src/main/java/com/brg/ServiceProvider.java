@@ -70,6 +70,9 @@ public class ServiceProvider {
             }
         });
 
+        // Load templates
+        this.persistenceService.reloadTemplatesFromDisk();
+
         this.controllerService.startApplication(args);
     }
 
