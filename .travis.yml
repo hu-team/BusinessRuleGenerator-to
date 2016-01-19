@@ -14,5 +14,5 @@ addons:
 cache: apt
 
 script:
-  - gradle build
-#  - gradle test
+  - gradle build -x test
+
