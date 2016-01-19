@@ -29,12 +29,6 @@ public class ExportServiceImpl extends AbstractFacadeService implements ExportSe
 
     @Override
     public ExportTemplate createTemplate(DatabaseType type) {
-        switch(type) {
-            case MYSQL:
-                return new MySQLExport();
-            case ORACLE:
-                return new OracleExport();
-        }
-        return null;
+        return new ExportTemplate(type);
     }
 }

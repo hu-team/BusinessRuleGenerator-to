@@ -5,7 +5,6 @@ import com.brg.domain.DatabaseType;
 import com.brg.domain.RuleOperand;
 import com.brg.domain.RuleValueBundle;
 
-
 public class Export {
 
     private String triggerIdentifier;

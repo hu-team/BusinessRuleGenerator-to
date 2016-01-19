@@ -1,14 +1,9 @@
 package com.brg.persistence;
 
 import com.brg.domain.BusinessRule;
-import com.brg.domain.DatabaseType;
 import com.brg.domain.rules.*;
-import com.brg.generate.ExportTemplate;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.HashMap;
-import java.util.List;
 
 import static org.junit.Assert.*;
 
