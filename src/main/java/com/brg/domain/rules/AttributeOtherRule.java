@@ -1,5 +1,6 @@
 package com.brg.domain.rules;
 
+import com.brg.analyse.ValidateRuleHelper;
 import com.brg.domain.BusinessRule;
 
 
@@ -11,6 +12,7 @@ public class AttributeOtherRule extends BusinessRule {
 
     @Override
     public boolean validateRule() {
-        return false;
+        ValidateRuleHelper validateRuleHelper = new ValidateRuleHelper(this.getValues());
+        return validateRuleHelper.RuleType("Attribute");
     }
 }
