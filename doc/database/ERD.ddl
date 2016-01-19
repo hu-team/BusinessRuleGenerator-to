@@ -12,7 +12,8 @@ CREATE TABLE BusinessRule (
   Code           varchar2(255) NOT NULL,
   RuleName       varchar2(255) NOT NULL,
   Description    varchar2(255) NOT NULL,
-  ClassName 	 varchar2(255) NOT NULL, 
+  ClassName 	 varchar2(255) NOT NULL,
+  Active         number(10) NOT NULL,
   PRIMARY KEY (BusinessRuleID));
 CREATE TABLE RuleOperand (
   RuleOperandID number(10) NOT NULL, 
