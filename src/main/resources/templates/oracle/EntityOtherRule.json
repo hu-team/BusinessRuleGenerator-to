@@ -1,4 +1,4 @@
-{
+{ // TODO: if inserting, if deleting blabla, not possible here (mutating table error) see 8.2 assignment
   "name": "ORACLE ENTITY OTHER RULE TEMPLATE",
   "type": "ORACLE",
   "code": "EOTH",
