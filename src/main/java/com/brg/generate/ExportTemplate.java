@@ -26,7 +26,7 @@ public class ExportTemplate {
     }
 
     public DatabaseType getType() {
-        return DatabaseType.MYSQL;
+        return this.type;
     }
 
     public void setCode(String code){
