@@ -17,8 +17,8 @@ public class ExportTemplate {
         this.type = type;
     }
 
-    public String fillTemplate(RuleValueBundle bundle, RuleOperand operand, String code) throws Exception {
-        return this.fillTemplateWithBundle(this.getTemplate(), bundle, operand, code);
+    public String fillTemplate(RuleValueBundle bundle, RuleOperand operand, String code, String errorMessage) throws Exception {
+        return this.fillTemplateWithBundle(this.getTemplate(), bundle, operand, code, errorMessage);
     }
 
     public void setType(DatabaseType type) {
@@ -54,7 +54,7 @@ public class ExportTemplate {
     }
 
     @SuppressWarnings("unchecked")
-    private String fillTemplateWithBundle(ST template, RuleValueBundle bundle, RuleOperand operand, String code) throws Exception {
+    private String fillTemplateWithBundle(ST template, RuleValueBundle bundle, RuleOperand operand, String code, String errorMessage) throws Exception {
         template = new ST(template);
 
         for(String key: bundle.getKeys()) {
@@ -107,7 +107,7 @@ public class ExportTemplate {
             throw new Exception("Operand should be filled! Check your database contents! (Repository Database)");
         }
         template.add("operand", operand.getSign());
-        template.add("error", "'Error Raised!'");
+        template.add("error", "'" + errorMessage + "'");
 
         // Add code
         if (code != null) {

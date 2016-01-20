@@ -6,6 +6,7 @@ public abstract class BusinessRule implements Comparable{
     private String code;
     private String name;
     private String description;
+    private String error;
 
     private Category category;
     private RuleOperand operand;
@@ -66,6 +67,14 @@ public abstract class BusinessRule implements Comparable{
 
     public RuleValueBundle getValues() {
         return values;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
     }
 
     public String toString() {

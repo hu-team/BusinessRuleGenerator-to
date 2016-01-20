@@ -9,6 +9,7 @@ public class Export {
 
     private String triggerIdentifier;
     private String output;
+    private String errorMessage;
 
     private RuleValueBundle bundle;
     private RuleOperand operand;
@@ -21,6 +22,11 @@ public class Export {
         this.triggerIdentifier = rule.getCode();
         this.bundle = rule.getValues();
         this.operand = rule.getOperand();
+        if (rule.getError() != null) {
+            this.errorMessage = "Error Raised: " + rule.getError();
+        }else{
+            this.errorMessage = "Error raised!";
+        }
     }
 
     public ExportTemplate getTemplate() {
@@ -32,7 +38,7 @@ public class Export {
     }
 
     public String getOutput() throws Exception {
-        return this.template.fillTemplate(this.bundle, this.operand, this.triggerIdentifier);
+        return this.template.fillTemplate(this.bundle, this.operand, this.triggerIdentifier, this.errorMessage);
     }
 
     public DatabaseType getDatabaseType(){
