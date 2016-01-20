@@ -88,7 +88,7 @@ public class TargetDatabaseMock {
     }
 
     private void historieColumns() {
-        Column mnr, begindatum, beginjaar, einddatum, afd, maandsal, opmerking;
+        Column mnr, begindatum, beginjaar, einddatum, afd, maandsal, opmerking, gebeurtenis;
         mnr = new Column();
         begindatum = new Column();
         beginjaar = new Column();
@@ -96,6 +96,7 @@ public class TargetDatabaseMock {
         afd = new Column();
         maandsal = new Column();
         opmerking = new Column();
+        gebeurtenis = new Column();
 
         mnr.setName("MNR");
         begindatum.setName("BEGINDATUM");
@@ -103,7 +104,8 @@ public class TargetDatabaseMock {
         einddatum.setName("EINDDATUM");
         afd.setName("AFD");
         maandsal.setName("MAANDSAL");
-        opmerking.setName("OPMERKING");
+        opmerking.setName("OPMERKINGEN");
+        gebeurtenis.setName("GEBEURTENIS");
 
         historie.addColumn(mnr);
         historie.addColumn(begindatum);
@@ -111,6 +113,7 @@ public class TargetDatabaseMock {
         historie.addColumn(afd);
         historie.addColumn(maandsal);
         historie.addColumn(opmerking);
+        historie.addColumn(gebeurtenis);
     }
 
     private void inschrijvingenColumns() {
