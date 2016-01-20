@@ -1,4 +1,4 @@
-CREATE OR REPLACE TRIGGER BRG_{code}_{attribute_table}_TRIGGER
+CREATE OR REPLACE TRIGGER BRG_{code}_{attribute_table}_TRG
 BEFORE INSERT OR UPDATE
 ON {attribute_table}
 FOR EACH ROW
