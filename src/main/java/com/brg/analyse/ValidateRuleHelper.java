@@ -62,17 +62,14 @@ public class ValidateRuleHelper {
 
     private boolean EntityValidate() {
         String table = "", column = "";
-
-        System.out.println(ruleValueBundle.getKeys());
+        
         for(String key: ruleValueBundle.getKeys()) {
             if(key.equals("entity.table")) {
                 table = (String) ruleValueBundle.getValue(key);
-                System.out.println(table);
             }
 
             if(key.equals("entity.column")) {
                 column = (String) ruleValueBundle.getValue(key);
-                System.out.println(column);
             }
         }
 
