@@ -5,27 +5,24 @@ FOR EACH ROW
 DECLARE
   L_OPER        VARCHAR2(3);
   L_ERROR_STACK VARCHAR2(4000);
+  L_PASSED      BOOLEAN := TRUE;
 BEGIN
   IF INSERTING
   THEN
     L_OPER := 'INS';
   ELSIF UPDATING
-    THEN
-      L_OPER := 'UPD';
+  THEN
+    L_OPER := 'UPD';
   ELSIF DELETING
-    THEN
-      L_OPER := 'DEL';
+  THEN
+    L_OPER := 'DEL';
   END IF;
-  DECLARE
-    L_PASSED BOOLEAN := TRUE;
-  BEGIN
-    IF L_OPER IN ('INS', 'UPD')
+  IF L_OPER IN ('INS', 'UPD')
+  THEN
+    L_PASSED := {other_statement};
+    IF NOT l_PASSED
     THEN
-      L_PASSED := {other_statement}
-      IF NOT l_PASSED
-      THEN
-      L_ERROR_STACK := L_ERROR_STACK || {error};
+      RAISE_APPLICATION_ERROR(-20000, {error});
     END IF;
   END IF;
-END;
 END;
