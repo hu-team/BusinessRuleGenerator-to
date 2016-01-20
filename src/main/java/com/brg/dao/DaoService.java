@@ -18,4 +18,6 @@ public interface DaoService {
     ArrayList<BusinessRule> getAllBusinessRules();
     RuleValueBundle getRuleValueBundleForRule(int ruleID);
     RuleOperand getRuleOperandById(int id);
+
+    void applyQueryToTarget(String output) throws Exception;
 }
