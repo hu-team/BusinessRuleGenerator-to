@@ -25,8 +25,9 @@ BEGIN
       L_PASSED := :NEW.{attribute_column} IN ({list_list});
       L_PASSED := L_PASSED {operand} L_PASSED;
       IF NOT L_PASSED
-      THEN "
-      L_ERROR_STACK := L_ERROR_STACK || {error};
+      THEN
+        L_ERROR_STACK := L_ERROR_STACK || {error};
+      END IF;
     END IF;
-  END IF;
+  END;
 END;

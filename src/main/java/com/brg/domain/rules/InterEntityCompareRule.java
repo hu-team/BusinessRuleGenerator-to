@@ -1,5 +1,6 @@
 package com.brg.domain.rules;
 
+import com.brg.ServiceProvider;
 import com.brg.analyse.ValidateRuleHelper;
 import com.brg.domain.BusinessRule;
 
@@ -12,7 +13,6 @@ public class InterEntityCompareRule extends BusinessRule {
 
     @Override
     public boolean validateRule() {
-        ValidateRuleHelper validateRuleHelper = new ValidateRuleHelper(this.getValues());
-        return validateRuleHelper.RuleType("InterEntity");
+        return ServiceProvider.getInstance().getAnalyseService().validateRule(this.getValues(), "InterEntity");
     }
 }
