@@ -15,6 +15,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
+import java.util.Collections;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class GenerateTab implements Initializable, TabControllerImpl {
@@ -28,6 +30,8 @@ public class GenerateTab implements Initializable, TabControllerImpl {
     @FXML private ListView<BusinessRule> selectRule;
 
     @FXML private AnchorPane generateTabAnchor;
+
+    private List<BusinessRule> businessRulesList;
 
     private MainWindow rootController;
 
@@ -47,7 +51,11 @@ public class GenerateTab implements Initializable, TabControllerImpl {
         // Fill in the combobox, clear the other elements.
         this.clearSelections();
 
-        this.selectRule.getItems().addAll(FXCollections.observableArrayList(FXCollections.observableArrayList(ServiceProvider.getInstance().getPersistenceService().getAllRules())));
+        this.businessRulesList = ServiceProvider.getInstance().getPersistenceService().getAllRules();
+        Collections.sort(businessRulesList);
+
+        this.selectRule.getItems().addAll(this.businessRulesList);
+        //this.selectRule.getItems().addAll(FXCollections.observableArrayList(FXCollections.observableArrayList(ServiceProvider.getInstance().getPersistenceService().getAllRules())));
 
         // Start the subview
         MainWindow.getInstance().setDisabled(false);
