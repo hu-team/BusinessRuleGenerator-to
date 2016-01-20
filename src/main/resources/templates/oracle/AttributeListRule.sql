@@ -3,31 +3,26 @@ BEFORE DELETE OR INSERT OR UPDATE
 ON {attribute_table}
 FOR EACH ROW
 DECLARE
-  L_OPER        VARCHAR2(3);
-  L_ERROR_STACK VARCHAR2(4000);
+  L_PASSED BOOLEAN := FALSE;
+  V_COLUMN_1    VARCHAR2(60) := :NEW.{attribute_column};
 BEGIN
-  IF INSERTING
-  THEN
-    L_OPER := 'INS';
-  ELSIF UPDATING
-    THEN
-      L_OPER := 'UPD';
-  ELSIF DELETING
-    THEN
-      L_OPER := 'DEL';
-  END IF;
-
-  DECLARE
-    L_PASSED BOOLEAN := TRUE;
-  BEGIN
-    IF L_OPER IN ('INS', 'UPD')
-    THEN
-      L_PASSED := :NEW.{attribute_column} IN ({list_list});
-      L_PASSED := L_PASSED {operand} L_PASSED;
-      IF NOT L_PASSED
-      THEN
-        L_ERROR_STACK := L_ERROR_STACK || {error};
+    IF '{operand}' = '=' THEN
+      IF V_COLUMN_1 IN ({list_list}) THEN
+        L_PASSED := TRUE;
+      ELSE
+        RAISE_APPLICATION_ERROR(-20000, {error});
       END IF;
     END IF;
+
+    IF '{operand}' = '!=' THEN
+      IF V_COLUMN_1 NOT IN ({list_list}) THEN
+        L_PASSED := TRUE;
+      ELSE
+        RAISE_APPLICATION_ERROR(-20000, {error});
+      END IF;
+    END IF;
+
+  IF NOT L_PASSED THEN
+    RAISE_APPLICATION_ERROR(-20000, 'Error: Something went wrong!' );
+    END IF;
   END;
-END;
