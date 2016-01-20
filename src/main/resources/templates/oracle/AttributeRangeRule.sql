@@ -21,7 +21,7 @@ BEGIN
   BEGIN
     IF L_OPER IN ('INS', 'UPD')
     THEN
-      L_PASSED := :NEW.{attribute_column} > {range_min} && :NEW.{attribute_column} < {range_max};
+      L_PASSED := :NEW.{attribute_column} > {range_min} AND :NEW.{attribute_column} < {range_max};
       L_PASSED := L_PASSED {operand} L_PASSED;
       IF NOT L_PASSED
       THEN
