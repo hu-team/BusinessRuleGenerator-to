@@ -101,6 +101,10 @@ public class GenerateTab implements Initializable, TabControllerImpl {
         this.outputText.setText(output);
     }
 
+    public void doApply() {
+        
+    }
+
     public void doValidate(ActionEvent actionEvent) {
         if(this.selectRule.getSelectionModel().getSelectedItem() == null ){
             return;
