@@ -13,7 +13,7 @@ CREATE TABLE BusinessRule (
   RuleName       varchar2(255) NOT NULL,
   Description    varchar2(255) NOT NULL,
   ClassName 	 varchar2(255) NOT NULL,
-  Active         number(10) NOT NULL,
+  ACTIVE         number(10) NOT NULL,
   ERRORMESSAGE  varchar2(255),
   PRIMARY KEY (BusinessRuleID));
 CREATE TABLE RuleOperand (
