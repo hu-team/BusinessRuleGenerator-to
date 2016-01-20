@@ -1,32 +1,17 @@
 CREATE OR REPLACE TRIGGER BRG_{code}_{tuple_table}_TRIGGER
-BEFORE DELETE OR INSERT OR UPDATE
+BEFORE INSERT
 ON {tuple_table}
 FOR EACH ROW
 DECLARE
-  L_OPER        VARCHAR2(3);
   L_ERROR_STACK VARCHAR2(4000);
+  L_PASSED      BOOLEAN := TRUE;
+  V_COLUMN_1    VARCHAR2(60) := :NEW.{tuple_column_1};
+  V_COLUMN_2    VARCHAR2(255) := :NEW.{tuple_column_2};
 BEGIN
-  IF INSERTING
-  THEN
-    L_OPER := 'INS';
-  ELSIF UPDATING
-    THEN
-      L_OPER := 'UPD';
-  ELSIF DELETING
-    THEN
-      L_OPER := 'DEL';
+  IF (V_COLUMN_1 {operand} V_COLUMN_2) THEN
+    L_PASSED := TRUE;
+  ELSE
+    RAISE_APPLICATION_ERROR(-20000, 'Error Raised: ' || {error});
   END IF;
 
-  DECLARE
-    L_PASSED BOOLEAN := TRUE;
-  BEGIN
-    IF L_OPER IN ('INS', 'UPD')
-    THEN
-      L_PASSED := :NEW.{tuple_column_1} {operand} :NEW.{tuple_column_2};
-      IF NOT L_PASSED
-      THEN
-        L_ERROR_STACK := L_ERROR_STACK || {error};
-      END IF;
-    END IF;
-  END;
 END;
