@@ -5,6 +5,7 @@ import com.brg.ServiceProvider;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,6 +26,9 @@ public class MainWindow extends Application implements Initializable {
     @FXML private TabPane tabPane;
     @FXML private ProgressBar loadingProgress;
     @FXML private Label loadingText;
+
+    @FXML private MenuItem settingMenuItem;
+    @FXML private MenuItem exitMenuItem;
 
     private Stage stage;
 
@@ -166,6 +170,14 @@ public class MainWindow extends Application implements Initializable {
         tabPane.getSelectionModel().selectFirst();
     }
 
+    @FXML
+    private void handleMenuItemEvent(ActionEvent event) throws IOException {
+        if(event.getSource() == exitMenuItem){
+            System.out.println("EXIT SYSTEM");
+        }else if(event.getSource() == settingMenuItem){
+            
+        }
+    }
 
     /**
      * Set disabled state on golbal window
