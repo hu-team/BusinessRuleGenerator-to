@@ -101,6 +101,21 @@ public class GenerateTab implements Initializable, TabControllerImpl {
         this.outputText.setText(output);
     }
 
+    public void doApply() throws Exception {
+        if (this.selectRule.getSelectionModel().getSelectedItem() == null) {
+            return;
+        }
+
+        ServiceProvider.getInstance().getExportService().applyExport(this.selectRule.getSelectionModel().getSelectedItem());
+
+        // Done
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Rule has been applied");
+        alert.setHeaderText("Rule has been applied");
+        alert.setContentText("The rule trigger code has been applied to the target database!");
+        alert.showAndWait();
+    }
+
     public void doValidate(ActionEvent actionEvent) {
         if(this.selectRule.getSelectionModel().getSelectedItem() == null ){
             return;

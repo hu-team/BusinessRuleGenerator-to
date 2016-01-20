@@ -2,8 +2,11 @@ package com.brg.generate;
 
 import com.brg.ServiceProvider;
 import com.brg.common.AbstractFacadeService;
+import com.brg.dao.connection.TargetConnection;
 import com.brg.domain.BusinessRule;
 import com.brg.domain.DatabaseType;
+
+import java.sql.Statement;
 
 public class ExportServiceImpl extends AbstractFacadeService implements ExportService {
     @Override
@@ -30,5 +33,14 @@ public class ExportServiceImpl extends AbstractFacadeService implements ExportSe
     @Override
     public ExportTemplate createTemplate(DatabaseType type) {
         return new ExportTemplate(type);
+    }
+
+    @Override
+    public boolean applyExport(BusinessRule rule) throws Exception {
+        Export export = this.createExport(rule);
+
+        ServiceProvider.getInstance().getDaoService().applyQueryToTarget(export.getOutput());
+
+        return true;
     }
 }
