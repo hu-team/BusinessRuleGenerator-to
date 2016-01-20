@@ -5,27 +5,27 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="generateTabAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.brg.controller.GenerateTab">
+<AnchorPane fx:id="generateTabAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.brg.controller.GenerateTab">
    <children>
-      <Button id="exportButton" fx:id="exportButton" layoutX="749.0" layoutY="619.0" mnemonicParsing="false" onAction="#doExport" prefHeight="19.0" prefWidth="100.0" text="Export" />
-      <TextArea id="outputText" fx:id="outputText" layoutX="392.0" layoutY="116.0" prefHeight="486.0" prefWidth="572.0" />
-      <ListView id="selectRule" fx:id="selectRule" layoutX="15.0" layoutY="116.0" onMouseClicked="#clickExport" prefHeight="486.0" prefWidth="365.0" />
-      <Button id="validateButton" fx:id="validateButton" layoutX="630.0" layoutY="620.0" mnemonicParsing="false" onAction="#doValidate" prefHeight="25.0" prefWidth="100.0" text="Validate" />
-      <Label layoutX="20.0" layoutY="17.0" prefHeight="53.0" prefWidth="492.0" text="Generate Rule">
+      <Button id="exportButton" fx:id="exportButton" layoutX="746.0" layoutY="577.0" mnemonicParsing="false" onAction="#doExport" prefHeight="19.0" prefWidth="100.0" text="Export" />
+      <TextArea id="outputText" fx:id="outputText" layoutX="391.0" layoutY="83.0" prefHeight="486.0" prefWidth="572.0" />
+      <ListView id="selectRule" fx:id="selectRule" layoutX="14.0" layoutY="83.0" onMouseClicked="#clickExport" prefHeight="486.0" prefWidth="365.0" />
+      <Button id="validateButton" fx:id="validateButton" layoutX="627.0" layoutY="578.0" mnemonicParsing="false" onAction="#doValidate" prefHeight="25.0" prefWidth="100.0" text="Validate" />
+      <Label layoutX="14.0" layoutY="14.0" prefHeight="53.0" prefWidth="492.0" text="Generate Rule">
          <font>
             <Font size="33.0" />
          </font>
       </Label>
-      <Label layoutX="16.0" layoutY="90.0" text="Select Rule">
+      <Label layoutX="15.0" layoutY="57.0" text="Select Rule">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="392.0" layoutY="90.0" text="Code Output">
+      <Label layoutX="391.0" layoutY="57.0" text="Code Output">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Button id="applyTarget" fx:id="applyTarget" layoutX="866.0" layoutY="619.0" mnemonicParsing="false" onAction="#doApply" prefHeight="19.0" prefWidth="100.0" text="Apply to target" />
+      <Button id="applyTarget" fx:id="applyTarget" layoutX="863.0" layoutY="577.0" mnemonicParsing="false" onAction="#doApply" prefHeight="19.0" prefWidth="100.0" text="Apply to target" />
    </children>
 </AnchorPane>
