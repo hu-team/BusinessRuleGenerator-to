@@ -29,6 +29,7 @@ public class MainWindow extends Application implements Initializable {
 
     @FXML private MenuItem exitMenuItem;
     @FXML private MenuItem aboutMenuItem;
+    @FXML private MenuItem linkMenuItem;
 
     private Stage stage;
 
@@ -172,12 +173,18 @@ public class MainWindow extends Application implements Initializable {
 
     @FXML
     private void handleMenuItemEvent(ActionEvent event) throws IOException {
-        if(event.getSource() == exitMenuItem){
+
+        if (event.getSource() == exitMenuItem) {
+            System.out.println("EXIT SYSTEM");
+        } else if (event.getSource() == linkMenuItem) {
+            this.getHostServices().showDocument("https://github.com/tomvlk/BusinessRuleGenerator-to");
+        }else if(event.getSource() == exitMenuItem){
             // Close all threads.
             ServiceProvider.getInstance().willExitApplication();
 
             // Force exit for all threads.
             System.exit(0);
+
         }else if(event.getSource() == aboutMenuItem){
 
             Alert about = new Alert(Alert.AlertType.INFORMATION);
