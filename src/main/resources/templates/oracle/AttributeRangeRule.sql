@@ -15,7 +15,7 @@ BEGIN
   ELSIF DELETING
     THEN
       L_OPER := 'DEL';
-  END IF
+  END IF;
   DECLARE
     L_PASSED BOOLEAN := TRUE;
   BEGIN
@@ -29,3 +29,4 @@ BEGIN
       END IF;
     END IF;
   END;
+END;

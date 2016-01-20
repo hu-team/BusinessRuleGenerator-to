@@ -23,8 +23,9 @@ BEGIN
     THEN
       L_PASSED := {other_statement}
       IF NOT l_PASSED
-      THEN "
+      THEN
       L_ERROR_STACK := L_ERROR_STACK || {error};
     END IF;
   END IF;
+END;
 END;
