@@ -17,6 +17,7 @@
 
                 <Menu text="Help">
                     <items>
+                        <MenuItem text="Visit project on Github" fx:id="linkMenuItem" onAction="#handleMenuItemEvent" />
                         <MenuItem text="About" fx:id="aboutMenuItem" onAction="#handleMenuItemEvent" />
                     </items>
                 </Menu>
