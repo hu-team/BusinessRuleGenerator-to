@@ -181,7 +181,7 @@ public class MainWindow extends Application implements Initializable {
             about.setHeaderText("License");
             String aboutContent = "The MIT License (MIT)\n" +
                     "\n" +
-                    "Copyright (c) 2015-2016 Tom & HU Team 5\n" +
+                    "Copyright (c) 2015-2016 HU Team 5\n" +
                     "\n" +
                     "Permission is hereby granted, free of charge, to any person obtaining a copy\n" +
                     "of this software and associated documentation files (the \"Software\"), to deal\n" +
