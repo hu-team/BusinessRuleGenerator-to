@@ -1,7 +1,6 @@
 package com.brg;
 
 import com.brg.analyse.AnalyseServiceImpl;
-import com.brg.common.Config;
 import com.brg.common.ExceptionAlert;
 import com.brg.controller.ControllerServiceImpl;
 import com.brg.dao.DaoServiceImpl;

@@ -1,5 +1,6 @@
 package com.brg.controller;
 
+import com.brg.ServiceProvider;
 import com.brg.common.Config;
 import com.brg.domain.DatabaseType;
 import javafx.collections.FXCollections;
@@ -95,6 +96,10 @@ public class SettingsTab implements Initializable, TabControllerImpl {
         properties.setProperty("target_service", targetService.getText());
         properties.setProperty("target_port", targetPort.getText());
         properties.setProperty("target_type", exportOptions.getValue().toString());
+
+        //Reindex target database
+        ServiceProvider.getInstance().getAnalyseService().clearAllTargetMetadata();
+        ServiceProvider.getInstance().getAnalyseService().startIndexingTargetDatabase();
 
         try {
             Config.getInstance().save();
