@@ -59,7 +59,8 @@ public class GenerateTab implements Initializable, TabControllerImpl {
         this.outputText.setEditable(false);
     }
 
-    public void clickExport(MouseEvent click) throws Exception {
+    @FXML
+    private void clickExport(MouseEvent click) throws Exception {
         if(this.selectRule.getSelectionModel().getSelectedItem() == null){
             return;
         }
@@ -79,7 +80,8 @@ public class GenerateTab implements Initializable, TabControllerImpl {
 
     }
 
-    public void doExport(ActionEvent actionEvent) throws Exception {
+    @FXML
+    private void doExport(ActionEvent actionEvent) throws Exception {
         String output = "Error!";
 
         if(this.selectRule.getSelectionModel().getSelectedItem() == null ){
@@ -97,7 +99,8 @@ public class GenerateTab implements Initializable, TabControllerImpl {
         this.outputText.setText(output);
     }
 
-    public void doApply() throws Exception {
+    @FXML
+    private void doApply() throws Exception {
         if (this.selectRule.getSelectionModel().getSelectedItem() == null) {
             return;
         }
@@ -112,7 +115,8 @@ public class GenerateTab implements Initializable, TabControllerImpl {
         alert.showAndWait();
     }
 
-    public void doValidate(ActionEvent actionEvent) {
+    @FXML
+    private void doValidate(ActionEvent actionEvent) {
         if(this.selectRule.getSelectionModel().getSelectedItem() == null ){
             return;
         }
