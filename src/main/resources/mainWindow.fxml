@@ -11,8 +11,6 @@
             <menus>
                 <Menu text="File">
                     <items>
-                        <MenuItem text="Settings" fx:id="settingMenuItem"/>
-                        <SeparatorMenuItem />
                         <MenuItem text="Exit" fx:id="exitMenuItem" onAction="#handleMenuItemEvent" />
                     </items>
                 </Menu>
