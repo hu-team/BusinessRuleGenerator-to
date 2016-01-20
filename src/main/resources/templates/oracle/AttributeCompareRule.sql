@@ -22,7 +22,7 @@ BEGIN
   BEGIN
     IF L_OPER IN ('INS', 'UPD')
     THEN
-      L_PASSED := :NEW.{attribute_column} {operand} {compare_with};
+      L_PASSED := :NEW.{attribute_column} {operand} '{compare_with}';
       IF NOT L_PASSED
       THEN
         L_ERROR_STACK := L_ERROR_STACK || {error};
