@@ -79,7 +79,7 @@ public class TargetDatabaseMock {
         code.setName("CODE");
         omschrijving.setName("OMSCHRIJVING");
         type.setName("TYPE");
-        lengthe.setName("LENGTHE");
+        lengthe.setName("LENGTE");
 
         cursussen.addColumn(code);
         cursussen.addColumn(omschrijving);
