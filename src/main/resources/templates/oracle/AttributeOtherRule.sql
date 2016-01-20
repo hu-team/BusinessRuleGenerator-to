@@ -20,9 +20,9 @@ BEGIN
   IF L_OPER IN ('INS', 'UPD')
   THEN
     L_PASSED := {other_statement};
-    IF NOT l_PASSED
-    THEN
-      RAISE_APPLICATION_ERROR(-20000, {error});
     END IF;
+  IF NOT l_PASSED
+  THEN
+    RAISE_APPLICATION_ERROR(-20000, {error});
   END IF;
 END;
