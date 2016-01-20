@@ -173,7 +173,11 @@ public class MainWindow extends Application implements Initializable {
     @FXML
     private void handleMenuItemEvent(ActionEvent event) throws IOException {
         if(event.getSource() == exitMenuItem){
-            System.out.println("EXIT SYSTEM");
+            // Close all threads.
+            ServiceProvider.getInstance().willExitApplication();
+
+            // Force exit for all threads.
+            System.exit(0);
         }else if(event.getSource() == aboutMenuItem){
 
             Alert about = new Alert(Alert.AlertType.INFORMATION);
