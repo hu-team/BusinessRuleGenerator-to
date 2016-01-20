@@ -3,7 +3,6 @@ BEFORE INSERT OR UPDATE
 ON {tuple_table}
 FOR EACH ROW
 DECLARE
-  L_ERROR_STACK VARCHAR2(4000);
   L_PASSED      BOOLEAN := TRUE;
   V_COLUMN_1    VARCHAR2(60) := :NEW.{tuple_column_1};
   V_COLUMN_2    VARCHAR2(255) := :NEW.{tuple_column_2};

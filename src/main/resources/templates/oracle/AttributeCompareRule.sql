@@ -1,32 +1,27 @@
 CREATE OR REPLACE TRIGGER BRG_{code}_{attribute_table}_TRIGGER
-BEFORE DELETE OR INSERT OR UPDATE
+BEFORE INSERT OR UPDATE
 ON {attribute_table}
 FOR EACH ROW
 DECLARE
-  L_OPER        VARCHAR2(3);
-  L_ERROR_STACK VARCHAR2(4000);
-BEGIN
-  IF INSERTING
-  THEN
-    L_OPER := 'INS';
-  ELSIF UPDATING
-    THEN
-      L_OPER := 'UPD';
-  ELSIF DELETING
-    THEN
-      L_OPER := 'DEL';
-  END IF;
-
-  DECLARE
-    L_PASSED BOOLEAN := TRUE;
+  L_PASSED      BOOLEAN := TRUE;
+  V_COLUMN_1    VARCHAR2(60) := :NEW.{attribute_column};
+  V_COMVALUE    VARCHAR2(255) := '{compare_with}';
+  V_COMVALUE_NUM NUMBER(10);
   BEGIN
-    IF L_OPER IN ('INS', 'UPD')
-    THEN
-      L_PASSED := :NEW.{attribute_column} {operand} '{compare_with}';
-      IF NOT L_PASSED
-      THEN
-        L_ERROR_STACK := L_ERROR_STACK || {error};
-      END IF;
+
+    V_COMVALUE_NUM := TO_NUMBER(V_COMVALUE);
+
+    IF (V_COLUMN_1 {operand} V_COMVALUE_NUM) THEN
+      L_PASSED := TRUE;
+    ELSE
+      RAISE_APPLICATION_ERROR(-20000, 'Error Raised: ' || {error});
+    END IF;
+
+EXCEPTION
+  WHEN VALUE_ERROR THEN
+    IF (V_COLUMN_1 {operand} V_COMVALUE) THEN
+      L_PASSED := TRUE;
+    ELSE
+      RAISE_APPLICATION_ERROR(-20000, 'Error Raised: ' || {error});
     END IF;
   END;
-END;
