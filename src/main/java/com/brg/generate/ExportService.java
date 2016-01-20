@@ -7,4 +7,6 @@ public interface ExportService {
     Export createExport(BusinessRule rule) throws ClassNotFoundException;
 
     ExportTemplate createTemplate(DatabaseType type);
+
+    boolean applyExport(BusinessRule rule) throws Exception;
 }

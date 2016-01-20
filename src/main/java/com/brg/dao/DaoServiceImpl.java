@@ -7,6 +7,7 @@ import com.brg.domain.BusinessRule;
 import com.brg.domain.RuleOperand;
 import com.brg.domain.RuleValueBundle;
 
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class DaoServiceImpl extends AbstractFacadeService implements DaoService {
@@ -28,7 +29,6 @@ public class DaoServiceImpl extends AbstractFacadeService implements DaoService 
     }
 
 
-
     @Override
     public ArrayList<BusinessRule> getAllBusinessRules() {
         return this.businessRuleDAO.getAllRules();
@@ -42,6 +42,18 @@ public class DaoServiceImpl extends AbstractFacadeService implements DaoService 
     @Override
     public RuleOperand getRuleOperandById(int id) {
         return this.ruleOperandDAO.getRuleOperandById(id);
+    }
+
+    @Override
+    public void applyQueryToTarget(String output) throws Exception {
+        TargetConnection connection = this.getTargetConnection();
+        Statement statement = connection.getConnection().createStatement();
+
+        output = output.replaceAll("\r\n", "\n");
+
+        statement.executeUpdate(output);
+
+        statement.close();
     }
 
 }
