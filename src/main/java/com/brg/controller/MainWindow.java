@@ -175,15 +175,13 @@ public class MainWindow extends Application implements Initializable {
     private void handleMenuItemEvent(ActionEvent event) throws IOException {
 
         if (event.getSource() == exitMenuItem) {
-            System.out.println("EXIT SYSTEM");
-        } else if (event.getSource() == linkMenuItem) {
-            this.getHostServices().showDocument("https://github.com/tomvlk/BusinessRuleGenerator-to");
-        }else if(event.getSource() == exitMenuItem){
             // Close all threads.
             ServiceProvider.getInstance().willExitApplication();
 
             // Force exit for all threads.
             System.exit(0);
+        } else if (event.getSource() == linkMenuItem) {
+            this.getHostServices().showDocument("https://github.com/tomvlk/BusinessRuleGenerator-to");
 
         }else if(event.getSource() == aboutMenuItem){
 
