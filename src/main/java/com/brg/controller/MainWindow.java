@@ -27,8 +27,8 @@ public class MainWindow extends Application implements Initializable {
     @FXML private ProgressBar loadingProgress;
     @FXML private Label loadingText;
 
-    @FXML private MenuItem settingMenuItem;
     @FXML private MenuItem exitMenuItem;
+    @FXML private MenuItem aboutMenuItem;
 
     private Stage stage;
 
@@ -174,8 +174,15 @@ public class MainWindow extends Application implements Initializable {
     private void handleMenuItemEvent(ActionEvent event) throws IOException {
         if(event.getSource() == exitMenuItem){
             System.out.println("EXIT SYSTEM");
-        }else if(event.getSource() == settingMenuItem){
-            
+        }else if(event.getSource() == aboutMenuItem){
+
+            Alert about = new Alert(Alert.AlertType.INFORMATION);
+            about.setTitle("About us");
+            about.setHeaderText("About us");
+            String aboutContent = "";
+            about.setContentText(aboutContent);
+            about.show();
+
         }
     }
 

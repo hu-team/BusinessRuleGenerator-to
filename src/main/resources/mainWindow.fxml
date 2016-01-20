@@ -17,7 +17,7 @@
 
                 <Menu text="Help">
                     <items>
-                        <MenuItem text="About" />
+                        <MenuItem text="About" fx:id="aboutMenuItem" onAction="#handleMenuItemEvent" />
                     </items>
                 </Menu>
             </menus>
