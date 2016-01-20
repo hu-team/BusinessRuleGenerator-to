@@ -1,6 +1,6 @@
 CREATE OR REPLACE TRIGGER BRG_{code}_{attribute_table}_TRIGGER
 BEFORE DELETE OR INSERT OR UPDATE
-ON {interentity_table}
+ON {interentity_table_1}
 FOR EACH ROW
 DECLARE
   L_OPER        VARCHAR2(3);
@@ -22,7 +22,7 @@ BEGIN
   BEGIN
     IF L_OPER IN ('INS', 'UPD')
     THEN
-      L_PASSED := :NEW.{attribute_column} {operand} {attribute_column_compare_with};
+      L_PASSED := :NEW.{interentity_column_1} {operand} {interentity_table_2}.{interentity_column_2};
       IF NOT L_PASSED
       THEN
         L_ERROR_STACK := L_ERROR_STACK || {error};
