@@ -7,7 +7,24 @@
 
 <AnchorPane minHeight="661.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.brg.controller.MainWindow">
    <children>
-       <TabPane fx:id="tabPane" prefHeight="661.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+       <MenuBar fx:id="menuBar" prefHeight="25.0" prefWidth="1000.0">
+            <menus>
+                <Menu text="File">
+                    <items>
+                        <MenuItem text="Settings" fx:id="settingMenuItem"/>
+                        <SeparatorMenuItem />
+                        <MenuItem text="Exit" fx:id="exitMenuItem" onAction="#handleMenuItemEvent" />
+                    </items>
+                </Menu>
+
+                <Menu text="Help">
+                    <items>
+                        <MenuItem text="About" />
+                    </items>
+                </Menu>
+            </menus>
+       </MenuBar>
+       <TabPane fx:id="tabPane" layoutY="25.0" minWidth="-Infinity" prefHeight="649.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
            <tabs>
         </tabs>
        </TabPane>
