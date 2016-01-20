@@ -1,7 +1,7 @@
 package com.brg.domain;
 
 
-public abstract class BusinessRule{
+public abstract class BusinessRule implements Comparable{
 
     private String code;
     private String name;
@@ -14,6 +14,11 @@ public abstract class BusinessRule{
     public BusinessRule() {}
 
     public abstract boolean validateRule();
+
+    @Override
+    public int compareTo(Object objectCompare){
+        return this.getClass().getSimpleName().compareTo(objectCompare.getClass().getSimpleName());
+    }
 
     public void setCode(String code) {
         this.code = code;
@@ -64,6 +69,6 @@ public abstract class BusinessRule{
     }
 
     public String toString() {
-        return this.getCode() + " - " + this.getName();
+        return  this.getClass().getSimpleName() + " - " + this.getCode() + " - " + this.getName();
     }
 }
