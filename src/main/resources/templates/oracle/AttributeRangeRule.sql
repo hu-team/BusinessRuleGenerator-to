@@ -21,8 +21,11 @@ BEGIN
   BEGIN
     IF L_OPER IN ('INS', 'UPD')
     THEN
-      L_PASSED := :NEW.{attribute_column} > {range_min} AND :NEW.{attribute_column} < {range_max};
-      L_PASSED := L_PASSED {operand} TRUE ;
+      IF '{operand}' = '=' THEN
+        L_PASSED := :NEW.{attribute_column} >= {range_min} AND :NEW.{attribute_column} <= {range_max};
+              ELSE
+        L_PASSED := :NEW.{attribute_column} < {range_min} OR :NEW.{attribute_column} > {range_max};
+      END IF;
       IF NOT L_PASSED
       THEN
         L_ERROR_STACK := L_ERROR_STACK || {error};
