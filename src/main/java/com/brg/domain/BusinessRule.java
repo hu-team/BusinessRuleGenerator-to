@@ -6,6 +6,7 @@ public abstract class BusinessRule{
     private String code;
     private String name;
     private String description;
+    private String error;
 
     private Category category;
     private RuleOperand operand;
@@ -61,6 +62,14 @@ public abstract class BusinessRule{
 
     public RuleValueBundle getValues() {
         return values;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
     }
 
     public String toString() {
