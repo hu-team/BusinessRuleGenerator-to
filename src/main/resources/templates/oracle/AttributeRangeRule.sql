@@ -1,6 +1,6 @@
 CREATE OR REPLACE TRIGGER BRG_{code}_{attribute_table}_TRIGGER
 BEFORE DELETE OR INSERT OR UPDATE
-ON {code}_{attribute_table}
+ON {attribute_table}
 FOR EACH ROW
 DECLARE
   L_OPER        VARCHAR2(3);
