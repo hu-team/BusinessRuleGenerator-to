@@ -23,12 +23,13 @@ BEGIN
     THEN
       IF '{operand}' = '=' THEN
         L_PASSED := :NEW.{attribute_column} >= {range_min} AND :NEW.{attribute_column} <= {range_max};
-              ELSE
+      ELSE
         L_PASSED := :NEW.{attribute_column} < {range_min} OR :NEW.{attribute_column} > {range_max};
       END IF;
+
       IF NOT L_PASSED
       THEN
-        L_ERROR_STACK := L_ERROR_STACK || {error};
+        raise_application_error(-20000, {error});
       END IF;
     END IF;
   END;
