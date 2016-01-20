@@ -1,32 +1,25 @@
-CREATE OR REPLACE TRIGGER BRG_{code}_{attribute_table}_TRG
+CREATE OR REPLACE TRIGGER BRG_{code}_{interentity_table_1}_TRG
 BEFORE DELETE OR INSERT OR UPDATE
 ON {interentity_table_1}
 FOR EACH ROW
 DECLARE
-  L_OPER        VARCHAR2(3);
-  L_ERROR_STACK VARCHAR2(4000);
-BEGIN
-  IF INSERTING
-  THEN
-    L_OPER := 'INS';
-  ELSIF UPDATING
-    THEN
-      L_OPER := 'UPD';
-  ELSIF DELETING
-    THEN
-      L_OPER := 'DEL';
-  END IF;
+  L_PASSED BOOLEAN := TRUE;
 
-  DECLARE
-    L_PASSED BOOLEAN := TRUE;
-  BEGIN
-    IF L_OPER IN ('INS', 'UPD')
-    THEN
-      L_PASSED := :NEW.{interentity_column_1} {operand} {interentity_table_2}.{interentity_column_2};
-      IF NOT L_PASSED
-      THEN
-        L_ERROR_STACK := L_ERROR_STACK || {error};
-      END IF;
-    END IF;
-  END;
+  V_TABLE_1    VARCHAR2(60) := {interentity_table_1};
+
+  V_COLUMN_1    VARCHAR2(60) := :NEW.{interentity_column_1};
+
+  V_COLUMN_2_VALUE varchar(60);
+
+BEGIN
+   SELECT {interentity_column_2}
+   INTO V_COLUMN_2_VALUE
+   FROM {interentity_table_2}
+   WHERE MAX(ROWNUM);
+
+  IF (V_COLUMN_1 {operand} V_COLUMN_2_VALUE) THEN
+    L_PASSED := TRUE;
+  ELSE
+    RAISE_APPLICATION_ERROR(-20000, {error});
+  END IF;
 END;
