@@ -15,7 +15,7 @@ public class ValidateRuleHelper {
     /**
     * Check which type must by validate
      **/
-    public boolean RuleType(String type) {
+    public boolean validateType(String type) {
         boolean value = false;
 
         switch (type) {
@@ -127,5 +127,4 @@ public class ValidateRuleHelper {
 
         return false;
     }
-
 }

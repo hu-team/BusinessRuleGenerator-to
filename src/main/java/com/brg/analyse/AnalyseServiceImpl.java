@@ -2,6 +2,7 @@ package com.brg.analyse;
 
 
 import com.brg.common.AbstractFacadeService;
+import com.brg.domain.RuleValueBundle;
 import org.apache.ddlutils.model.Column;
 import org.apache.ddlutils.model.Database;
 import org.apache.ddlutils.model.Table;
@@ -49,5 +50,12 @@ public class AnalyseServiceImpl extends AbstractFacadeService implements Analyse
     @Override
     public DatabaseService getDatabaseService() {
         return databaseService;
+    }
+
+
+    @Override
+    public boolean validateRule(RuleValueBundle bundle, String ruleType) {
+        ValidateRuleHelper validateRuleHelper = new ValidateRuleHelper(bundle);
+        return validateRuleHelper.validateType(ruleType);
     }
 }
