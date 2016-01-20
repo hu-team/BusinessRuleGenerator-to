@@ -14,7 +14,7 @@ CREATE TABLE BusinessRule (
   Description    varchar2(255) NOT NULL,
   ClassName 	 varchar2(255) NOT NULL,
   Active         number(10) NOT NULL,
-  ErrorMessage  varchar2(255),
+  ERRORMESSAGE  varchar2(255),
   PRIMARY KEY (BusinessRuleID));
 CREATE TABLE RuleOperand (
   RuleOperandID number(10) NOT NULL, 
