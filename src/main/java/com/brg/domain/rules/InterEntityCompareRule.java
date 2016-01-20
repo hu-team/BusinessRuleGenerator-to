@@ -1,7 +1,6 @@
 package com.brg.domain.rules;
 
 import com.brg.ServiceProvider;
-import com.brg.analyse.ValidateRuleHelper;
 import com.brg.domain.BusinessRule;
 
 

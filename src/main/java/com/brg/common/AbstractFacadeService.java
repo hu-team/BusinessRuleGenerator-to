@@ -1,8 +1,7 @@
 package com.brg.common;
 
-import java.util.Observable;
 
-abstract public class AbstractFacadeService extends Observable {
+abstract public class AbstractFacadeService {
 
     public void willExitApplication() {
 
