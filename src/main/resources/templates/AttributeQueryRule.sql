@@ -11,18 +11,18 @@ BEGIN
   THEN
     L_OPER := 'INS';
   ELSIF UPDATING
-  THEN
-    L_OPER := 'UPD';
+    THEN
+      L_OPER := 'UPD';
   ELSIF DELETING
-  THEN
-    L_OPER := 'DEL';
+    THEN
+      L_OPER := 'DEL';
   END IF;
   IF L_OPER IN ('INS', 'UPD')
   THEN
-    L_PASSED := {other_statement};
+    EXECUTE IMMEDIATE '{other_statement}' INTO L_PASSED;
+    IF NOT l_PASSED
+    THEN
+      RAISE_APPLICATION_ERROR(-20000, {error});
     END IF;
-  IF NOT l_PASSED
-  THEN
-    RAISE_APPLICATION_ERROR(-20000, {error});
   END IF;
 END;
